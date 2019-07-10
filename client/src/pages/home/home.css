@@ -1,0 +1,20 @@
+#homenav {
+    height: 48px !important;
+}
+.MuiTab-root {
+    color: rgb(255, 136, 0) !important;
+    background-color: rgb(26, 26, 26) !important;
+    margin-top: 3% !important;
+    font-size: 9px !important;
+}
+.MuiTabs-indicator {
+    background-color: #eeff00 !important;
+    /* background-color: #ffc800 !important; */
+}
+.appbar {
+    box-shadow: none !important;
+    background-color: rgb(26, 26, 26) !important;
+}
+.tabs {
+    margin: auto !important;
+}
