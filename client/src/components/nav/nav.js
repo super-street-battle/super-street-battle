@@ -49,24 +49,30 @@ const Nav = _ => {
                 },
                 }}
             >
-                <MenuItem>
-                    <ListItemIcon>
-                        <IoMdHome className="navicon"/>
-                    </ListItemIcon>
-                    <Link to="/" onClick={handleClose}>Home</Link>
-                </MenuItem>
-                <MenuItem>
-                    <ListItemIcon>
-                        <GiF1Car className="navicon2"/>
-                    </ListItemIcon>
-                    <Link to="/Challenge" onClick={handleClose}>Challenge</Link>
-                </MenuItem>
-                <MenuItem>
-                    <ListItemIcon>
-                        <GiHomeGarage className="navicon"/>
-                    </ListItemIcon>
-                    <Link to="/Garage" onClick={handleClose}>Garage</Link>
-                </MenuItem>
+                <Link to="/" onClick={handleClose}>
+                    <MenuItem>
+                        <ListItemIcon>
+                            <IoMdHome className="navicon"/>
+                        </ListItemIcon>
+                            Home
+                    </MenuItem>
+                </Link>
+                <Link to="/Challenge" onClick={handleClose}>
+                    <MenuItem>
+                        <ListItemIcon>
+                            <GiF1Car className="navicon2"/>
+                        </ListItemIcon>
+                            Challenge
+                    </MenuItem>
+                </Link>
+                <Link to="/Garage" onClick={handleClose}>
+                    <MenuItem>
+                        <ListItemIcon>
+                            <GiHomeGarage className="navicon"/>
+                        </ListItemIcon>
+                            Garage
+                    </MenuItem>
+                </Link>
                 <MenuItem onClick={_ => console.log('log out of app')}>
                     <ListItemIcon>
                         <IoIosLogOut className="navicon"/>
