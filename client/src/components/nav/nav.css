@@ -1,0 +1,36 @@
+.logo {
+    width: 50%;
+    padding: 2% 3%;
+    display: block;
+    margin-left: 22%;
+}
+.MuiIconButton-root {
+    float: right;
+    padding: 20px !important;
+    color: #000000 !important;
+}
+.navbar {
+    background-color: #f3ff44;
+}
+.navicon {
+    font-size: 25px;
+    color: #eeff00;
+}
+.navicon2 {
+    font-size: 35px;
+    color: #eeff00;
+}
+.MuiList-root.MuiMenu-list.MuiList-padding{
+    background-color: rgb(26, 26, 26);
+}
+a {
+    font-size: 10px !important;
+    color: white !important;
+}
+.MuiPaper-rounded {
+    border-radius: 0 !important;
+}
+.MuiMenuItem-gutters {
+    font-size: 10px !important;
+    color: white !important;
+}
