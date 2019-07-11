@@ -6,6 +6,7 @@ import { Switch, Route, Redirect } from 'react-router-dom'
 import Home from './pages/home'
 import Challenge from './pages/challenge'
 import Garage from './pages/garage'
+import Login from './pages/login'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route exact path="/" component={Home}/>
         <Route path="/Challenge" component={Challenge} />
         <Route path="/Garage" component={Garage} />
+        <Route path="/Login" component={Login} />
         <Redirect to="/" />
       </Switch>
     </div>
