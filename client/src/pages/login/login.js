@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react'
 import logo1 from '../../assets/SSB_logo1.png'
 import logo2 from '../../assets/SSB_logo2.png'
 import logo3 from '../../assets/SSB_logo3.png'
@@ -9,38 +9,36 @@ import { easeBackOut } from 'd3-ease'
 import { NodeGroup } from 'react-move'
 import './login.css'
 
-class Login extends Component {
-  state = {
+const Login = _ => {
+  
+  const [logoState, setLogoState] = useState({
     width: null,
     height: null,
     item1: [{value: 7, img: logo1, n: 200}],
     item2: [{value: 0, img: logo2, n: 325}],
     item3: [{value: 0, img: logo3, n: 325}],
     item4: [{value: 10, img: logo4, n: 450}],
-    item5: [{value: 13.5, img: logo5, n: 325}]
+    item5: [{value: 13.5, img: logo5, n: 325}],
+    container: null
+  })
+
+  useEffect(_ => {
+    logoState.updateWidth()
+    window.addEventListener('resize', logoState.updateWidth)   
+  }, [])
+
+  logoState.updateWidth = () => {
+    setLogoState({ ...logoState, 
+      width: logoState.container.offsetWidth || 200, 
+      height: logoState.container.offsetHeight || 200
+    })
   }
 
-  componentDidMount() {
-    this.updateWidth()
-    window.addEventListener('resize', this.updateWidth)
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.updateWidth)
-  }
-
-  updateWidth = () => {
-    this.setState(() => ({ width: this.container.offsetWidth || 200, height: this.container.offsetHeight || 200 }))
-  }
-
-  container = null
-
-  render() {
-    const { item1, item2, item3, item4, item5, width, height } = this.state
+    const { item1, item2, item3, item4, item5, width, height } = logoState
 
     return (
       <div className='loginpage'>
-      <div style={{ width: '100%' }} ref={(d) => { this.container = d }}>
+      <div style={{ width: '100%' }} ref={(d) => { logoState.container = d }}>
         {width === null ? null : (
           <NodeGroup
             data={item1}
@@ -92,7 +90,7 @@ class Login extends Component {
           </NodeGroup>
         )}
       </div>
-      <div style={{ width: '100%' }} ref={(d) => { this.container = d }}>
+      <div style={{ width: '100%' }} ref={(d) => { logoState.container = d }}>
         {width === null ? null : (
           <NodeGroup
             data={item2}
@@ -145,7 +143,7 @@ class Login extends Component {
           </NodeGroup>
         )}
       </div>
-      <div style={{ width: '100%' }} ref={(d) => { this.container = d }}>
+      <div style={{ width: '100%' }} ref={(d) => { logoState.container = d }}>
         {width === null ? null : (
           <NodeGroup
             data={item3}
@@ -198,7 +196,7 @@ class Login extends Component {
           </NodeGroup>
         )}
       </div>
-      <div style={{ width: '100%' }} ref={(d) => { this.container = d }}>
+      <div style={{ width: '100%' }} ref={(d) => { logoState.container = d }}>
         {width === null ? null : (
           <NodeGroup
             data={item4}
@@ -250,7 +248,7 @@ class Login extends Component {
           </NodeGroup>
         )}
       </div>
-      <div style={{ width: '100%' }} ref={(d) => { this.container = d }}>
+      <div style={{ width: '100%' }} ref={(d) => { logoState.container = d }}>
         {width === null ? null : (
           <NodeGroup
             data={item5}
@@ -304,7 +302,6 @@ class Login extends Component {
       </div>
       </div>
     )
-  }
 }
 
 export default Login

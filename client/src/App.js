@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Nav from './components/nav'
 import './App.css'
 import './CSS_Reset.css'
@@ -8,7 +8,8 @@ import Challenge from './pages/challenge'
 import Garage from './pages/garage'
 import Login from './pages/login'
 
-function App() {
+const App = _ => {
+  const [gameState, setGameState] = useState({})
   return (
     <div className="App">
       <Nav />
