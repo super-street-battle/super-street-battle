@@ -10,18 +10,41 @@ import Login from './pages/login'
 
 const App = _ => {
   const [gameState, setGameState] = useState({})
-  return (
-    <div className="App">
-      <Nav />
-      <Switch>
-        <Route exact path="/" component={Home}/>
-        <Route path="/Challenge" component={Challenge} />
-        <Route path="/Garage" component={Garage} />
-        <Route path="/Login" component={Login} />
-        <Redirect to="/" />
-      </Switch>
-    </div>
-  )
+    if (localStorage.getItem('userId')) {
+      return (
+        <div className="App">
+          <Nav />
+          <Switch>
+            <Route exact path="/" component={Home}/>
+            <Route path="/Challenge" component={Challenge} />
+            <Route path="/Garage" component={Garage} />
+            <Redirect to="/" />
+          </Switch>
+        </div>
+        )
+    } else {
+      return (
+        <div>
+         <Switch>
+            <Route exact path="/Login" component={ () => <Login /> }/>
+            <Redirect to="/Login" />
+          </Switch>
+      </div>
+      )
+    }
+  
+  // return (
+  //   <div className="App">
+  //     <Nav />
+  //     <Switch>
+  //       <Route exact path="/" component={Home}/>
+  //       <Route path="/Challenge" component={Challenge} />
+  //       <Route path="/Garage" component={Garage} />
+  //       <Route path="/Login" component={Login} />
+  //       <Redirect to="/" />
+  //     </Switch>
+  //   </div>
+  // )
 }
 
 export default App
