@@ -10,3 +10,11 @@
 .loginpage {
     background-color: #f3ff44 !important;
 }
+#loginbtn {
+    visibility: hidden;
+    margin-top: 50vh;
+    margin-left: 40vw;
+}
+.btndiv {
+    height: 100vh;
+}
