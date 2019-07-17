@@ -8,31 +8,31 @@
         {
           "id": 1,
           "weather": "hot",
-          "points": 0.3,
+          "point": 0.3,
           "part": "tires"
         },
         {
           "id": 1,
           "weather": "hot",
-          "points": 0.3,
+          "point": 0.3,
           "part": "tires"
         },
         {
           "id": 3,
           "weather": "fog",
-          "points": 0.1,
+          "point": 0.1,
           "part": "tires"
         },
         {
           "id": 4,
           "weather": "rain",
-          "points": 0.2,
+          "point": 0.2,
           "part": "bodykit"
         },
         {
           "id": 5,
           "weather": "windy",
-          "points": 0.2,
+          "point": 0.2,
           "part": "bodykit"
         }
       ]
@@ -45,31 +45,31 @@
             {
               "id": 4,
               "weather": "rain",
-              "points": 0.2,
+              "point": 0.2,
               "part": "bodykit"
             },
             {
               "id": 4,
               "weather": "rain",
-              "points": 0.2,
+              "point": 0.2,
               "part": "bodykit"
             },
             {
               "id": 5,
               "weather": "windy",
-              "points": 0.2,
+              "point": 0.2,
               "part": "bodykit"
             },
             {
               "id": 5,
               "weather": "windy",
-              "points": 0.2,
+              "point": 0.2,
               "part": "bodykit"
             },
             {
               "id": 2,
               "weather": "cold",
-              "points": 0.2,
+              "point": 0.2,
               "part": "engine"
             }
       ]
@@ -82,31 +82,31 @@
         {
           "id": 6,
           "weather": "snow",
-          "points": 0.2,
+          "point": 0.2,
           "part": "engine"
         },
         {
           "id": 6,
           "weather": "snow",
-          "points": 0.2,
+          "point": 0.2,
           "part": "engine"
         },
         {
           "id": 2,
           "weather": "cold",
-          "points": 0.2,
+          "point": 0.2,
           "part": "engine"
         },
         {
           "id": 2,
           "weather": "cold",
-          "points": 0.2,
+          "point": 0.2,
           "part": "engine"
         },
         {
           "id": 4,
           "weather": "rain",
-          "points": 0.2,
+          "point": 0.2,
           "part": "bodykit"
         }
       ]
@@ -119,28 +119,28 @@
         {
           "id": 4,
           "weather": "rain",
-          "points": 0.2,
+          "point": 0.2,
           "part": "bodykit"
         },
         {
           "id": 4,
           "weather": "rain",
-          "points": 0.2,
+          "point": 0.2,
           "part": "bodykit"
         },{
           "id": 1,
           "weather": "hot",
-          "points": 0.3,
+          "point": 0.3,
           "part": "tires"
         },{
           "id": 3,
           "weather": "fog",
-          "points": 0.1,
+          "point": 0.1,
           "part": "tires"
         },{
           "id": 5,
           "weather": "windy",
-          "points": 0.2,
+          "point": 0.2,
           "part": "bodykit"
         }
       ]
@@ -153,31 +153,31 @@
         {
           "id": 5,
           "weather": "windy",
-          "points": 0.2,
+          "point": 0.2,
           "part": "bodykit"
         },
         {
           "id": 5,
           "weather": "windy",
-          "points": 0.2,
+          "point": 0.2,
           "part": "bodykit"
         },
         {
           "id": 1,
           "weather": "hot",
-          "points": 0.3,
+          "point": 0.3,
           "part": "tires"
         },
         {
           "id": 2,
           "weather": "cold",
-          "points": 0.2,
+          "point": 0.2,
           "part": "engine"
         },
         {
           "id": 3,
           "weather": "fog",
-          "points": 0.1,
+          "point": 0.1,
           "part": "tires"
         }
       ]
@@ -187,37 +187,37 @@
     {
       "id": 1,
       "weather": "hot",
-      "points": 0.3,
+      "point": 0.3,
       "part": "tires"
     },
     {
       "id": 2,
       "weather": "cold",
-      "points": 0.2,
+      "point": 0.2,
       "part": "engine"
     },
     {
       "id": 3,
       "weather": "fog",
-      "points": 0.1,
+      "point": 0.1,
       "part": "tires"
     },
     {
       "id": 4,
       "weather": "rain",
-      "points": 0.2,
+      "point": 0.2,
       "part": "bodykit"
     },
     {
       "id": 5,
       "weather": "windy",
-      "points": 0.2,
+      "point": 0.2,
       "part": "bodykit"
     },
     {
       "id": 6,
       "weather": "snow",
-      "points": 0.2,
+      "point": 0.2,
       "part": "engine"
     }
   ]
