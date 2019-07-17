@@ -32,19 +32,6 @@ const App = _ => {
       </div>
       )
     }
-  
-  // return (
-  //   <div className="App">
-  //     <Nav />
-  //     <Switch>
-  //       <Route exact path="/" component={Home}/>
-  //       <Route path="/Challenge" component={Challenge} />
-  //       <Route path="/Garage" component={Garage} />
-  //       <Route path="/Login" component={Login} />
-  //       <Redirect to="/" />
-  //     </Switch>
-  //   </div>
-  // )
 }
 
 export default App
