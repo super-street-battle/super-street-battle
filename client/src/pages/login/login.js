@@ -11,12 +11,17 @@ const Login = _ => {
   },[])
 
   return (
-    <>
+    <div className='loginpage'>
       <Logo />
       <div className='btndiv'>
-        <button id="loginbtn">Login</button>
+        <button id="loginbtn" onClick={_=> {
+          localStorage.setItem('userId', 1)
+          window.location.reload()
+        }}>
+            Login
+        </button>
       </div>
-    </>
+    </div>
   )
 }
 

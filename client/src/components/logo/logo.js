@@ -38,7 +38,7 @@ import { NodeGroup } from 'react-move'
     const { item1, item2, item3, item4, item5, width, height } = this.state
 
      return (
-      <div className='loginpage'>
+      <div>
       <div style={{ width: '100%' }} ref={(d) => { this.container = d }}>
         {width === null ? null : (
           <NodeGroup

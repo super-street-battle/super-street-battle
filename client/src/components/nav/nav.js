@@ -73,7 +73,10 @@ const Nav = _ => {
                             Garage
                     </MenuItem>
                 </Link>
-                <MenuItem onClick={_ => console.log('log out of app')}>
+                <MenuItem onClick={_ => {
+                    localStorage.removeItem('userId')
+                    window.location.reload()
+                }}>
                     <ListItemIcon>
                         <IoIosLogOut className="navicon"/>
                     </ListItemIcon>
