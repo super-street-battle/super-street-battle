@@ -1,0 +1,23 @@
+[
+    {
+        "id": 1,
+        "image": "assets/images/nsx-stock.png",
+        "clicked": false
+    },
+    {
+        "id": 2,
+        "image": "assets/images/rx7-fd-stock.png",
+        "clicked": false
+    },
+    {
+        "id": 3,
+        "image": "assets/images/s15-stock.png",
+        "clicked": false
+    },
+    {
+        "id": 4,
+        "image": "assets/images/3000gt-stock.png",
+        "clicked": false
+    }
+ 
+]
