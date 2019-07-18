@@ -1,9 +1,12 @@
 import React from 'react'
+import firebase from 'firebase';
+import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 
-const FireBaseLogin = _ => {
+
+const FireBaseLogin = props => {
     return (
         <>
-            <h1>FirebaseLogin</h1>
+          <StyledFirebaseAuth uiConfig={props.uiConfig} firebaseAuth={props.FirebaseAuth}/>
         </>
     )
 }
