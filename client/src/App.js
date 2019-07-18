@@ -8,6 +8,7 @@ import Challenge from './pages/challenge'
 import Garage from './pages/garage'
 import Login from './pages/login'
 
+
 const App = _ => {
   const [gameState, setGameState] = useState({})
     if (localStorage.getItem('userId')) {
