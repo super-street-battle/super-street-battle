@@ -3,6 +3,9 @@ module.exports = (Schema, model) => {
         carName: {
             type: String
         },
+        carNickname:{
+            type: String
+        },
         type: {
             type: String
         },
