@@ -39,7 +39,7 @@ signInOptions: [
 
 const FBAuth = firebase.auth()
 
-const App = _ => {  
+const App = _ => {
 
   const [gameState, setGameState] = useState({})
   const [isLoggedIn, setLoginState] = useState(0)

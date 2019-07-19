@@ -77,6 +77,10 @@ const Nav = props => {
            
            props.FirebaseAuth.signOut()
             }}>
+//                     localStorage.removeItem('userId')
+//                     window.location.reload()
+//                     // change player online status to false
+//                 }}>
                     <ListItemIcon>
                         <IoIosLogOut className="navicon"/>
                     </ListItemIcon>

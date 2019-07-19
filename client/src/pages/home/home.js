@@ -11,6 +11,7 @@ import Result from '../../components/result'
 import Topscore from '../../components/topscore'
 import Players from '../../components/players'
 import './home.css'
+import Garage from '../garage/garage'
 
 function TabContainer({ children, dir }) {
     return (
@@ -55,9 +56,10 @@ const Home = _ => {
                 scrollButtons="auto"
                 >
                 <Tab label="Top Score" />
-                <Tab label="Players" />
+                {/* <Tab label="Players" /> */}
                 {/* <Tab label="Challenges" />
                 <Tab label="Result" /> */}
+                <Tab label='Garage'/>
                 </Tabs>
             </AppBar>
             <SwipeableViews
@@ -66,9 +68,10 @@ const Home = _ => {
                 onChangeIndex={handleChangeIndex}
             >
                 <TabContainer dir={theme.direction}><Topscore /></TabContainer>
-                <TabContainer dir={theme.direction}><Players /></TabContainer>
+                {/* <TabContainer dir={theme.direction}><Players /></TabContainer> */}
                 {/* <TabContainer dir={theme.direction}><Challenges /></TabContainer>
                 <TabContainer dir={theme.direction}><Result /></TabContainer> */}
+                <TabContainer dir={theme.direction}><Garage /></TabContainer>
             </SwipeableViews>
     </div>
     )
