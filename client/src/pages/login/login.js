@@ -34,11 +34,11 @@ const Login = props => {
   const classes = useStyles();
 
 
-  useEffect(_ => {
-    setTimeout(() => {
-      document.getElementById('loginbtn').style.visibility = 'visible'
-    }, 2700)
-  },[])
+  // useEffect(_ => {
+  //   setTimeout(() => {
+  //     document.getElementById('loginbtn').style.visibility = 'visible'
+  //   }, 2700)
+  // },[])
 
   return (
 

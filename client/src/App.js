@@ -8,6 +8,7 @@ import Challenge from './pages/challenge'
 import Garage from './pages/garage'
 import Login from './pages/login'
 import firebase from 'firebase';
+import Loader from './components/loading'
 
 
 
@@ -36,21 +37,34 @@ signInOptions: [
 ]
 };
 
-const FBAuth = firebase.auth();
+const FBAuth = firebase.auth()
 
-
-const App = _ => {
-
-  
+const App = _ => {  
 
   const [gameState, setGameState] = useState({})
-  const [isLoggedIn, setLoginState] = useState(false)
+  const [isLoggedIn, setLoginState] = useState(0)
   const [message, mm] = useState('logged')
 
 
-    if (isLoggedIn) {
+  useEffect(_ => {
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        setLoginState(1)
+        console.log(user)
+      } else {
+        setLoginState(2)
+        // window.location = '/Login'
+      }
+    })
+  }, [])
+
+    if (isLoggedIn === 1) {
       return (
         <div className="App">
+          <button onClick={_ => {
+            setLoginState(2)
+            firebase.auth().signOut()
+            }}>Sign Out</button>
           {message}
         <Nav />
           <Switch>
@@ -61,7 +75,7 @@ const App = _ => {
           </Switch>
         </div>
         )
-    } else {
+    } else if (isLoggedIn === 2) {
       return (
         <div>
             {message}
@@ -70,6 +84,12 @@ const App = _ => {
             <Redirect to="/Login" />
           </Switch>
       </div>
+      )
+    } else {
+      return (
+        <div className='App'>
+<Loader />
+        </div>
       )
     }
 
