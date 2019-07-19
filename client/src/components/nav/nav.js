@@ -12,7 +12,7 @@ import { Link } from 'react-router-dom'
 
 const ITEM_HEIGHT = 48;
 
-const Nav = _ => {
+const Nav = props => {
 
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
@@ -74,10 +74,13 @@ const Nav = _ => {
                     </MenuItem>
                 </Link>
                 <MenuItem onClick={_ => {
-                    localStorage.removeItem('userId')
-                    window.location.reload()
-                    // change player online status to false
-                }}>
+           
+           props.FirebaseAuth.signOut()
+            }}>
+//                     localStorage.removeItem('userId')
+//                     window.location.reload()
+//                     // change player online status to false
+//                 }}>
                     <ListItemIcon>
                         <IoIosLogOut className="navicon"/>
                     </ListItemIcon>
