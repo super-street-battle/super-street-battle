@@ -45,18 +45,12 @@ const Login = props => {
     
     <div className='main_container'>
       <Container>
-     
-        <Logo />
+{/*      
+        <Logo /> */}
       
      
-        <div>
-        <button id="loginbtn" onClick={_=> {
-          localStorage.setItem('userId', 1)
-          window.location.reload()
-        }}>
-           Sarika Button
-        </button>
-</div>
+     
+
 
         <FireBaseLogin FirebaseAuth={props.FirebaseAuth} uiConfig={props.uiConfig}/>
 

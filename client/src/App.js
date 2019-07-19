@@ -43,7 +43,6 @@ const App = _ => {
 
   const [gameState, setGameState] = useState({})
   const [isLoggedIn, setLoginState] = useState(0)
-  const [message, mm] = useState('logged')
 
 
   useEffect(_ => {
@@ -52,8 +51,7 @@ const App = _ => {
         setLoginState(1)
         console.log(user)
       } else {
-        setLoginState(2)
-        // window.location = '/Login'
+        setLoginState(2)     
       }
     })
   }, [])
@@ -65,8 +63,8 @@ const App = _ => {
             setLoginState(2)
             firebase.auth().signOut()
             }}>Sign Out</button>
-          {message}
-        <Nav />
+     
+        <Nav FirebaseAuth={FBAuth}/>
           <Switch>
             <Route exact path="/" component={Home}/>
             <Route path="/Challenge" component={Challenge} />
@@ -78,7 +76,6 @@ const App = _ => {
     } else if (isLoggedIn === 2) {
       return (
         <div>
-            {message}
          <Switch>
             <Route exact path="/Login" component={ () => <Login FirebaseAuth={FBAuth} uiConfig={uiConfig}/> }/>
             <Redirect to="/Login" />
@@ -88,7 +85,7 @@ const App = _ => {
     } else {
       return (
         <div className='App'>
-<Loader />
+        {/* <Loader /> */}
         </div>
       )
     }
