@@ -55,7 +55,7 @@ const Home = _ => {
                 scrollButtons="auto"
                 >
                 <Tab label="Top Score" />
-                <Tab label="Players" />
+                {/* <Tab label="Players" /> */}
                 {/* <Tab label="Challenges" />
                 <Tab label="Result" /> */}
                 </Tabs>
@@ -66,7 +66,7 @@ const Home = _ => {
                 onChangeIndex={handleChangeIndex}
             >
                 <TabContainer dir={theme.direction}><Topscore /></TabContainer>
-                <TabContainer dir={theme.direction}><Players /></TabContainer>
+                {/* <TabContainer dir={theme.direction}><Players /></TabContainer> */}
                 {/* <TabContainer dir={theme.direction}><Challenges /></TabContainer>
                 <TabContainer dir={theme.direction}><Result /></TabContainer> */}
             </SwipeableViews>
