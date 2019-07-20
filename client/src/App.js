@@ -15,13 +15,13 @@ import Loader from './components/loading'
 
 // Configure Firebase.
 var firebaseConfig = {
-  apiKey: "AIzaSyAG9WRxHHx9fVwHL287lMPRY3y4t7MZkVw",
-    authDomain: "todo-334b1.firebaseapp.com",
-    databaseURL: "https://todo-334b1.firebaseio.com",
-    projectId: "todo-334b1",
-    storageBucket: "todo-334b1.appspot.com",
-    messagingSenderId: "595507004361",
-    appId: "1:595507004361:web:5ddc164fdcc824a0"
+  apiKey: `${process.env.REACT_APP_FIREBASE_KEY}`,
+    authDomain: "super-street-battle.firebaseapp.com",
+    databaseURL: "https://super-street-battle.firebaseio.com",
+    projectId: "super-street-battle",
+    storageBucket: "",
+    messagingSenderId: "629360248969",
+    appId: "1:629360248969:web:6191598f1e8b236c"
 };
 firebase.initializeApp(firebaseConfig);
 
@@ -44,7 +44,7 @@ const App = _ => {
 
   const [gameState, setGameState] = useState({})
   const [isLoggedIn, setLoginState] = useState(0)
-  const [hasCar, setCar] = useState(false)
+ 
 
 
 
