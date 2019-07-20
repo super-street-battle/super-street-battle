@@ -1,0 +1,9 @@
+@media only screen and (max-width: 576px){
+    
+    .jumboInfo{
+        padding:0px;
+        color:green;
+        font-size: 11px;
+    }
+}
+
