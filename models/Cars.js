@@ -1,5 +1,5 @@
 module.exports = (Schema, model) => {
-    const Car = new Schema({
+    const Cars = new Schema({
         carName: {
             type: String
         },
@@ -29,8 +29,8 @@ module.exports = (Schema, model) => {
         },
         selling: {
             type: Boolean
-        },
+        }
     })
 
-    return model('Car', Car)
+    return model('Cars', Cars)
 }
