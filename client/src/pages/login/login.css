@@ -7,14 +7,17 @@
 .logoimg5 {
     width: 35%;
 }
-.loginpage {
-    background-color: #f3ff44 !important;
-}
 #loginbtn {
     visibility: hidden;
-    margin-top: 50vh;
-    margin-left: 40vw;
 }
-.btndiv {
+.main_container {
     height: 100vh;
+    background-color: #f3ff44 !important;
 }
+#firebaseui_container {
+    padding-top: 50vh !important;
+}
+.firebaseui-idp-text.firebaseui-idp-text-long {
+    font-family: Roboto,Helvetica,Arial,sans-serif !important;
+}
+

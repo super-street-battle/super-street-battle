@@ -6,14 +6,12 @@ import ScoreBoard from './scoreBoard'
 import Inventory from './inventory'
 
 
-
 const Garage = _ => {
 
 
     return (
         <>
             <ScoreBoard />
-      
             {/* <Cards /> */}
             <Slide />
             <Inventory/>
