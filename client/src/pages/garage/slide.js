@@ -4,15 +4,20 @@ import Cards from './cards.js'
 import Upgrades from './upgrades'
 import images from '../../baseCars.json'
  
-export default function Slide(props) {
+export default function Slide() {
 
     //set state for Upg/Workshop to be hidden,
     const [showWorkshop, setShowWorkshop] = useState(false)
+    const [currentCar, setCurrentCar] = useState(images[0])
     const handleSelect= () =>{
      setShowWorkshop(false)
     }
 
-    console.log(images)
+    const handleShowWorkShop = (car) => {
+        setCurrentCar(car)
+        setShowWorkshop(true)
+    }
+
 // state of current car, pass id to onclick then pass to component the current id or info,
     return (
         <div>
@@ -20,14 +25,14 @@ export default function Slide(props) {
                 <Carousel interval={false} onSelect={handleSelect}>
                     {images.map(car => (
                         
-                        <Carousel.Item key={car.id} id={car.id} onClick={() => setShowWorkshop(true)}>
+                        <Carousel.Item key={car.id} id={car.id} onClick={() => handleShowWorkShop(car)}>
                             <img className="d-block w-100"
                                 src={car.image}
                                 alt={car.id}
                                 thumbnail />
 
                             <Carousel.Caption>
-                                <h1>Car NickName: Start Car</h1>
+                                
                                 <small>Model of Car</small>
                             </Carousel.Caption>
 
@@ -37,7 +42,7 @@ export default function Slide(props) {
             </Container>
 
             {/* create onclick function which will pass id of car to upgrades which will then open up the workshop */}
-               { showWorkshop ? <Upgrades/> :  null}
+               { showWorkshop ? <Upgrades car={currentCar} /> :  null}
          
 
         </div>
