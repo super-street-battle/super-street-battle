@@ -44,6 +44,8 @@ const App = _ => {
 
   const [gameState, setGameState] = useState({})
   const [isLoggedIn, setLoginState] = useState(0)
+  const [hasCar, setCar] = useState(false)
+
 
 
   useEffect(_ => {
@@ -60,10 +62,7 @@ const App = _ => {
     if (isLoggedIn === 1) {
       return (
         <div className="App">
-          {/* <button onClick={_ => {
-            setLoginState(2)
-            firebase.auth().signOut()
-            }}>Sign Out</button> */}
+         
      
         <Nav FirebaseAuth={FBAuth}/>
           <Switch>
