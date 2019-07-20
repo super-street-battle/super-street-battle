@@ -1,13 +1,12 @@
 import React from 'react'
-import './home.css'
 import Nav2 from '../../components/nav2'
 
-const Home = _ => {
+const Junkyard = _ => {
     return (
-      <div>
+        <>
         <Nav2 />
-      </div>
+        </>
     )
 }
 
-export default Home
+export default Junkyard
