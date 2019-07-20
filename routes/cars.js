@@ -14,7 +14,7 @@ module.exports = app => {
     app.post('/cars', (req, res) => {
         Cars.create(req.body)
             .then(({ _id }) => {
-                Player.findOneAndUpdate({ name: req.body.owner }, { $push: { cars: _id } })
+                Player.findOneAndUpdate({ userName: req.body.owner }, { $push: { cars: _id } })
                     .then(_ => res.sendStatus(200))
                     .catch(e => console.log(e))
             })
