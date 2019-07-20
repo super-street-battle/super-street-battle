@@ -3,11 +3,7 @@ import Logo from '../../components/logo'
 import './login.css'
 import FireBaseLogin from '../../components/firebaselogin'
 import Container from '@material-ui/core/Container'
-import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
-import { red } from '@material-ui/core/colors';
-
+import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -26,36 +22,26 @@ const useStyles = makeStyles(theme => ({
   divider: {
     margin: theme.spacing(2, 0),
   },
-}));
+}))
 
 
 const Login = props => {
-
   const classes = useStyles();
-
-
-  // useEffect(_ => {
-  //   setTimeout(() => {
-  //     document.getElementById('loginbtn').style.visibility = 'visible'
-  //   }, 2700)
-  // },[])
+  useEffect(_ => {
+    setTimeout(() => {
+      document.getElementById('loginbtn').style.visibility = 'visible'
+    }, 2700)
+  },[])
 
   return (
-
     
     <div className='main_container'>
-      <Container>
-{/*      
-        <Logo /> */}
-      
-     
-     
-
-
+      {/* <Container> */}
+       <Logo />
+       <div id="loginbtn">
         <FireBaseLogin FirebaseAuth={props.FirebaseAuth} uiConfig={props.uiConfig}/>
-
-        </Container>
-
+       </div>
+      {/* </Contain er> */}
     </div>
   )
 }

@@ -4,9 +4,10 @@ import './App.css'
 import './CSS_Reset.css'
 import { Switch, Route, Redirect } from 'react-router-dom'
 import Home from './pages/home'
-import Challenge from './pages/challenge'
+import Race from './pages/race'
 import Garage from './pages/garage'
 import Login from './pages/login'
+import Junkyard from './pages/junkyard'
 import firebase from 'firebase';
 import Loader from './components/loading'
 
@@ -59,16 +60,17 @@ const App = _ => {
     if (isLoggedIn === 1) {
       return (
         <div className="App">
-          <button onClick={_ => {
+          {/* <button onClick={_ => {
             setLoginState(2)
             firebase.auth().signOut()
-            }}>Sign Out</button>
+            }}>Sign Out</button> */}
      
         <Nav FirebaseAuth={FBAuth}/>
           <Switch>
             <Route exact path="/" component={Home}/>
-            <Route path="/Challenge" component={Challenge} />
+            <Route path="/Race" component={Race} />
             <Route path="/Garage" component={Garage} />
+            <Route path="/Junkyard" component={Junkyard} />
             <Redirect to="/" />
           </Switch>
         </div>

@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react'
+import Nav2 from '../../components/nav2'
 
-const Challenge = _ => {
+const Race = _ => {
     const pEngine = 3
     const pTires = 2
     const pKit = 1
@@ -84,11 +85,12 @@ const Challenge = _ => {
 
         
         return (
-            <>
-            <h1>Challenge page</h1>
-            <button onClick={somefunc}>click</button>
-        </>
+            <div>
+                <Nav2 />
+                <h1>Race page</h1>
+                <button onClick={somefunc}>click</button>
+            </div>
     )
 }
 
-export default Challenge
+export default Race
