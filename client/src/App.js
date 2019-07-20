@@ -8,7 +8,7 @@ import Race from './pages/race'
 import Garage from './pages/garage'
 import Login from './pages/login'
 import Junkyard from './pages/junkyard'
-import firebase from 'firebase';
+import firebase from 'firebase/auth';
 import Loader from './components/loading'
 
 
