@@ -21,11 +21,15 @@ module.exports = (Schema, model) => {
         bankAccount: {
             type: Number
         },
-        inventory: [{
-            grippyTires: Number,
-            oil: Number,
-            nitro: Number
-        }],
+        grippyTires: {
+            type: Number
+        },
+        oil: {
+            type: Number
+        },
+        nitro: {
+            type: Number
+        },
         cars: [{
             type: Schema.Types.ObjectId,
             ref: 'Cars'
