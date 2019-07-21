@@ -19,16 +19,23 @@ if (process.env.NODE_ENV === 'production') {
 
 app.use(require('./routes'))
 
+const port = process.env.PORT || 3001
+
+app.listen(port, () => console.log(`Server started on port ${port}`));
+
+function dbConnection() {
+    if (port === 3001) {
+        return `mongodb://localhost/streetbattle`
+    } else {
+        return process.env.MONGODB_URI
+    }
+}
 
 // Connect to Mongo
-mongoose.connect(process.env.MONGODB_URI, {
+mongoose.connect(dbConnection(), {
         useNewUrlParser: true,
         useCreateIndex: true,
         useFindAndModify: true
     }) // Adding new mongo url parser
     .then(() => console.log('MongoDB Connected...'))
     .catch(err => console.log(err));
-
-const port = process.env.PORT || 3001
-
-app.listen(port, () => console.log(`Server started on port ${port}`));
