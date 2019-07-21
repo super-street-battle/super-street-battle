@@ -15,7 +15,7 @@ module.exports = (Schema, model) => {
         tie: {
             type: Number
         },
-        xp: {
+        experience: {
             type: Number
         },
         bankAccount: {
