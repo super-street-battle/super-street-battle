@@ -21,11 +21,22 @@ if (process.env.NODE_ENV === 'production') {
 
 app.use(require('./routes'))
 
+const options = {
+    //useMongoClient: true,
+    autoIndex: false, // Don't build indexes
+    reconnectTries: 100, // Never stop trying to reconnect
+    reconnectInterval: 500, // Reconnect every 500ms
+    poolSize: 10, // Maintain up to 10 socket connections
+    // If not connected, return errors immediately rather than waiting for reconnect
+    bufferMaxEntries: 0
+}
+
 // Connect to Mongo
 mongoose
-    .connect(process.env.MONGODB_URI, {
+    .connect(process.env.MONGODB_URI, options, {
         useNewUrlParser: true,
-        useCreateIndex: true
+        useCreateIndex: true,
+        useFindAndModify: true 
     }) // Adding new mongo url parser
     .then(() => console.log('MongoDB Connected...'))
     .catch(err => console.log(err));
