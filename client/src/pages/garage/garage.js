@@ -1,19 +1,20 @@
 import React from 'react'
 // import Cards from './cards'
 import Slide from './slide'
-import Upgrades from './upgrades'
-import Nav2 from '../../components/nav2'
+import ScoreBoard from './scoreBoard'
+// import Upgrades from './upgrades'
+import Inventory from './inventory'
+
 
 const Garage = _ => {
-    
+
 
     return (
         <>
-            <Nav2 />
-            <h1 style={{textAlign:'center', color: '#e97718', fontSize:'25px'}}>yourName's Inventory</h1>
+            <ScoreBoard />
             {/* <Cards /> */}
-            <Slide/>
-            {/* <Upgrades /> */}
+            <Slide />
+            <Inventory/>
         </>
     )
 }

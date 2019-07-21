@@ -1,33 +1,40 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import { Carousel, Container } from 'react-bootstrap'
 import Cards from './cards.js'
 import Upgrades from './upgrades'
 import images from '../../baseCars.json'
- 
-export default function Slide(props) {
+
+export default function Slide() {
 
     //set state for Upg/Workshop to be hidden,
     const [showWorkshop, setShowWorkshop] = useState(false)
-    const handleSelect= () =>{
-     setShowWorkshop(false)
+    const [currentCar, setCurrentCar] = useState(images[0])
+    const handleSelect = () => {
+        setShowWorkshop(false)
     }
 
-    console.log(images)
-// state of current car, pass id to onclick then pass to component the current id or info,
+    const handleShowWorkShop = (car) => {
+        setCurrentCar(car)
+        setShowWorkshop(true)
+    }
+
+    // state of current car, pass id to onclick then pass to component the current id or info,
     return (
         <div>
+            
             <Container >
-                <Carousel interval={false} onSelect={handleSelect}>
+            
+                <Carousel interval={false} onSelect={handleSelect} style={{ marginTop: '191px' }}>
                     {images.map(car => (
-                        
-                        <Carousel.Item key={car.id} id={car.id} onClick={() => setShowWorkshop(true)}>
+
+                        <Carousel.Item key={car.id} id={car.id} onClick={() => handleShowWorkShop(car)}>
                             <img className="d-block w-100"
                                 src={car.image}
                                 alt={car.id}
                                 thumbnail />
 
                             <Carousel.Caption>
-                                <h1>Car NickName: Start Car</h1>
+
                                 <small>Model of Car</small>
                             </Carousel.Caption>
 
@@ -37,8 +44,8 @@ export default function Slide(props) {
             </Container>
 
             {/* create onclick function which will pass id of car to upgrades which will then open up the workshop */}
-               { showWorkshop ? <Upgrades/> :  null}
-         
+            {showWorkshop ? <Upgrades car={currentCar} /> : null}
+
 
         </div>
     )

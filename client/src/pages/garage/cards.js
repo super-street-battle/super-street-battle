@@ -1,31 +1,29 @@
 import React from 'react'
 import { Container, Card, CardColumns } from 'react-bootstrap'
-// import images from '../../baseCars.json'
-import images from '../../baseCars.json'
+// import images from '../../baseprops.car.json'
+// import images from '../../baseprops.car.json'
 // import { textAlign } from '@material-ui/system';
 
 export default function Cards(props) {
-    console.log(images)
+
     return (
         <div>
             <Container>
 
-                <CardColumns>
-                    {images.map(cars => (
-                        // console.log({ meme })
-                        <Card key={cars.id}>      {/* onClick={() => props.handleClick(cars.id)} > */}
-                            <Card.Img src={cars.image} style={{ height: "200px", width: '100%' }} />
-                            <Card.Body>
-                                <Card.Title style={{ color: 'black', textAlign: 'center' }}>Nick Name</Card.Title>
-                                <Card.Text style={{ color: 'black' }}>Model of Car</Card.Text>
-                            </Card.Body>
+                <Card>
+                    <Card key={props.car.id} >      {/* onClick={() => props.handleClick(props.car.id)} > */}
+                        <Card.Img src={props.car.image}  />
+                        <Card.Body>
+                            <Card.Title style={{ color: 'black', textAlign: 'center', fontSize:'18px' }}>Model</Card.Title>
+                            <Card.Text style={{ color: 'black' }}></Card.Text>
+                        </Card.Body>
 
-                        </Card>
-                    ))}
+                    </Card>
 
-                </CardColumns>
 
-                <h1>this is the cards component</h1>
+                </Card>
+
+
 
             </Container>
         </div>
