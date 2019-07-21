@@ -16,7 +16,7 @@ const Garage = _ => {
             <ScoreBoard />
             {/* <Cards /> */}
             <Slide />
-            <Inventory/>
+            <Inventory />
         </>
     )
 }
