@@ -3,8 +3,6 @@ const { join } = require('path')
 const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
-// const mongoDB = process.env.MONGODB_URI || 'mongodb://localhost/googlebooks'
-
 
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
@@ -21,11 +19,12 @@ if (process.env.NODE_ENV === 'production') {
 
 app.use(require('./routes'))
 
+
 // Connect to Mongo
-mongoose
-    .connect(process.env.MONGODB_URI, {
+mongoose.connect(process.env.MONGODB_URI, {
         useNewUrlParser: true,
-        useCreateIndex: true
+        useCreateIndex: true,
+        useFindAndModify: true
     }) // Adding new mongo url parser
     .then(() => console.log('MongoDB Connected...'))
     .catch(err => console.log(err));
