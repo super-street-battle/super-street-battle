@@ -7,8 +7,7 @@ const app = express()
 app.use(express.static(join(__dirname, 'client', 'build')))
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
-
-require('./routes')(app)
+app.use(require('./routes'))
 
 const port = process.env.PORT || 3001
 
