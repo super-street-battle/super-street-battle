@@ -3,6 +3,9 @@ module.exports = (Schema, model) => {
         userName: {
             type: String
         },
+        uid: {
+            type: String
+        },
         imageLink: {
             type: String
         },

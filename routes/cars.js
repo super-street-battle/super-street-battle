@@ -1,16 +1,19 @@
 const { Player, Cars } = require('../models')
 
 module.exports = app => {
+    // get all cars
     app.get('/cars', (req, res) => {
         Cars.find({})
             .then(cars => res.json(cars))
             .catch(e => console.log(e))
     })
+    // get a car by uts id
     app.get('/cars/:id', (req, res) => {
         Cars.findById(req.params.id)
             .then(car => res.json(car))
             .catch(e => console.log(e))
     })
+    // Create a new car and add to players document
     app.post('/cars', (req, res) => {
         Cars.create(req.body)
             .then(({ _id }) => {
@@ -22,104 +25,78 @@ module.exports = app => {
     })
 
     // Update Routes
-    // carName
-    app.put('/cars/:id/carName', (req, res) => {
-        // console.log(req.body.nitro)
-        Player.findById(req.params.id)
-            .then(r => {
-                Cars.findOneAndUpdate(r.userName, { $set: { carName: req.body.carName } })
+
+    // add a car to a player
+    app.put('/cars/:id/add-car', (req, res) => {
+        Cars.findById(req.params.id)
+            .then(({ _id }) => {
+                Player.findOneAndUpdate({ _id: req.body._id }, { $push: { cars: _id } })
                     .then(_ => res.sendStatus(200))
                     .catch(e => console.log(e))
             })
-            .catch()
+            .catch(e => console.log(e))
+    })
+    // carName
+    app.put('/cars/:id/carName', (req, res) => {
+        // console.log(req.body.nitro)
+        Cars.findByIdAndUpdate(req.params.id, { $set: { carName: req.body.carName } })
+            .then(_ => res.sendStatus(200))
+            .catch(e => console.log(e))
     })
     // owner
     app.put('/cars/:id/owner', (req, res) => {
         // console.log(req.body.owner)
-        Player.findById(req.params.id)
-            .then(r => {
-                Cars.findOneAndUpdate(r.userName, { $set: { owner: req.body.owner } })
-                    .then(_ => res.sendStatus(200))
-                    .catch(e => console.log(e))
-            })
-            .catch()
+        Cars.findByIdAndUpdate(req.params.id, { $set: { owner: req.body.owner } })
+            .then(_ => res.sendStatus(200))
+            .catch(e => console.log(e))
     })
     // tire
     app.put('/cars/:id/tire', (req, res) => {
         // console.log(req.body.tire)
-        Player.findById(req.params.id)
-            .then(r => {
-                Cars.findOneAndUpdate(r.userName, { $set: { tire: req.body.tire } })
-                    .then(_ => res.sendStatus(200))
-                    .catch(e => console.log(e))
-            })
-            .catch()
+        Cars.findByIdAndUpdate(req.params.id, { $set: { tire: req.body.tire } })
+            .then(_ => res.sendStatus(200))
+            .catch(e => console.log(e))
     })
     // engine
     app.put('/cars/:id/engine', (req, res) => {
         // console.log(req.body.engine)
-        Player.findById(req.params.id)
-            .then(r => {
-                Cars.findOneAndUpdate(r.userName, { $set: { engine: req.body.engine } })
-                    .then(_ => res.sendStatus(200))
-                    .catch(e => console.log(e))
-            })
-            .catch()
+        Cars.findByIdAndUpdate(req.params.id, { $set: { engine: req.body.engine } })
+            .then(_ => res.sendStatus(200))
+            .catch(e => console.log(e))
     })
     // bodyKit
     app.put('/cars/:id/bodyKit', (req, res) => {
         // console.log(req.body.bodyKit)
-        Player.findById(req.params.id)
-            .then(r => {
-                Cars.findOneAndUpdate(r.userName, { $set: { bodyKit: req.body.bodyKit } })
-                    .then(_ => res.sendStatus(200))
-                    .catch(e => console.log(e))
-            })
-            .catch()
+        Cars.findByIdAndUpdate(req.params.id, { $set: { bodyKit: req.body.bodyKit } })
+            .then(_ => res.sendStatus(200))
+            .catch(e => console.log(e))
     })
     // value
     app.put('/cars/:id/value', (req, res) => {
         // console.log(req.body.value)
-        Player.findById(req.params.id)
-            .then(r => {
-                Cars.findOneAndUpdate(r.userName, { $set: { value: req.body.value } })
-                    .then(_ => res.sendStatus(200))
-                    .catch(e => console.log(e))
-            })
-            .catch()
+        Cars.findByIdAndUpdate(req.params.id, { $set: { value: req.body.value } })
+            .then(_ => res.sendStatus(200))
+            .catch(e => console.log(e))
     })
     // imageLink
     app.put('/cars/:id/imageLink', (req, res) => {
         // console.log(req.body.imageLink)
-        Player.findById(req.params.id)
-            .then(r => {
-                Cars.findOneAndUpdate(r.userName, { $set: { imageLink: req.body.imageLink } })
-                    .then(_ => res.sendStatus(200))
-                    .catch(e => console.log(e))
-            })
-            .catch()
+        Cars.findByIdAndUpdate(req.params.id, { $set: { imageLink: req.body.imageLink } })
+            .then(_ => res.sendStatus(200))
+            .catch(e => console.log(e))
     })
     // animation
     app.put('/cars/:id/animation', (req, res) => {
         // console.log(req.body.animation)
-        Player.findById(req.params.id)
-            .then(r => {
-                Cars.findOneAndUpdate(r.userName, { $set: { animation: req.body.animation } })
-                    .then(_ => res.sendStatus(200))
-                    .catch(e => console.log(e))
-            })
-            .catch()
+        Cars.findByIdAndUpdate(req.params.id, { $set: { animation: req.body.animation } })
+            .then(_ => res.sendStatus(200))
+            .catch(e => console.log(e))
     })
     // selling
     app.put('/cars/:id/selling', (req, res) => {
-        // console.log(req.body.selling)
-        Player.findById(req.params.id)
-            .then(r => {
-                Cars.findOneAndUpdate(r.userName, { $set: { selling: req.body.selling } })
-                    .then(_ => res.sendStatus(200))
-                    .catch(e => console.log(e))
-            })
-            .catch()
+        Cars.findByIdAndUpdate(req.params.id, { $set: { selling: req.body.selling } })
+            .then(_ => res.sendStatus(200))
+            .catch(e => console.log(e))
     })
 
     // Delete Routes

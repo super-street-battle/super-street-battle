@@ -1,4 +1,4 @@
-const { Player, Cars, Inventory } = require('../models')
+const { Player, Cars } = require('../models')
 
 module.exports = app => {
     app.get('/players', (req, res) => {
@@ -95,6 +95,11 @@ module.exports = app => {
 
     app.delete('/players/:id', (req, res) => {
         Player.findByIdAndDelete(req.params.id)
+            .then(_ => res.sendStatus(200))
+            .catch(e => console.log(e))
+    })
+    app.delete('/players/:id/delete-car/:carID', (req, res) => {
+        Player.findByIdAndUpdate(req.params.id, { $pull: { cars: { $in: [req.params.carID] } } })
             .then(_ => res.sendStatus(200))
             .catch(e => console.log(e))
     })
