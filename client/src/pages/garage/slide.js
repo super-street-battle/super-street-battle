@@ -43,8 +43,6 @@ export default function Slide() {
 
             {/* create onclick function which will pass id of car to upgrades which will then open up the workshop */}
                { showWorkshop ? <Upgrades car={currentCar} /> :  null}
-         
-
         </div>
     )
 }

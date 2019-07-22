@@ -15,15 +15,15 @@ export default function Upgrades(props) {
                     </Col>
                     <Col >
                         <Form>
-                            {/* <Form.Group controlId="NickName">
+                        {/* <Form.Group controlId="NickName">
                         <Form.Label>Nick Name</Form.Label>
                         <Form.Control type="text" placeholder="Current Nickname" />
                         <Form.Text className="text-muted">
-                            Update Nickname here
-    </Form.Text>
-                    </Form.Group> */}
+                        Update Nickname here
+                        </Form.Text>
+                        </Form.Group> */}
                             <Form.Group controlId="formBasicChecbox">
-                                <Form.Check type="checkbox" label="Upgrade: Option" />
+                                 <Form.Check type="checkbox" label="Upgrade: Option" />
                             </Form.Group>
                             <Form.Group controlId="formBasicChecbox">
                                 <Form.Check type="checkbox" label="Upgrade: Option" />
@@ -33,13 +33,11 @@ export default function Upgrades(props) {
                             </Form.Group>
                             <Button style={{ color: '#f3ff44' }} variant="outline-warning" type="submit">
                                 Submit
-  </Button>
+                            </Button>
                         </Form>
                     </Col>
                 </Row>
-
             </Container>
-
         </div>
     )
 }
