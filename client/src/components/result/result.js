@@ -1,6 +1,11 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 
-const Result = _ => {
+const Result = props => {
+
+    useEffect(_ => {
+        console.log(props)
+    }, [])
+
     return (
         <>
             <h1>Result page</h1>

@@ -24,9 +24,9 @@ const Home = _ => {
         <div className="homepage">
           <h1 className="subtitle">Top Players</h1>
           {/* <p>Your Experience: {}</p> */}
-          {playersState.topplayers.map(({name, experience}, index) => (
+          {playersState.topplayers.map(({userName, experience}, index) => (
             // <div>
-              <h1 className="topplayer">{index+1}. {name} - {experience}</h1>
+              <h1 className="topplayer">{index+1}. {userName} - {experience}</h1>
             // </div>
           ))}
           <div className="decoration"></div>
