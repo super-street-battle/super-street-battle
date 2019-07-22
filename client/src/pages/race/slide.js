@@ -28,7 +28,7 @@ export default function Slide(props) {
                             <Carousel.Caption>
                                 <h1>{carNickname}</h1>
                                 <small>{carName}</small>
-                                <button id={_id} data-engine={engine} data-tire={tire} data-bodykit={bodyKit} onClick={props.carSelect}>Select</button>
+                                <button id={_id} data-image={imageLink} data-engine={engine} data-tire={tire} data-bodykit={bodyKit} onClick={props.carSelect}>Select</button>
                             </Carousel.Caption>
 
                         </Carousel.Item>
