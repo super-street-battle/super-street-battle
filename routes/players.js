@@ -2,7 +2,7 @@ const { Player, Cars, Inventory } = require('../models')
 
 module.exports = app => {
     app.get('/players', (req, res) => {
-        Player.find().sort({ xp: -1 }).limit(10)
+        Player.find().sort({ experience: -1 }).limit(10)
             .then(players => res.json(players))
             .catch(e => console.log(e))
     })
@@ -16,7 +16,6 @@ module.exports = app => {
             .populate('cars')
             .exec((err, cars) => {
                 res.json(cars)
-                // console.log(cars)
             })
     })
 
