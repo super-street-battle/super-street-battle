@@ -3,6 +3,7 @@ import {Card} from 'react-bootstrap'
 import Delayed from 'react-delayed'
 import winlose, { playerEngine, playerItem, playerKit, playerTire, playerXP } from '../winlose'
 import { aiEngine, aiItem, aiKit, aiTire, aiXP } from '../winlose'
+import race from '../../pages/'
 
 class Result extends React.component {
     state = {
@@ -171,6 +172,9 @@ class Result extends React.component {
                     <Card.Body>{winlose}</Card.Body>
                 </Card>
             </Delayed>
+            <div>
+                <input id="inp" type="button" value="return to garage" onclick="location.href='/Garage';" />
+            </div>
             </div>
         )
     }    
