@@ -5,12 +5,16 @@ import SlideLoc from './slideLoc'
 import SlideItem from './slideItem'
 // import RaceBet from '../../components/race'
 import Car from '../../utils/car'
-import grippyTire from '../../assets/tire.png'
-import nitro from '../../assets/nitro.png'
-import oil from '../../assets/oil.png'
+// import grippyTire from '../../assets/tire.png'
+// import nitro from '../../assets/nitro.png'
+// import oil from '../../assets/oil.png'
 import Nav2 from '../../components/nav2'
 import Result from '../../components/result'
 import Player from '../../utils/player'
+
+const grippyTire = 'https://super-street-battle.s3.us-west-1.amazonaws.com/1563852066775'
+const oil = 'https://super-street-battle.s3.us-west-1.amazonaws.com/1563852214573'
+const nitro = 'https://super-street-battle.s3.us-west-1.amazonaws.com/1563852192955'
 
 const cpuEngine = pengine => {
     let max = parseInt(pengine) + 1
@@ -80,35 +84,35 @@ const Race = _ => {
         let cputotal = raceState.cputotal
         let logarr = []
         if (raceState.pengine > raceState.cpuE) {
-            logarr.push('playername has better engine, playername pull ahead')
+            logarr.push(`${raceState.username} has better engine, ${raceState.username} pull ahead`)
         } else {
-            logarr.push('npcname start off strong, npcname pull ahead')
+            logarr.push('npc start off strong, npc pull ahead')
         }
 
         if (raceState.pbodyKit > raceState.cpuK) {
-            logarr.push('looking GREAT playername!')
+            logarr.push(`looking GREAT ${raceState.username}!`)
         } else {
-            logarr.push('sorry npcname got the better style!')
+            logarr.push('sorry npc got the better style!')
         }
         
         if (raceState.ptire > raceState.cpuT) {
-            logarr.push('playername speed up thanks to superior tires')
+            logarr.push(`${raceState.username} speed up thanks to superior tires`)
         } else {
-            logarr.push('npcname speed increased, watch out!')
+            logarr.push('npc speed increased, watch out!')
         }
 
         if (raceState.useItem !== "") {
             switch(raceState.useItem) {
                 case 'oil spill':
-                    logarr.push(`playername used ${raceState.useItem}, npcname got slowed!`, "We're coming up on the finish line!", "Who will be our winner..?!")
+                    logarr.push(`${raceState.username} used ${raceState.useItem}, npc got slowed!`, "We're coming up on the finish line!", "Who will be our winner..?!")
                     cputotal -= .5
                     break;
                 case 'nitro boost':
-                    logarr.push(`playername used ${raceState.useItem} and increase speed by 5%`, "We're coming up on the finish line!", "Who will be our winner..?!")
+                    logarr.push(`${raceState.username} used ${raceState.useItem} and increase speed by 5%`, "We're coming up on the finish line!", "Who will be our winner..?!")
                     ptotal += .8
                     break;
                 case 'grippy tires':
-                    logarr.push(`playername used ${raceState.useItem}, and increase speed by 2%`, "We're coming up on the finish line!", "Who will be our winner..?!")
+                    logarr.push(`${raceState.username} used ${raceState.useItem}, and increase speed by 2%`, "We're coming up on the finish line!", "Who will be our winner..?!")
                     ptotal += .4
                     break;
                 default:
@@ -180,7 +184,13 @@ const Race = _ => {
                 }
             ]
             
-            setraceState({...raceState, cars: data.cars, money: data.bankAccount, items})
+            setraceState({
+                ...raceState, 
+                cars: data.cars, 
+                money: data.bankAccount, 
+                items,
+                username: data.userName
+            })
     })
         .catch(e => console.error(e))
     }, [])    
@@ -222,7 +232,14 @@ const Race = _ => {
             </div>
             :
             <div>
-                <Result log={raceState.logarr} ptotal={raceState.ptotal} cputotal={raceState.cputotal} bet={raceState.bet} money={raceState.money}/>
+                <Result 
+                log={raceState.logarr} 
+                ptotal={raceState.ptotal} 
+                cputotal={raceState.cputotal} 
+                bet={raceState.bet} 
+                money={raceState.money}
+                carimage={raceState.carimage}
+                />
             </div>
             
         }
