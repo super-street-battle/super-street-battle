@@ -1,32 +1,32 @@
 car1: {
-    stock: "https://super-street-battle.s3.us-west-1.amazonaws.com/1563853029718",
-    tune: "https://super-street-battle.s3.us-west-1.amazonaws.com/1563853158019",
-    upgraded: "https://super-street-battle.s3.us-west-1.amazonaws.com/1563853177711"
+    stock: "https://super-street-battle.s3.us-west-1.amazonaws.com/1563863129864",
+    tune: "https://super-street-battle.s3.us-west-1.amazonaws.com/1563863154979",
+    upgraded: "https://super-street-battle.s3.us-west-1.amazonaws.com/1563863176279"
 }
 car2: {
-    stock: "https://super-street-battle.s3.us-west-1.amazonaws.com/1563853228768",
-    tune: "https://super-street-battle.s3.us-west-1.amazonaws.com/1563853318018",
-    upgraded: "https://super-street-battle.s3.us-west-1.amazonaws.com/1563853331777"
+    stock: "https://super-street-battle.s3.us-west-1.amazonaws.com/1563863229357",
+    tune: "https://super-street-battle.s3.us-west-1.amazonaws.com/1563863263609",
+    upgraded: "https://super-street-battle.s3.us-west-1.amazonaws.com/1563863284877"
 }
 car3: {
-    stock: "https://super-street-battle.s3.us-west-1.amazonaws.com/1563853368166",
-    tune: "https://super-street-battle.s3.us-west-1.amazonaws.com/1563853384293",
-    upgraded: "https://super-street-battle.s3.us-west-1.amazonaws.com/1563853397352"
+    stock: "https://super-street-battle.s3.us-west-1.amazonaws.com/1563863323027",
+    tune: "https://super-street-battle.s3.us-west-1.amazonaws.com/1563863340554",
+    upgraded: "https://super-street-battle.s3.us-west-1.amazonaws.com/1563863363410"
 }
 car4: {
-    stock: "https://super-street-battle.s3.us-west-1.amazonaws.com/1563853429913",
-    tune: "https://super-street-battle.s3.us-west-1.amazonaws.com/1563853443240",
-    upgraded: "https://super-street-battle.s3.us-west-1.amazonaws.com/1563853458099"
+    stock: "https://super-street-battle.s3.us-west-1.amazonaws.com/1563863403704",
+    tune: "https://super-street-battle.s3.us-west-1.amazonaws.com/1563863424741",
+    upgraded: "https://super-street-battle.s3.us-west-1.amazonaws.com/1563863444440"
 }
 car5: {
-    stock: "https://super-street-battle.s3.us-west-1.amazonaws.com/1563853489205",
-    tune: "https://super-street-battle.s3.us-west-1.amazonaws.com/1563853503012",
-    upgraded: "https://super-street-battle.s3.us-west-1.amazonaws.com/1563853515021"
+    stock: "https://super-street-battle.s3.us-west-1.amazonaws.com/1563863512054",
+    tune: "https://super-street-battle.s3.us-west-1.amazonaws.com/1563863529965",
+    upgraded: "https://super-street-battle.s3.us-west-1.amazonaws.com/1563863549205"
 }
 car6: {
-    stock: "https://super-street-battle.s3.us-west-1.amazonaws.com/1563853554579",
-    tune: https://super-street-battle.s3.us-west-1.amazonaws.com/1563853569668",
-    upgraded: "https://super-street-battle.s3.us-west-1.amazonaws.com/1563853581198"
+    stock: "https://super-street-battle.s3.us-west-1.amazonaws.com/1563863598795",
+    tune: "https://super-street-battle.s3.us-west-1.amazonaws.com/1563863615903",
+    upgraded: "https://super-street-battle.s3.us-west-1.amazonaws.com/1563863640623"
 }
 items: {
     grippyTire = 'https://super-street-battle.s3.us-west-1.amazonaws.com/1563852066775',
