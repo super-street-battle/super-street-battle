@@ -7,7 +7,7 @@ module.exports = app => {
             .then(cars => res.json(cars))
             .catch(e => console.log(e))
     })
-    // get a car by uts id
+    // get a car by its id
     app.get('/cars/:id', (req, res) => {
         Cars.findById(req.params.id)
             .then(car => res.json(car))
@@ -17,7 +17,7 @@ module.exports = app => {
     app.post('/cars', (req, res) => {
         Cars.create(req.body)
             .then(({ _id }) => {
-                Player.findOneAndUpdate({ _id: req.body.owner }, { $push: { cars: _id } })
+                Player.findOneAndUpdate({ userName: req.body.owner }, { $push: { cars: _id } })
                     .then(_ => res.sendStatus(200))
                     .catch(e => console.log(e))
             })
