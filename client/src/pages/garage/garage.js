@@ -63,6 +63,7 @@ const Garage = _ => {
         })
         .catch(e => console.log(e))
     }, [])
+    
     playerState.handleBuyItem = e => {
         let cost = parseInt(e.target.dataset.cost)
         if (cost > playerState.money){
@@ -81,6 +82,7 @@ const Garage = _ => {
         }
     }
 
+    
     return (
         <>
             <Nav2 />

@@ -1,9 +1,18 @@
-@media only screen and (max-width: 576px){
-    
-    .jumboInfo{
-        padding:0px;
-        color:green;
-        font-size: 11px;
-    }
+.garageInfo{
+    color: white;
+    min-height: 65vh;
 }
 
+.garageTitles{
+    font-size: 33px
+}
+
+#garageUserName{
+    font-size: 37px;
+}
+
+@media only screen and (max-width: 590px){
+    .garageInfo{
+        display: none;
+    }
+}
