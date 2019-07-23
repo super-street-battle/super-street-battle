@@ -79,7 +79,7 @@ module.exports = app => {
     // update bankAccount
     app.put('/players/:id/bankAccount', (req, res) => {
         // console.log(req.body.bankAccount)
-        Player.findOneAndUpdate(req.params.id, { $set: { bankAccount: req.body.bankAccount } })
+        Player.findOneAndUpdate({_id: req.params.id}, { $set: { bankAccount: req.body.bankAccount } })
             .then(_ => res.sendStatus(200))
             .catch(e => console.log(e))
     })
