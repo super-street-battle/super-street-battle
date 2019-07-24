@@ -10,9 +10,6 @@ import './carSel.css'
 const carSel = props => {
 
 
-
-
-
     return (
         <div className='main_container'>
             <Container >
@@ -24,12 +21,13 @@ const carSel = props => {
             </Row>
             </Form>
                 <Carousel interval={false}>
+                    {console.log(images)}
                     {images.map(car => (
-                        <Carousel.Item key={car.id} id={car.id}>
+                        <Carousel.Item key={1} id={1}>
                             <img className="d-block w-100"
-                                src={car.image}
-                                alt={car.id}
-                                thumbnail />
+                                src={car.stock}
+                                alt={1}
+                                thumbnail="true" />
                             <Carousel.Caption>
                                 <small>Model of Car</small>
                             </Carousel.Caption>

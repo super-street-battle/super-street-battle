@@ -1,23 +1,36 @@
+
 [
-    {
-        "id": 1,
-        "image": "assets/images/nsx-stock.png",
-        "clicked": false
+
+ {
+        "stock": "https://super-street-battle.s3.us-west-1.amazonaws.com/1563863129864",
+       "tune": "https://super-street-battle.s3.us-west-1.amazonaws.com/1563863154979",
+    "upgraded": "https://super-street-battle.s3.us-west-1.amazonaws.com/1563863176279"
     },
     {
-        "id": 2,
-        "image": "assets/images/rx7-fd-stock.png",
-        "clicked": false
+        "stock": "https://super-street-battle.s3.us-west-1.amazonaws.com/1563863229357",
+        "tune": "https://super-street-battle.s3.us-west-1.amazonaws.com/1563863263609",
+        "upgraded": "https://super-street-battle.s3.us-west-1.amazonaws.com/1563863284877"
     },
     {
-        "id": 3,
-        "image": "assets/images/s15-stock.png",
-        "clicked": false
+        "stock": "https://super-street-battle.s3.us-west-1.amazonaws.com/1563863323027",
+        "tune": "https://super-street-battle.s3.us-west-1.amazonaws.com/1563863340554",
+        "upgraded": "https://super-street-battle.s3.us-west-1.amazonaws.com/1563863363410"
+    },
+  {
+        "stock": "https://super-street-battle.s3.us-west-1.amazonaws.com/1563863403704",
+        "tune": "https://super-street-battle.s3.us-west-1.amazonaws.com/1563863424741",
+        "upgraded": "https://super-street-battle.s3.us-west-1.amazonaws.com/1563863444440"
     },
     {
-        "id": 4,
-        "image": "assets/images/3000gt-stock.png",
-        "clicked": false
+        "stock": "https://super-street-battle.s3.us-west-1.amazonaws.com/1563863512054",
+        "tune": "https://super-street-battle.s3.us-west-1.amazonaws.com/1563863529965",
+        "upgraded": "https://super-street-battle.s3.us-west-1.amazonaws.com/1563863549205"
+    },
+     {
+        "stock": "https://super-street-battle.s3.us-west-1.amazonaws.com/1563863598795",
+        "tune": "https://super-street-battle.s3.us-west-1.amazonaws.com/1563863615903",
+        "upgraded": "https://super-street-battle.s3.us-west-1.amazonaws.com/1563863640623"
     }
- 
+
 ]
+
