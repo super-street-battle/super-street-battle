@@ -28,6 +28,18 @@ module.exports = app => {
 
     // Update Routes by id
     // update tires
+    app.put('/players/:id/userName', (req, res) => {
+        // console.log(req.body.userName)
+        Player.findOneAndUpdate({_id: req.params.id}, { $set: { userName: req.body.userName } })
+            .then(_ => res.sendStatus(200))
+            .catch(e => console.log(e))
+    })
+    app.put('/players/:id/uid', (req, res) => {
+        // console.log(req.body.uid)
+        Player.findOneAndUpdate({_id: req.params.id}, { $set: { uid: req.body.uid } })
+            .then(_ => res.sendStatus(200))
+            .catch(e => console.log(e))
+    })
     app.put('/players/:id/grippyTires', (req, res) => {
         // console.log(req.body.grippyTires)
         Player.findOneAndUpdate({_id: req.params.id}, { $set: { grippyTires: req.body.grippyTires } })
