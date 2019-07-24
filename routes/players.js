@@ -96,8 +96,8 @@ module.exports = app => {
             .catch(e => console.log(e))
     })
     // update inageLink
-    app.put('/players/:id/inageLink', (req, res) => {
-        // console.log(req.body.inageLink)
+    app.put('/players/:id/imageLink', (req, res) => {
+        // console.log(req.body.imageLink)
         Player.findOneAndUpdate(req.params.id, { $set: { imageLink: req.body.imageLink } })
             .then(_ => res.sendStatus(200))
             .catch(e => console.log(e))
