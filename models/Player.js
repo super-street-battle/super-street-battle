@@ -1,9 +1,36 @@
 module.exports = (Schema, model) => {
     const Player = new Schema({
-        name: {
+        userName: {
             type: String
         },
-        age: {
+        uid: {
+            type: String
+        },
+        imageLink: {
+            type: String
+        },
+        win: {
+            type: Number
+        },
+        loss: {
+            type: Number
+        },
+        tie: {
+            type: Number
+        },
+        experience: {
+            type: Number
+        },
+        bankAccount: {
+            type: Number
+        },
+        grippyTires: {
+            type: Number
+        },
+        oil: {
+            type: Number
+        },
+        nitro: {
             type: Number
         },
         cars: [{

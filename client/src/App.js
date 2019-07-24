@@ -14,6 +14,7 @@ import CarSelect from './pages/carSelect/carSel'
 
 
 
+
 // Configure Firebase.
 var firebaseConfig = {
   apiKey: "AIzaSyAG9WRxHHx9fVwHL287lMPRY3y4t7MZkVw",
@@ -23,6 +24,7 @@ var firebaseConfig = {
     storageBucket: "todo-334b1.appspot.com",
     messagingSenderId: "595507004361",
     appId: "1:595507004361:web:5ddc164fdcc824a0"
+
 };
 firebase.initializeApp(firebaseConfig);
 
@@ -48,6 +50,7 @@ const App = _ => {
   const [newUser, setUserState] = useState("old")
 
 
+
   useEffect(_ => {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
@@ -61,7 +64,6 @@ const App = _ => {
     if (isLoggedIn === 1) {
       return (
         <div className="App">
-        
         <Nav FirebaseAuth={FBAuth}/>
           <Switch>
             <Route exact path="/" component={_ => newUser === 'new' ? <CarSelect /> : <Race />}/>
@@ -69,7 +71,6 @@ const App = _ => {
             <Route path="/Garage" component={Garage} />
             <Route path="/Junkyard" component={Junkyard} />
              <Route path="/SelectCar" component={CarSelect} />
-
           </Switch>
         </div>
         )

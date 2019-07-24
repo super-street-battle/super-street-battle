@@ -1,20 +1,17 @@
-#homenav {
-    height: 48px !important;
+.subtitle {
+    text-align: center;
+    padding-top: 4vh;
+    padding-bottom: 2vh;
 }
-.MuiTab-root {
-    color: rgb(255, 136, 0) !important;
-    background-color: rgb(26, 26, 26) !important;
-    margin-top: 3% !important;
-    font-size: 9px !important;
+.topplayer {
+    margin: 3vh 2%;
+    max-width: 100vw;
+    overflow-x: auto;
 }
-.MuiTabs-indicator {
-    background-color: #eeff00 !important;
-    /* background-color: #ffc800 !important; */
+.decoration {
+    /* border-bottom: 1px solid white; */
 }
-.appbar {
-    box-shadow: none !important;
-    background-color: rgb(26, 26, 26) !important;
-}
-.tabs {
-    margin: auto !important;
+.homepage {
+    background-image: url(../../assets/race.gif);
+    height: 100vh;
 }
