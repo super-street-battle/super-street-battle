@@ -9,9 +9,8 @@ module.exports = (Schema, model) => {
             default: ""
         },
         imageLink: {
-            type: String,
-            default: ""
-        },
+            type: String
+        }, 
         win: {
             type: Number,
             default: "0"

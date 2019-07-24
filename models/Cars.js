@@ -46,9 +46,8 @@ module.exports = (Schema, model) => {
         },
         selling: {
             type: Boolean,
-            default: ""
+            default: false
         }
     })
-
     return model('Cars', Cars)
 }
