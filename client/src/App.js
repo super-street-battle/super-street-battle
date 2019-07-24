@@ -10,18 +10,21 @@ import Login from './pages/login'
 import Junkyard from './pages/junkyard'
 import firebase from 'firebase';
 import Loader from './components/loading'
+import CarSelect from './pages/carSelect/carSel'
+
 
 
 
 // Configure Firebase.
 var firebaseConfig = {
   apiKey: "AIzaSyAG9WRxHHx9fVwHL287lMPRY3y4t7MZkVw",
-  authDomain: "todo-334b1.firebaseapp.com",
-  databaseURL: "https://todo-334b1.firebaseio.com",
-  projectId: "todo-334b1",
-  storageBucket: "todo-334b1.appspot.com",
-  messagingSenderId: "595507004361",
-  appId: "1:595507004361:web:5ddc164fdcc824a0"
+    authDomain: "todo-334b1.firebaseapp.com",
+    databaseURL: "https://todo-334b1.firebaseio.com",
+    projectId: "todo-334b1",
+    storageBucket: "todo-334b1.appspot.com",
+    messagingSenderId: "595507004361",
+    appId: "1:595507004361:web:5ddc164fdcc824a0"
+
 };
 firebase.initializeApp(firebaseConfig);
 
@@ -43,8 +46,8 @@ const FBAuth = firebase.auth()
 const App = _ => {
 
   const [gameState, setGameState] = useState({})
-  const [isLoggedIn, setLoginState] = useState(0)
- 
+  const [isLoggedIn, setLoginState] = useState(1)
+  const [newUser, setUserState] = useState("old")
 
 
 
@@ -52,7 +55,6 @@ const App = _ => {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
         setLoginState(1)
-        console.log(user)
       } else {
         setLoginState(2)     
       }
@@ -62,15 +64,13 @@ const App = _ => {
     if (isLoggedIn === 1) {
       return (
         <div className="App">
-         
-     
         <Nav FirebaseAuth={FBAuth}/>
           <Switch>
-            <Route exact path="/" component={Home}/>
+            <Route exact path="/" component={_ => newUser === 'new' ? <CarSelect /> : <Race />}/>
             <Route path="/Race" component={Race} />
             <Route path="/Garage" component={Garage} />
             <Route path="/Junkyard" component={Junkyard} />
-            <Redirect to="/" />
+             <Route path="/SelectCar" component={CarSelect} />
           </Switch>
         </div>
         )

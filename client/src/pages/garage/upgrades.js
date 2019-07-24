@@ -57,7 +57,6 @@ export default function Upgrades(props) {
                     </Col>
                 </Row>
             </Container>
-
         </div>
     )
 }
