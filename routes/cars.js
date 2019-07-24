@@ -68,14 +68,14 @@ module.exports = app => {
     // tire
     app.put('/cars/:id/tire', (req, res) => {
         // console.log(req.body.tire)
-        Cars.findByIdAndUpdate(req.params.id, { $set: { tire: req.body.tire } })
+        Cars.findByIdAndUpdate({_id: req.params.id}, { $set: { tire: req.body.tire } })
             .then(_ => res.sendStatus(200))
             .catch(e => console.log(e))
     })
     // engine
     app.put('/cars/:id/engine', (req, res) => {
         // console.log(req.body.engine)
-        Cars.findByIdAndUpdate(req.params.id, { $set: { engine: req.body.engine } })
+        Cars.findByIdAndUpdate({_id: req.params.id}, { $set: { engine: req.body.engine } })
             .then(_ => res.sendStatus(200))
             .catch(e => console.log(e))
     })
