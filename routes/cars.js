@@ -17,7 +17,8 @@ module.exports = app => {
     app.post('/cars', (req, res) => {
         Cars.create(req.body)
             .then(({ _id }) => {
-                Player.findOneAndUpdate({ userName: req.body.owner }, { $push: { cars: _id } })
+                // Player.findOneAndUpdate({ userName: req.body.owner }, { $push: { cars: _id } })
+                Player.findOneAndUpdate({ uid: req.body.uid }, { $push: { cars: _id } })
                     .then(_ => res.sendStatus(200))
                     .catch(e => console.log(e))
             })
@@ -43,10 +44,24 @@ module.exports = app => {
             .then(_ => res.sendStatus(200))
             .catch(e => console.log(e))
     })
+    // carNickname
+    app.put('/cars/:id/carNickname', (req, res) => {
+        // console.log(req.body.nitro)
+        Cars.findByIdAndUpdate(req.params.id, { $set: { carNickname: req.body.carNickname } })
+            .then(_ => res.sendStatus(200))
+            .catch(e => console.log(e))
+    })
     // owner
     app.put('/cars/:id/owner', (req, res) => {
         // console.log(req.body.owner)
         Cars.findByIdAndUpdate(req.params.id, { $set: { owner: req.body.owner } })
+            .then(_ => res.sendStatus(200))
+            .catch(e => console.log(e))
+    })
+    // uid
+    app.put('/cars/:id/uid', (req, res) => {
+        // console.log(req.body.uid)
+        Cars.findByIdAndUpdate(req.params.id, { $set: { uid: req.body.uid } })
             .then(_ => res.sendStatus(200))
             .catch(e => console.log(e))
     })

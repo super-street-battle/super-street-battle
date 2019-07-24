@@ -56,7 +56,6 @@ export default function Slide(props) {
             {/* create onclick function which will pass id of car to upgrades which will then open up the workshop */}
             {showWorkshop ? <Upgrades info={props.info} car={currentCar} /> : null}
 
-
         </div>
     )
 }

@@ -2,14 +2,14 @@ import React, { useEffect, useState } from 'react'
 // import Cards from './cards'
 import Slide from './slide'
 import ScoreBoard from './scoreBoard'
-// import Upgrades from './upgrades'
+import Upgrades from './upgrades'
 import Inventory from './inventory'
 import Nav2 from '../../components/nav2'
 import Player from '../../utils/player'
-
 const grippyTire = 'https://super-street-battle.s3.us-west-1.amazonaws.com/1563852066775'
 const oil = 'https://super-street-battle.s3.us-west-1.amazonaws.com/1563852214573'
 const nitro = 'https://super-street-battle.s3.us-west-1.amazonaws.com/1563852192955'
+
 
 const Garage = _ => {
     const [playerState, setPlayerState] = useState({
