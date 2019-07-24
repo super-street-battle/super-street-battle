@@ -20,7 +20,7 @@ export default function SlideItem(props) {
         <div>
             <Container >
                 <Carousel interval={false}>
-                    {props.items.map(({itemImage, amount, name}, index) => (
+                    {props.items.map(({itemImage, amount, name, cost}, index) => (
                         <Carousel.Item>
                             <img className="d-block w-100"
                                 src={itemImage}
@@ -29,7 +29,7 @@ export default function SlideItem(props) {
 
                             <Carousel.Caption>
                                 <h1>Available: {amount}</h1>
-                                {amount > 0 ? <button id={index} value={name} data-image={itemImage} onClick={props.itemSelect}>Use</button> : null}
+                                {amount > 0 ? <button id={index} value={name} data-image={itemImage} onClick={props.itemSelect}>Use</button> : <button id={name} data-amount={amount} data-i={index} value={cost} onClick={props.handlepurchase} >Purchase</button>}
                             </Carousel.Caption>
                         </Carousel.Item>
                     ))}
