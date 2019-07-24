@@ -82,7 +82,7 @@ module.exports = app => {
     // bodyKit
     app.put('/cars/:id/bodyKit', (req, res) => {
         // console.log(req.body.bodyKit)
-        Cars.findByIdAndUpdate(req.params.id, { $set: { bodyKit: req.body.bodyKit } })
+        Cars.findByIdAndUpdate({_id: req.params.id}, { $set: { bodyKit: req.body.bodyKit } })
             .then(_ => res.sendStatus(200))
             .catch(e => console.log(e))
     })

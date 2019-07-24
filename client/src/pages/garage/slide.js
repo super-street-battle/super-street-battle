@@ -10,13 +10,15 @@ export default function Slide(props) {
     //set state for Upg/Workshop to be hidden,
     const [showWorkshop, setShowWorkshop] = useState(false)
     const [currentCar, setCurrentCar] = useState(props.info.cars[0])
+    const [currentIndex, setCurrentIndex] = useState(null)
     const handleSelect = () => {
         setShowWorkshop(false)
     }
 
-    const handleShowWorkShop = (car) => {
+    const handleShowWorkShop = (car, index) => {
         setCurrentCar(car)
         setShowWorkshop(true)
+        setCurrentIndex(index)
     }
 
     // state of current car, pass id to onclick then pass to component the current id or info,
@@ -35,7 +37,7 @@ export default function Slide(props) {
                 <Carousel interval={false} onSelect={handleSelect} style={{marginBottom:'20%'}}>
                     {props.info.cars.map(({carName, imageLink},index) => (
 
-                        <Carousel.Item  onClick={() => handleShowWorkShop(props.info.cars[index])}>
+                        <Carousel.Item  onClick={() => handleShowWorkShop(props.info.cars[index], index)}>
                             <img className="d-block w-100"
                                 src={imageLink}
                                 // alt={id}
@@ -54,7 +56,7 @@ export default function Slide(props) {
             </Container>
 
             {/* create onclick function which will pass id of car to upgrades which will then open up the workshop */}
-            {showWorkshop ? <Upgrades info={props.info} car={currentCar} /> : null}
+            {showWorkshop ? <Upgrades info={props.info} car={currentCar} index={currentIndex} handleBodyKit={props.handleBodyKit}/> : null}
 
         </div>
     )

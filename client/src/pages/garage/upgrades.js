@@ -57,7 +57,8 @@ export default function Upgrades(props) {
                     <Col xs={4}>
                         <h2 style={{ padding: '5px' }} >Body Kit</h2>
                         <h4>({props.car.bodyKit}/3)</h4>
-                        <h5>$100</h5>
+                        <h5>$1000</h5>
+                        <button id={props.index} value='1000' onClick={props.handleBodyKit}>Upgrade</button>
                     </Col>
                 </Row>
             </Container>
