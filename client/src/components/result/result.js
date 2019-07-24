@@ -7,6 +7,7 @@ import race from '../../pages/'
 
 class Result extends React.component {
     state = {
+        race,
         playerComment: "",
         tireComment: "",
         engineComment: "",
