@@ -8,7 +8,7 @@ module.exports = (Schema, model) => {
         },
         imageLink: {
             type: String
-        },
+        }, 
         win: {
             type: Number
         },
