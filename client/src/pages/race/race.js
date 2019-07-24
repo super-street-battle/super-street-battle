@@ -1,16 +1,12 @@
 import React, {useEffect, useState, useRef} from 'react'
-// import Cards from './cards'
 import Slide from './slide'
 import SlideLoc from './slideLoc'
 import SlideItem from './slideItem'
-// import RaceBet from '../../components/race'
 import Car from '../../utils/car'
-// import grippyTire from '../../assets/tire.png'
-// import nitro from '../../assets/nitro.png'
-// import oil from '../../assets/oil.png'
 import Nav2 from '../../components/nav2'
 import Result from '../../components/result'
 import Player from '../../utils/player'
+import tracks from '../../raceTrack.json'
 
 const grippyTire = 'https://super-street-battle.s3.us-west-1.amazonaws.com/1563852066775'
 const oil = 'https://super-street-battle.s3.us-west-1.amazonaws.com/1563852214573'
@@ -33,9 +29,23 @@ const cpuKit = pbodyKit => {
     let min = parseInt(pbodyKit) - 1
     return (Math.random() * (max - min) + min).toFixed(1)
 }
+
+const rantracks = _ => {
+    return tracks.map(item => {
+        let weathers = item.weather
+        return {
+            id: item.id,
+            track: item.tracks,
+            terrain: item.terrain,
+            weather:  weathers[Math.floor(Math.random()*weathers.length)]
+        }
+    })
+}
+
 const Race = _ => {
     const betinput = useRef()
     const [raceState, setraceState] = useState({
+        id: '',
         cars: [],
         pengine: null,
         ptire: null,
@@ -55,7 +65,8 @@ const Race = _ => {
         isLoc: false,
         carimage: '',
         itemImage: '',
-        money: null
+        money: null,
+        tracks: []
     })
         
     raceState.carSelect= e =>{
@@ -65,10 +76,10 @@ const Race = _ => {
         setraceState({
             ...raceState,
             cputotal: cpuE + cpuT + cpuK,
-            ptotal: parseInt(e.target.dataset.engine) + parseInt(e.target.dataset.tire) + parseInt(e.target.dataset.bodykit),
-            pengine: e.target.dataset.engine,
-            ptire: e.target.dataset.tire,
-            pbodyKit: e.target.dataset.bodykit,
+            ptotal: parseFloat(e.target.dataset.engine) + parseFloat(e.target.dataset.tire) + parseFloat(e.target.dataset.bodykit),
+            pengine:parseFloat( e.target.dataset.engine),
+            ptire: parseFloat(e.target.dataset.tire),
+            pbodyKit: parseFloat(e.target.dataset.bodykit),
             cpuE,
             cpuK,
             cpuT,
@@ -103,15 +114,15 @@ const Race = _ => {
 
         if (raceState.useItem !== "") {
             switch(raceState.useItem) {
-                case 'oil spill':
+                case 'oil':
                     logarr.push(`${raceState.username} used ${raceState.useItem}, npc got slowed!`, "We're coming up on the finish line!", "Who will be our winner..?!")
                     cputotal -= .5
                     break;
-                case 'nitro boost':
+                case 'nitro':
                     logarr.push(`${raceState.username} used ${raceState.useItem} and increase speed by 5%`, "We're coming up on the finish line!", "Who will be our winner..?!")
                     ptotal += .8
                     break;
-                case 'grippy tires':
+                case 'grippyTires':
                     logarr.push(`${raceState.username} used ${raceState.useItem}, and increase speed by 2%`, "We're coming up on the finish line!", "Who will be our winner..?!")
                     ptotal += .4
                     break;
@@ -147,11 +158,11 @@ const Race = _ => {
     raceState.itemSelect= e => {
         let items = raceState.items
         items[e.target.id].amount = parseInt(items[e.target.id].amount) - 1
-        if (e.target.value === "oil spill") {
+        if (e.target.value === "oil") {
             Player.putone('5d350ddd47c5e61d6838c6f2', 'oil', {oil: items[e.target.id].amount})
-        } else if (e.target.value === "nitro boost") {
+        } else if (e.target.value === "nitro") {
             Player.putone('5d350ddd47c5e61d6838c6f2', 'nitro', {nitro: items[e.target.id].amount})
-        } else if (e.target.value === "grippy tires") {
+        } else if (e.target.value === "grippyTires") {
             Player.putone('5d350ddd47c5e61d6838c6f2', 'grippyTires', {grippyTires: items[e.target.id].amount})
         }
         setraceState({ 
@@ -162,38 +173,100 @@ const Race = _ => {
             isItem: true
         })
     }
-
+    raceState.trackselect = e => {
+        console.log(raceState)
+        if (raceState.isCar) {
+            switch (e.target.id) {
+                case 'bodykit':
+                    if (raceState.pbodyKit > raceState.cpuK) {
+                        let res = raceState.pbodyKit + parseFloat(e.target.value)
+                        setraceState({...raceState, pbodyKit: res})
+                    } else if (raceState.pbodyKit < raceState.cpuK) {
+                        let res = raceState.cpuK + parseFloat(e.target.value)
+                        setraceState({...raceState, cpuK: res})
+                    }
+                    break;
+                case 'engine':
+                    if (raceState.pengine > raceState.cpuE) {
+                        let res = raceState.pengine + parseFloat(e.target.value)
+                        setraceState({...raceState, pengine: res})
+                    } else if (raceState.pengine < raceState.cpuE) {
+                        let res = raceState.cpuE + parseFloat(e.target.value)
+                        setraceState({...raceState, cpuE: res})
+                    }
+                    break;
+                case 'tires':
+                    if (raceState.ptire > raceState.cpuT) {
+                        let res = raceState.ptire + parseFloat(e.target.value)
+                        setraceState({...raceState, ptire: res})
+                    } else if (raceState.ptire < raceState.cpuT) {
+                        let res = raceState.cpuT + parseFloat(e.target.value)
+                        setraceState({...raceState, cpuT: res})
+                    }
+                    break;
+                default:
+                    break;
+            }
+        } else {
+            alert('Please select your car')
+        }
+    }
     useEffect(_ =>{
+        let tracks = rantracks()
         Car.getall('5d350ddd47c5e61d6838c6f2')
         .then(({data}) => {
             const items = [
                 {
                     itemImage: grippyTire,
                     amount: data.grippyTires,
-                    name: "grippy tires"
+                    name: "grippyTires",
+                    cost: 10
                 },
                 {
                     itemImage: oil,
                     amount: data.oil,
-                    name: "oil spill"
+                    name: "oil",
+                    cost: 15
                 },
                 {
                     itemImage: nitro,
                     amount: data.nitro,
-                    name: "nitro boost"
+                    name: "nitro",
+                    cost: 20
                 }
             ]
             
             setraceState({
-                ...raceState, 
+                ...raceState,
+                id: data._id,
                 cars: data.cars, 
                 money: data.bankAccount, 
                 items,
+                tracks,
                 username: data.userName
             })
     })
         .catch(e => console.error(e))
     }, [])    
+
+    raceState.handlepurchase = e => {
+        if (raceState.money < e.target.value) {
+            alert('Not enough cash for this item!')
+        } else {
+            let cost = parseInt(e.target.value)
+            let item = e.target.id
+            let items = raceState.items
+            items[e.target.dataset.i].amount = parseInt(e.target.dataset.amount) + 1
+            Player.putone(raceState.id, item, {[item]: parseInt(e.target.dataset.amount) + 1})
+            Player.updatebank(raceState.id, {bankAccount: raceState.money - cost})
+            setraceState({
+                ...raceState,
+                items,
+                money: raceState.money - cost
+            })
+            
+        }
+    }
 
     return (
         <>
@@ -211,7 +284,7 @@ const Race = _ => {
                 {raceState.isItem ? <img src={raceState.itemImage} /> :
                     <div>
                         <h1 style={{textAlign:'center', color: '#e97718', fontSize:'25px'}}>Select your item:</h1>
-                        <SlideItem items={raceState.items} itemSelect={raceState.itemSelect}/>
+                        <SlideItem items={raceState.items} itemSelect={raceState.itemSelect} handlepurchase={raceState.handlepurchase} />
                         <br />
                     </div>
                 }
@@ -219,7 +292,7 @@ const Race = _ => {
                 {raceState.isLoc ? null :
                     <div>
                         <h1 style={{textAlign:'center', color: '#e97718', fontSize:'25px'}}>Select the track:</h1>
-                        <SlideLoc/>
+                        <SlideLoc tracks={raceState.tracks} trackselect={raceState.trackselect}/>
                         <br />
                     </div>
                 }
