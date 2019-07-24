@@ -11,6 +11,7 @@ import Junkyard from './pages/junkyard'
 import firebase from 'firebase';
 import Loader from './components/loading'
 import CarSelect from './pages/carSelect/carSel'
+import Player from './utils/player'
 
 
 
@@ -47,13 +48,24 @@ const App = _ => {
 
   const [gameState, setGameState] = useState({})
   const [isLoggedIn, setLoginState] = useState(1)
-  const [newUser, setUserState] = useState("old")
+  const [newUser, setUserState] = useState("")
 
 
 
   useEffect(_ => {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
+        console.log(user.uid)
+        Player.checkuid({uid: user.uid})
+        .then(({data}) => {
+          if (data === 'no user') {
+            setUserState('new')
+          } else {
+            setUserState('old')
+            localStorage.setItem('_id', data)
+          }
+        })
+        .catch(e => console.log(e))
         setLoginState(1)
       } else {
         setLoginState(2)     
@@ -61,16 +73,17 @@ const App = _ => {
     })
   }, [])
 
-    if (isLoggedIn === 1) {
+    if (isLoggedIn === 1 && newUser === 'old') {
       return (
         <div className="App">
         <Nav FirebaseAuth={FBAuth}/>
           <Switch>
-            <Route exact path="/" component={_ => newUser === 'new' ? <CarSelect /> : <Race />}/>
+            <Route exact path="/" component={Home}/>
             <Route path="/Race" component={Race} />
             <Route path="/Garage" component={Garage} />
             <Route path="/Junkyard" component={Junkyard} />
-             <Route path="/SelectCar" component={CarSelect} />
+            <Route path="/SelectCar" component={CarSelect} />
+            <Redirect to="/" />
           </Switch>
         </div>
         )
@@ -82,6 +95,16 @@ const App = _ => {
             <Redirect to="/Login" />
           </Switch>
       </div>
+      )
+    } else if (isLoggedIn === 1 && newUser === 'new') {
+      return (
+        <div>
+          <Switch>
+            <Route path="/login/newUser" component={CarSelect} />
+            <Route path="/Login" component={ () => <Login FirebaseAuth={FBAuth} uiConfig={uiConfig}/> }/>
+            <Redirect to="/login/newUser" />
+          </Switch>
+        </div>
       )
     } else {
       return (

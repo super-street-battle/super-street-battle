@@ -28,9 +28,8 @@ const Garage = _ => {
     // 5d350ddd47c5e61d6838c6f2
 
     useEffect(_ => {
-        Player.getone('5d37ba87f5c8e10e0cc3ff50')
+        Player.getone(localStorage.getItem('_id'))
             .then(({ data }) => {
-                console.log(data)
                 setPlayerState({
                     ...playerState,
                     userName: data.userName,

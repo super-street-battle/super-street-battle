@@ -7,7 +7,12 @@ const Nav = props => {
     return (
         <nav className="navbar">
             <img className="logo" src={logo} alt="Super Street Battle"/>
-            <button onClick={_ => props.FirebaseAuth.signOut()} className="signoutbtn"><GiExitDoor /></button>
+            <button onClick={_ => {
+                    props.FirebaseAuth.signOut()
+                    localStorage.removeItem('_id')
+                }} 
+                className="signoutbtn"><GiExitDoor />
+            </button>
         </nav>
     )
 }

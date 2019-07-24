@@ -25,7 +25,12 @@ module.exports = app => {
             .then(res.sendStatus(200))
             .catch(e => console.error(e))
     })
-
+    // check uid to see if player exist
+    app.post('/players/login', (req, res) => {
+        Player.findOne({uid: req.body.uid})
+            .then(({_id}) => res.json(_id))
+            .catch(e => res.json('no user'))
+    })
     // Update Routes by id
     // update tires
     app.put('/players/:id/userName', (req, res) => {
