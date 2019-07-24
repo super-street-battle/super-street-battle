@@ -20,12 +20,13 @@ export default function SlideLoc(props) {
         <div>
             <Container >
                 <Carousel interval={false}>
-                    {locations.map(location => (
-                        // console.log(location.tracks)
-                        <Carousel.Item key={location.id} id={location.id}>
+                    {props.tracks.map(({id, track, terrain, weather}) => (
+                        // console.log(track.tracks)
+                        <Carousel.Item key={id} id={id}>
                             <div className="loc">
-                                <h1>{location.tracks}</h1>
-                                <small>{location.terrain}</small>
+                                <button onClick={props.trackselect} id={weather.part} value={weather.point}>Select</button>
+                                <h1>{track}</h1>
+                                <small>{terrain}</small>
                                 </div>
                         </Carousel.Item>
                     ))}

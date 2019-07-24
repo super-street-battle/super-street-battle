@@ -1,16 +1,12 @@
 import React, {useEffect, useState, useRef} from 'react'
-// import Cards from './cards'
 import Slide from './slide'
 import SlideLoc from './slideLoc'
 import SlideItem from './slideItem'
-// import RaceBet from '../../components/race'
 import Car from '../../utils/car'
-// import grippyTire from '../../assets/tire.png'
-// import nitro from '../../assets/nitro.png'
-// import oil from '../../assets/oil.png'
 import Nav2 from '../../components/nav2'
 import Result from '../../components/result'
 import Player from '../../utils/player'
+import tracks from '../../raceTrack.json'
 
 const grippyTire = 'https://super-street-battle.s3.us-west-1.amazonaws.com/1563852066775'
 const oil = 'https://super-street-battle.s3.us-west-1.amazonaws.com/1563852214573'
@@ -33,6 +29,19 @@ const cpuKit = pbodyKit => {
     let min = parseInt(pbodyKit) - 1
     return (Math.random() * (max - min) + min).toFixed(1)
 }
+
+const rantracks = _ => {
+    return tracks.map(item => {
+        let weathers = item.weather
+        return {
+            id: item.id,
+            track: item.tracks,
+            terrain: item.terrain,
+            weather:  weathers[Math.floor(Math.random()*weathers.length)]
+        }
+    })
+}
+
 const Race = _ => {
     const betinput = useRef()
     const [raceState, setraceState] = useState({
@@ -56,7 +65,8 @@ const Race = _ => {
         isLoc: false,
         carimage: '',
         itemImage: '',
-        money: null
+        money: null,
+        tracks: []
     })
         
     raceState.carSelect= e =>{
@@ -66,10 +76,10 @@ const Race = _ => {
         setraceState({
             ...raceState,
             cputotal: cpuE + cpuT + cpuK,
-            ptotal: parseInt(e.target.dataset.engine) + parseInt(e.target.dataset.tire) + parseInt(e.target.dataset.bodykit),
-            pengine: e.target.dataset.engine,
-            ptire: e.target.dataset.tire,
-            pbodyKit: e.target.dataset.bodykit,
+            ptotal: parseFloat(e.target.dataset.engine) + parseFloat(e.target.dataset.tire) + parseFloat(e.target.dataset.bodykit),
+            pengine:parseFloat( e.target.dataset.engine),
+            ptire: parseFloat(e.target.dataset.tire),
+            pbodyKit: parseFloat(e.target.dataset.bodykit),
             cpuE,
             cpuK,
             cpuT,
@@ -163,8 +173,46 @@ const Race = _ => {
             isItem: true
         })
     }
-
+    raceState.trackselect = e => {
+        console.log(raceState)
+        if (raceState.isCar) {
+            switch (e.target.id) {
+                case 'bodykit':
+                    if (raceState.pbodyKit > raceState.cpuK) {
+                        let res = raceState.pbodyKit + parseFloat(e.target.value)
+                        setraceState({...raceState, pbodyKit: res})
+                    } else if (raceState.pbodyKit < raceState.cpuK) {
+                        let res = raceState.cpuK + parseFloat(e.target.value)
+                        setraceState({...raceState, cpuK: res})
+                    }
+                    break;
+                case 'engine':
+                    if (raceState.pengine > raceState.cpuE) {
+                        let res = raceState.pengine + parseFloat(e.target.value)
+                        setraceState({...raceState, pengine: res})
+                    } else if (raceState.pengine < raceState.cpuE) {
+                        let res = raceState.cpuE + parseFloat(e.target.value)
+                        setraceState({...raceState, cpuE: res})
+                    }
+                    break;
+                case 'tires':
+                    if (raceState.ptire > raceState.cpuT) {
+                        let res = raceState.ptire + parseFloat(e.target.value)
+                        setraceState({...raceState, ptire: res})
+                    } else if (raceState.ptire < raceState.cpuT) {
+                        let res = raceState.cpuT + parseFloat(e.target.value)
+                        setraceState({...raceState, cpuT: res})
+                    }
+                    break;
+                default:
+                    break;
+            }
+        } else {
+            alert('Please select your car')
+        }
+    }
     useEffect(_ =>{
+        let tracks = rantracks()
         Car.getall('5d350ddd47c5e61d6838c6f2')
         .then(({data}) => {
             const items = [
@@ -194,6 +242,7 @@ const Race = _ => {
                 cars: data.cars, 
                 money: data.bankAccount, 
                 items,
+                tracks,
                 username: data.userName
             })
     })
@@ -243,7 +292,7 @@ const Race = _ => {
                 {raceState.isLoc ? null :
                     <div>
                         <h1 style={{textAlign:'center', color: '#e97718', fontSize:'25px'}}>Select the track:</h1>
-                        <SlideLoc/>
+                        <SlideLoc tracks={raceState.tracks} trackselect={raceState.trackselect}/>
                         <br />
                     </div>
                 }
