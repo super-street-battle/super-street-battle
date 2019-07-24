@@ -30,7 +30,11 @@ const Garage = _ => {
         loss: null,
         win: null,
         tie: null,
-        id: ''
+        id: '',
+        enginePrice: 500,
+        tirePrice: 500
+
+        
     })
 
     // 5d350ddd47c5e61d6838c6f2
@@ -75,19 +79,74 @@ const Garage = _ => {
     }, [])
 
 
+
+    playerState.handleTire = e =>{
+       
+       // grabs car array
+        let i = parseInt(e.target.id)
+        //grabs the clicked car
+        let cars = playerState.cars
+        let cost = parseInt(e.target.value)
+
+        if ( playerState.money < cost){
+            alert('Cannot Upgrade')
+        }else{
+            console.log(cars[i].tire)
+            cars[i].tire = cars[i].tire + 1
+            setPlayerState({...playerState, cars})
+           
+            setPlayerState({...playerState, cars, money: playerState.money - cost})
+            Player.updatebank(playerState.id, { bankAccount: playerState.money - cost})
+            Car.updateengine(cars[i]._id, {tire: playerState.cars[i].tire})
+            // console.log(playerState.cars[i].engine)
+
+            //increment price everytime they buy i product
+            setPlayerState({...playerState, cars, enginePrice: playerState.tirePrice + 50})
+            
+        }
+
+    }
+
+
+    playerState.handleEngine = e =>{
+        
+        //grabs car array
+        let i = parseInt(e.target.id)
+        //grabs the clicked car
+        let cars = playerState.cars
+        let cost = parseInt(e.target.value)
+
+        if ( playerState.money < cost){
+            alert('Cannot Upgrade')
+        }else{
+            cars[i].engine = cars[i].engine + 1
+            setPlayerState({...playerState, cars})
+           
+            setPlayerState({...playerState, cars, money: playerState.money - cost})
+            Player.updatebank(playerState.id, { bankAccount: playerState.money - cost})
+            Car.updateengine(cars[i]._id, {engine: playerState.cars[i].engine})
+            // console.log(playerState.cars[i].engine)
+
+            //increment price everytime they buy i product
+            console.log(playerState.enginePrice)
+            setPlayerState({...playerState, cars, enginePrice: playerState.enginePrice + 50})
+            
+        }
+       
+
+    }
+
+  
+
     playerState.handleBodyKit = e => {
-        console.log(e.target.id)
+        // console.log(e.target.id)
         let i = parseInt(e.target.id)
         let cars = playerState.cars
         let cost = parseInt(e.target.value)
         if (playerState.cars[i].bodyKit >= 3 || playerState.money < cost) {
-            alert('Cannot upgrade')
+            alert('Cannot Upgrade')
         } else {
             cars[i].bodyKit = cars[i].bodyKit + 1
-            cars[i].value = cars[i].value + (cost * .7)
-            console.log(cars[i].value)
-            console.log(e.target.value)
-            console.log(cost*.3)
             setPlayerState({...playerState, cars})
             switch (playerState.cars[i].bodyKit) {
                 case 2:
@@ -156,8 +215,6 @@ const Garage = _ => {
             setPlayerState({...playerState, cars, money: playerState.money - cost})
             Car.updatebody(cars[i]._id, {bodyKit: playerState.cars[i].bodyKit})
             Car.updateimage(cars[i]._id, {imageLink: playerState.cars[i].imageLink})
-            Car.updatevalue(cars[i]._id, { value: playerState.cars[i].value})
-            .then(_ => console.log(playerState.cars[i].value))
             Player.updatebank(playerState.id, { bankAccount: playerState.money - cost})
         }
     }
@@ -186,8 +243,8 @@ const Garage = _ => {
             <Nav2 />
             <ScoreBoard items={playerState.items} info={playerState} playerId={playerState.id} money={playerState.money} />
             {/* <Cards /> */}
-            <Slide info={playerState} handleBodyKit={playerState.handleBodyKit} />
-            <Inventory items={playerState.items} PlayerId={playerState.id} money={playerState.money} handleBuyItem={playerState.handleBuyItem} />
+            <Slide info={playerState} handleBodyKit={playerState.handleBodyKit} handleTire={playerState.handleTire} handleEngine={playerState.handleEngine} />
+            <Inventory  prices={playerState} items={playerState.items} PlayerId={playerState.id} money={playerState.money} handleBuyItem={playerState.handleBuyItem} />
         </>
     )
 }
