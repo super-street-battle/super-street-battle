@@ -45,7 +45,7 @@ const App = _ => {
 
   const [gameState, setGameState] = useState({})
   const [isLoggedIn, setLoginState] = useState(1)
-  const [newUser, setUserState] = useState("new")
+  const [newUser, setUserState] = useState("old")
 
 
   useEffect(_ => {
