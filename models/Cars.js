@@ -9,6 +9,9 @@ module.exports = (Schema, model) => {
         type: {
             type: String
         },
+        uid: {
+            type: String
+        },
         owner: {
             type: String
         },
