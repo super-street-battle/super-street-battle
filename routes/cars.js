@@ -89,7 +89,7 @@ module.exports = app => {
     // value
     app.put('/cars/:id/value', (req, res) => {
         // console.log(req.body.value)
-        Cars.findByIdAndUpdate(req.params.id, { $set: { value: req.body.value } })
+        Cars.findByIdAndUpdate({_id: req.params.id}, { $set: { value: req.body.value } })
             .then(_ => res.sendStatus(200))
             .catch(e => console.log(e))
     })

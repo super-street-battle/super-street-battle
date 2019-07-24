@@ -84,6 +84,10 @@ const Garage = _ => {
             alert('Cannot upgrade')
         } else {
             cars[i].bodyKit = cars[i].bodyKit + 1
+            cars[i].value = cars[i].value + (cost * .7)
+            console.log(cars[i].value)
+            console.log(e.target.value)
+            console.log(cost*.3)
             setPlayerState({...playerState, cars})
             switch (playerState.cars[i].bodyKit) {
                 case 2:
@@ -152,6 +156,8 @@ const Garage = _ => {
             setPlayerState({...playerState, cars, money: playerState.money - cost})
             Car.updatebody(cars[i]._id, {bodyKit: playerState.cars[i].bodyKit})
             Car.updateimage(cars[i]._id, {imageLink: playerState.cars[i].imageLink})
+            Car.updatevalue(cars[i]._id, { value: playerState.cars[i].value})
+            .then(_ => console.log(playerState.cars[i].value))
             Player.updatebank(playerState.id, { bankAccount: playerState.money - cost})
         }
     }

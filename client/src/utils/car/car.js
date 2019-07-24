@@ -5,7 +5,8 @@ const Car = {
     updatebody: (id, body) => axios.put(`/cars/${id}/bodyKit`, body),
     updateimage: (id, body) => axios.put(`/cars/${id}/imageLink`, body),
     updatetires: (id, body) => axios.put(`/cars/${id}/tire`, body),
-    updateengine: (id, body) => axios.put(`/cars/${id}/engine`, body)
+    updateengine: (id, body) => axios.put(`/cars/${id}/engine`, body),
+    updatevalue: (id, body) => axios.put(`/cars/${id}/value`, body)
 }
 
 export default Car
