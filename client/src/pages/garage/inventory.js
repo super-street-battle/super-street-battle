@@ -1,28 +1,22 @@
 import React from 'react'
 import { Carousel, Container, Button } from 'react-bootstrap'
-import images from '../../baseCars.json'
 
-export default function Inventory() {
+export default function Inventory(props) {
     return (
         <div>
             <Container style={{ textAlign: 'center', fontSize: '25px' }}>
-                <h1 style={{ color: '#e97718',marginTop: '175px' }}>Inventory</h1>
                 <Carousel interval={false} style={{ textAlign: 'center' }}>
-                    {images.map(car => (
-
-                        <Carousel.Item key={car.id} id={car.id} >
+                    {props.items.map(({itemImage, name, amount, cost}, index) => (
+                        <Carousel.Item>
+                            <small>Inventory: {amount} </small>
                             <img className="d-block w-100"
-                                src={car.image}
-                                alt={car.id}
+                                src={itemImage}
+                                alt={name}
                                 thumbnail />
-
                             <Carousel.Caption>
-
-                                <small>Qty:0 </small>
-                                <Button style={{ float: 'right' }}>Buy</Button>
+                                <span>${cost}</span>
+                                <Button style={{ float: 'right' }} data-cost={cost} id={name} value={amount} data-i={index} onClick={props.handleBuyItem}>Buy</Button>
                             </Carousel.Caption>
-
-
                         </Carousel.Item>
                     ))}
                 </Carousel>

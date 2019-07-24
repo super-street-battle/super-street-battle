@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react'
-import { Carousel, Container } from 'react-bootstrap'
+import { Carousel, Container, Row, Col, Button } from 'react-bootstrap'
 import Cards from './cards.js'
 import Upgrades from './upgrades'
 import images from '../../baseCars.json'
+import Axios from 'axios'
 
-export default function Slide() {
+export default function Slide(props) {
 
     //set state for Upg/Workshop to be hidden,
     const [showWorkshop, setShowWorkshop] = useState(false)
-    const [currentCar, setCurrentCar] = useState(images[0])
+    const [currentCar, setCurrentCar] = useState(props.info.cars[0])
     const handleSelect = () => {
         setShowWorkshop(false)
     }
@@ -21,31 +22,39 @@ export default function Slide() {
     // state of current car, pass id to onclick then pass to component the current id or info,
     return (
         <div>
-            
-            <Container >
-            
-                <Carousel interval={false} onSelect={handleSelect} style={{ marginTop: '191px' }}>
-                    {images.map(car => (
 
-                        <Carousel.Item key={car.id} id={car.id} onClick={() => handleShowWorkShop(car)}>
+            <Container className='text-center'>
+                {/* <Row>
+                    <Col xs={12} className='text-center pt-5' style={{ fontSize: '37px' }}>
+                        <h1>
+                        {props.info.cars.carName}
+                        </h1>
+                    </Col>
+                </Row> */}
+
+                <Carousel interval={false} onSelect={handleSelect} style={{marginBottom:'20%'}}>
+                    {props.info.cars.map(({carName, imageLink},index) => (
+
+                        <Carousel.Item  onClick={() => handleShowWorkShop(props.info.cars[index])}>
                             <img className="d-block w-100"
-                                src={car.image}
-                                alt={car.id}
+                                src={imageLink}
+                                // alt={id}
+                                style={{height: '25%', width:'50%'}}
                                 thumbnail />
 
                             <Carousel.Caption>
 
-                                <small>Model of Car</small>
+                                <h2>{carName}</h2>
                             </Carousel.Caption>
 
                         </Carousel.Item>
                     ))}
                 </Carousel>
+
             </Container>
 
             {/* create onclick function which will pass id of car to upgrades which will then open up the workshop */}
-            {showWorkshop ? <Upgrades car={currentCar} /> : null}
-
+            {showWorkshop ? <Upgrades info={props.info} car={currentCar} /> : null}
 
         </div>
     )

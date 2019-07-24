@@ -1,0 +1,187 @@
+[
+    {
+        "id": 1,
+        "tracks": "Tsukuba Circuit",
+        "terrain": "Flat Grass Land",
+        "weather": [
+            {
+                "id": 1,
+                "weather": "hot",
+                "point": 0.3,
+                "part": "tires"
+            },
+            {
+                "id": 1,
+                "weather": "hot",
+                "point": 0.3,
+                "part": "tires"
+            },
+            {
+                "id": 3,
+                "weather": "fog",
+                "point": 0.1,
+                "part": "tires"
+            },
+            {
+                "id": 4,
+                "weather": "rain",
+                "point": 0.2,
+                "part": "bodykit"
+            },
+            {
+                "id": 5,
+                "weather": "windy",
+                "point": 0.2,
+                "part": "bodykit"
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "tracks": "Ebisu Circuit",
+        "terrain": "Mountains",
+        "weather": [
+            {
+                "id": 4,
+                "weather": "rain",
+                "point": 0.2,
+                "part": "bodykit"
+            },
+            {
+                "id": 4,
+                "weather": "rain",
+                "point": 0.2,
+                "part": "bodykit"
+            },
+            {
+                "id": 5,
+                "weather": "windy",
+                "point": 0.2,
+                "part": "bodykit"
+            },
+            {
+                "id": 5,
+                "weather": "windy",
+                "point": 0.2,
+                "part": "bodykit"
+            },
+            {
+                "id": 2,
+                "weather": "cold",
+                "point": 0.2,
+                "part": "engine"
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "tracks": "Fuji Speedway",
+        "terrain": "Forests",
+        "weather": [
+            {
+                "id": 6,
+                "weather": "snow",
+                "point": 0.2,
+                "part": "engine"
+            },
+            {
+                "id": 6,
+                "weather": "snow",
+                "point": 0.2,
+                "part": "engine"
+            },
+            {
+                "id": 2,
+                "weather": "cold",
+                "point": 0.2,
+                "part": "engine"
+            },
+            {
+                "id": 2,
+                "weather": "cold",
+                "point": 0.2,
+                "part": "engine"
+            },
+            {
+                "id": 4,
+                "weather": "rain",
+                "point": 0.2,
+                "part": "bodykit"
+            }
+        ]
+    },
+    {
+        "id": 4,
+        "tracks": "Twin Ring Motegi",
+        "terrain": "City",
+        "weather": [
+            {
+                "id": 4,
+                "weather": "rain",
+                "point": 0.2,
+                "part": "bodykit"
+            },
+            {
+                "id": 4,
+                "weather": "rain",
+                "point": 0.2,
+                "part": "bodykit"
+            },
+            {
+                "id": 1,
+                "weather": "hot",
+                "point": 0.3,
+                "part": "tires"
+            },
+            {
+                "id": 3,
+                "weather": "fog",
+                "point": 0.1,
+                "part": "tires"
+            },
+            {
+                "id": 5,
+                "weather": "windy",
+                "point": 0.2,
+                "part": "bodykit"
+            }
+        ]
+    },
+    {
+        "id": 5,
+        "tracks": "Mine Circuit",
+        "terrain": "Mountains",
+        "weather": [
+            {
+                "id": 5,
+                "weather": "windy",
+                "point": 0.2,
+                "part": "bodykit"
+            },
+            {
+                "id": 5,
+                "weather": "windy",
+                "point": 0.2,
+                "part": "bodykit"
+            },
+            {
+                "id": 1,
+                "weather": "hot",
+                "point": 0.3,
+                "part": "tires"
+            },
+            {
+                "id": 2,
+                "weather": "cold",
+                "point": 0.2,
+                "part": "engine"
+            },
+            {
+                "id": 3,
+                "weather": "fog",
+                "point": 0.1,
+                "part": "tires"
+            }
+        ]
+    }
+]

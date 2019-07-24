@@ -2,7 +2,7 @@ const { Player, Cars } = require('../models')
 
 module.exports = app => {
     app.get('/players', (req, res) => {
-        Player.find().sort({ xp: -1 }).limit(10)
+        Player.find().sort({ experience: -1 }).limit(10)
             .then(players => res.json(players))
             .catch(e => console.log(e))
     })
@@ -16,7 +16,6 @@ module.exports = app => {
             .populate('cars')
             .exec((err, cars) => {
                 res.json(cars)
-                // console.log(cars)
             })
     })
 
@@ -29,23 +28,35 @@ module.exports = app => {
 
     // Update Routes by id
     // update tires
+    app.put('/players/:id/userName', (req, res) => {
+        // console.log(req.body.userName)
+        Player.findOneAndUpdate({_id: req.params.id}, { $set: { userName: req.body.userName } })
+            .then(_ => res.sendStatus(200))
+            .catch(e => console.log(e))
+    })
+    app.put('/players/:id/uid', (req, res) => {
+        // console.log(req.body.uid)
+        Player.findOneAndUpdate({_id: req.params.id}, { $set: { uid: req.body.uid } })
+            .then(_ => res.sendStatus(200))
+            .catch(e => console.log(e))
+    })
     app.put('/players/:id/grippyTires', (req, res) => {
         // console.log(req.body.grippyTires)
-        Player.findOneAndUpdate(req.params.id, { $set: { grippyTires: req.body.grippyTires } })
+        Player.findOneAndUpdate({_id: req.params.id}, { $set: { grippyTires: req.body.grippyTires } })
             .then(_ => res.sendStatus(200))
             .catch(e => console.log(e))
     })
     // update oil
     app.put('/players/:id/oil', (req, res) => {
         // console.log(req.body.oil)
-        Player.findOneAndUpdate(req.params.id, { $set: { oil: req.body.oil } })
+        Player.findOneAndUpdate({_id: req.params.id}, { $set: { oil: req.body.oil } })
             .then(_ => res.sendStatus(200))
             .catch(e => console.log(e))
     })
     // update nitro
     app.put('/players/:id/nitro', (req, res) => {
         // console.log(req.body.nitro)
-        Player.findOneAndUpdate(req.params.id, { $set: { nitro: req.body.nitro } })
+        Player.findOneAndUpdate({_id: req.params.id}, { $set: { nitro: req.body.nitro } })
             .then(_ => res.sendStatus(200))
             .catch(e => console.log(e))
     })
@@ -80,13 +91,13 @@ module.exports = app => {
     // update bankAccount
     app.put('/players/:id/bankAccount', (req, res) => {
         // console.log(req.body.bankAccount)
-        Player.findOneAndUpdate(req.params.id, { $set: { bankAccount: req.body.bankAccount } })
+        Player.findOneAndUpdate({_id: req.params.id}, { $set: { bankAccount: req.body.bankAccount } })
             .then(_ => res.sendStatus(200))
             .catch(e => console.log(e))
     })
     // update inageLink
-    app.put('/players/:id/inageLink', (req, res) => {
-        // console.log(req.body.inageLink)
+    app.put('/players/:id/imageLink', (req, res) => {
+        // console.log(req.body.imageLink)
         Player.findOneAndUpdate(req.params.id, { $set: { imageLink: req.body.imageLink } })
             .then(_ => res.sendStatus(200))
             .catch(e => console.log(e))

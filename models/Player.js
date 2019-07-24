@@ -1,34 +1,47 @@
 module.exports = (Schema, model) => {
     const Player = new Schema({
         userName: {
-            type: String
+            type: String,
+            default: ""
+        },
+        uid: {
+            type: String,
+            default: ""
         },
         imageLink: {
             type: String
-        },
+        }, 
         win: {
-            type: Number
+            type: Number,
+            default: "0"
         },
         loss: {
-            type: Number
+            type: Number,
+            default: "0"
         },
         tie: {
-            type: Number
+            type: Number,
+            default: "0"
         },
         experience: {
-            type: Number
+            type: Number,
+            default: "0"
         },
         bankAccount: {
-            type: Number
+            type: Number,
+            default: "0"
         },
         grippyTires: {
-            type: Number
+            type: Number,
+            default: "0"
         },
         oil: {
-            type: Number
+            type: Number,
+            default: "0"
         },
         nitro: {
-            type: Number
+            type: Number,
+            default: "0"
         },
         cars: [{
             type: Schema.Types.ObjectId,

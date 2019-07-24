@@ -3,21 +3,32 @@ import { Jumbotron, Container, Row, Col } from 'react-bootstrap';
 import './scoreBoard.css'
 
 
-export default function() {
+export default function (props) {
     return (
         <div>
-            <Jumbotron  style={{ height: '0px', width: '50%', textAlign: 'center', marginTop: '3%', opacity: ' .9', backgroundColor: '#e97718', float: 'right' }} >
 
-                <h1 className='jumboInfo'  style={{marginTop:'-47px'}}>Your Username</h1>
-                <Row style={{ marginLeft: '5%' ,marginBottom:'5px'}} >
-                    
-                    <h4 className='jumboInfo' style={{ padding: '20px' }}>Wins:0</h4>
-                    <h4 className='jumboInfo' style={{ padding: '20px' }}>Losses:0</h4>
-                    <h4 className='jumboInfo' style={{ padding: '20px' }}>Ties:0</h4><br />
-                    <h4 className='jumboInfo' style={{ padding: '20px', color: 'black', fontSize: '20px' }}>$200</h4>
+            <Container className='garageInfo text-center pt-5'>
+                <Row>
+                    <Col xs={12} className='pt-2 pb-5'>
+                        <h1 className='jumboInfo' id='garageUserName'>{props.info.userName}'s Garage</h1>
+                    </Col>
                 </Row>
+                <Row>
+                    <Col xs={4}>
+                        <h4 className='jumboInfo pt-5 mt-5 pb-2'>Wins:{props.info.win}</h4>
+                    </Col>
+                    <Col xs={4}>
+                        <h4 className='jumboInfo pt-5 mt-5 pb-2'>Losses:{props.info.loss}</h4>
+                    </Col>
+                    <Col xs={4}>
+                        <h4 className='jumboInfo pt-5 mt-5 pb-2'>Ties:{props.info.tie}</h4><br />
+                    </Col>
+                    <Col xs={12}>
+                        <h4 className='jumboInfo text-right pt-5 mt-5 pr-5'>Cash: {props.info.money}</h4>
+                    </Col>
+                </Row>
+            </Container>
 
-            </Jumbotron>
         </div>
     )
 }
