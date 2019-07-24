@@ -10,6 +10,7 @@ import Login from './pages/login'
 import Junkyard from './pages/junkyard'
 import firebase from 'firebase';
 import Loader from './components/loading'
+import CarSelect from './pages/carSelect/carSel'
 
 
 
@@ -43,14 +44,14 @@ const FBAuth = firebase.auth()
 const App = _ => {
 
   const [gameState, setGameState] = useState({})
-  const [isLoggedIn, setLoginState] = useState(0)
+  const [isLoggedIn, setLoginState] = useState(1)
+  const [newUser, setUserState] = useState("new")
 
 
   useEffect(_ => {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
         setLoginState(1)
-        console.log(user)
       } else {
         setLoginState(2)     
       }
@@ -60,18 +61,15 @@ const App = _ => {
     if (isLoggedIn === 1) {
       return (
         <div className="App">
-          {/* <button onClick={_ => {
-            setLoginState(2)
-            firebase.auth().signOut()
-            }}>Sign Out</button> */}
-     
+        
         <Nav FirebaseAuth={FBAuth}/>
           <Switch>
-            <Route exact path="/" component={Home}/>
+            <Route exact path="/" component={_ => newUser === 'new' ? <CarSelect /> : <Race />}/>
             <Route path="/Race" component={Race} />
             <Route path="/Garage" component={Garage} />
             <Route path="/Junkyard" component={Junkyard} />
-            <Redirect to="/" />
+             <Route path="/SelectCar" component={CarSelect} />
+
           </Switch>
         </div>
         )
