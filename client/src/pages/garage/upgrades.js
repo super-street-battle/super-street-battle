@@ -2,6 +2,24 @@ import React, { useEffect } from 'react'
 import { Container, Button, Form, FormGroup, Label, Input, FormText, Row, Col } from 'react-bootstrap'
 import Cards from './cards'
 
+const handlekitupgrade = props=> {
+    if (props.car.bodyKit === 1) {
+        return (
+            <>
+            <h5>$1000</h5>
+            <button id={props.index} value='1000' onClick={props.handleBodyKit}>Upgrade</button>
+            </>
+        )
+    } else if (props.car.bodyKit === 2) {
+        return (
+            <>
+            <h5>$2500</h5>
+            <button id={props.index} value='2500' onClick={props.handleBodyKit}>Upgrade</button>
+            </>
+        )
+    }
+}
+
 export default function Upgrades(props) {
     useEffect(_ => {console.log(props.car)}, [])
     return (
@@ -57,8 +75,7 @@ export default function Upgrades(props) {
                     <Col xs={4}>
                         <h2 style={{ padding: '5px' }} >Body Kit</h2>
                         <h4>({props.car.bodyKit}/3)</h4>
-                        {props.car.bodyKit === 3 ? null : <h5>$1000</h5>}
-                        {props.car.bodyKit === 3 ? null : <button id={props.index} value='1000' onClick={props.handleBodyKit}>Upgrade</button>}
+                        {handlekitupgrade(props)}
                         
                     </Col>
                 </Row>
