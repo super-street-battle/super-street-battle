@@ -48,15 +48,12 @@ const App = _ => {
   useEffect(_ => {
     firebase.auth().onAuthStateChanged(user => {
       //handleAddUser()
-      if (user) {
-        console.log(user.uid)
-         
+      if (user) {  
         Player.checkuid({uid: user.uid})
         .then(({data}) => {
           if (data === 'no user') {
             setLoginState({...loginState, newUser: 'new'})
-            // handleAddUser()
-          } else {
+           } else {
             setLoginState({...loginState, newUser: 'old'})
             localStorage.setItem('_id', data)
           }
@@ -71,15 +68,15 @@ const App = _ => {
   }, [])
  
 
-
   loginState.handleAddUser = () => {
+    axios.post('/players', {  uid: FBAuth.currentUser.uid} )
+     .then(r => {
+      console.log(r)
+      })
+      .catch(e => console.log(e))
+      setLoginState({...loginState, newUser: 'new'})
 
-   
-    axios.post('/players', {userName: 'Test', 
-         uid: FBAuth.currentUser.uid} )
-     .then(r => console.log(r))
-     .catch(e => console.log(e))
-  }
+ }
   
  
     if (loginState.isLoggedIn === 1 && loginState.newUser === 'old') {
@@ -110,6 +107,7 @@ const App = _ => {
         <div>
           <Switch>
       <Route path="/login/newUser" component={_ => <CarSelect handleAddUser={loginState.handleAddUser} />} />
+      {/* <Route path="/login/newUser" component={_ => <CarSelect />} /> */}
             <Route path="/Login" component={ () => <Login FirebaseAuth={FBAuth} uiConfig={uiConfig}/> }/>
             <Redirect to="/login/newUser" />
           </Switch>
