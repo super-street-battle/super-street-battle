@@ -2,31 +2,37 @@
 [
 
  {
+     "name": "nsx",
         "stock": "https://super-street-battle.s3.us-west-1.amazonaws.com/1563863129864",
        "tune": "https://super-street-battle.s3.us-west-1.amazonaws.com/1563863154979",
     "upgraded": "https://super-street-battle.s3.us-west-1.amazonaws.com/1563863176279"
     },
     {
+        "name":  "rx7",
         "stock": "https://super-street-battle.s3.us-west-1.amazonaws.com/1563863229357",
         "tune": "https://super-street-battle.s3.us-west-1.amazonaws.com/1563863263609",
         "upgraded": "https://super-street-battle.s3.us-west-1.amazonaws.com/1563863284877"
     },
-    {
+    {   
+        "name" : "3000gt", 
         "stock": "https://super-street-battle.s3.us-west-1.amazonaws.com/1563863323027",
         "tune": "https://super-street-battle.s3.us-west-1.amazonaws.com/1563863340554",
         "upgraded": "https://super-street-battle.s3.us-west-1.amazonaws.com/1563863363410"
     },
   {
+        "name": "s15",
         "stock": "https://super-street-battle.s3.us-west-1.amazonaws.com/1563863403704",
         "tune": "https://super-street-battle.s3.us-west-1.amazonaws.com/1563863424741",
         "upgraded": "https://super-street-battle.s3.us-west-1.amazonaws.com/1563863444440"
     },
     {
+        "name": "is300",
         "stock": "https://super-street-battle.s3.us-west-1.amazonaws.com/1563863512054",
         "tune": "https://super-street-battle.s3.us-west-1.amazonaws.com/1563863529965",
         "upgraded": "https://super-street-battle.s3.us-west-1.amazonaws.com/1563863549205"
     },
      {
+        "name": "s2000",
         "stock": "https://super-street-battle.s3.us-west-1.amazonaws.com/1563863598795",
         "tune": "https://super-street-battle.s3.us-west-1.amazonaws.com/1563863615903",
         "upgraded": "https://super-street-battle.s3.us-west-1.amazonaws.com/1563863640623"

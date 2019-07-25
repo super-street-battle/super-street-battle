@@ -68,13 +68,26 @@ const App = _ => {
   }, [])
  
 
-  loginState.handleAddUser = () => {
+  loginState.handleAddUser = event => {
+
+ 
     axios.post('/players', {  uid: FBAuth.currentUser.uid} )
      .then(r => {
-      console.log(r)
+      Player.checkuid({uid: FBAuth.currentUser.uid})
+        .then(({data}) => {
+            setLoginState({...loginState, newUser: 'old'})
+            localStorage.setItem('_id', data)
+          })
+          
+      .catch(e => console.log(e))
       })
       .catch(e => console.log(e))
-      setLoginState({...loginState, newUser: 'new'})
+      // setLoginState({...loginState, newUser: 'new'})
+
+
+
+
+
 
  }
   
