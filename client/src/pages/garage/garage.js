@@ -76,7 +76,6 @@ const Garage = _ => {
 
 
     playerState.handleBodyKit = e => {
-        console.log(e.target.id)
         let i = parseInt(e.target.id)
         let cars = playerState.cars
         let cost = parseInt(e.target.value)
@@ -85,37 +84,34 @@ const Garage = _ => {
         } else {
             cars[i].bodyKit = cars[i].bodyKit + 1
             cars[i].value = cars[i].value + (cost * .7)
-            console.log(cars[i].value)
-            console.log(e.target.value)
-            console.log(cost*.3)
             setPlayerState({...playerState, cars})
             switch (playerState.cars[i].bodyKit) {
                 case 2:
                     switch (playerState.cars[i].carName) {
                         case "nsx":
-                            cars[i].imageLink = model1[0]
-                            // setPlayerState({...playerState, cars})
+                            cars[i].imageLink = model1[0].image
+                            cars[i].animation = model1[0].animation
                             break;
                         case "rx7":
-                            cars[i].imageLink = model2[0]
-                            // setPlayerState({...playerState, cars})
+                            cars[i].imageLink = model2[0].image
+                            cars[i].animation = model2[0].animation
                             break;
                         case "3000gt":
-                                cars[i].imageLink = model3[0]
-                                // setPlayerState({...playerState, cars})
-                            break;
+                                cars[i].imageLink = model3[0].image
+                                cars[i].animation = model3[0].animation
+                                break;
                         case "s15":
-                                cars[i].imageLink = model4[0]
-                                // setPlayerState({...playerState, cars})
-                            break;
+                                cars[i].imageLink = model4[0].image
+                                cars[i].animation = model4[0].animation
+                                break;
                         case "is300":
-                                cars[i].imageLink = model5[0]
-                                // setPlayerState({...playerState, cars})
-                            break;
+                                cars[i].imageLink = model5[0].image
+                                cars[i].animation = model5[0].animation
+                                break;
                         case "s2000":
-                                cars[i].imageLink = model6[0]
-                                // setPlayerState({...playerState, cars})
-                            break;
+                                cars[i].imageLink = model6[0].image
+                                cars[i].animation = model6[0].animation
+                                break;
                         default:
                             break;
                     }
@@ -123,29 +119,29 @@ const Garage = _ => {
                 case 3: 
                     switch (playerState.cars[i].carName) {
                         case "nsx":
-                                cars[i].imageLink = model1[1]
-                                // setPlayerState({...playerState, cars})
-                                break;
+                                cars[i].imageLink = model1[1].image
+                                cars[i].animation = model1[1].animation
+                                    break;
                             case "rx7":
-                                cars[i].imageLink = model2[1]
-                                // setPlayerState({...playerState, cars})
-                                break;
+                                cars[i].imageLink = model2[1].image
+                                cars[i].animation = model2[1].animation
+                                    break;
                             case "3000gt":
-                                    cars[i].imageLink = model3[1]
-                                    // setPlayerState({...playerState, cars})
-                                break;
+                                    cars[i].imageLink = model3[1].image
+                                    cars[i].animation = model3[1].animation
+                                        break;
                             case "s15":
-                                    cars[i].imageLink = model4[1]
-                                    // setPlayerState({...playerState, cars})
-                                break;
+                                    cars[i].imageLink = model4[1].image
+                                    cars[i].animation = model4[1].animation
+                                        break;
                             case "is300":
-                                    cars[i].imageLink = model5[1]
-                                    // setPlayerState({...playerState, cars})
-                                break;
+                                    cars[i].imageLink = model5[1].image
+                                    cars[i].animation = model5[1].animation
+                                        break;
                             case "s2000":
-                                    cars[i].imageLink = model6[1]
-                                    // setPlayerState({...playerState, cars})
-                                break;
+                                    cars[i].imageLink = model6[1].image
+                                    cars[i].animation = model6[1].animation
+                                        break;
                             default:
                                 break;
                     }
@@ -156,8 +152,8 @@ const Garage = _ => {
             setPlayerState({...playerState, cars, money: playerState.money - cost})
             Car.updatebody(cars[i]._id, {bodyKit: playerState.cars[i].bodyKit})
             Car.updateimage(cars[i]._id, {imageLink: playerState.cars[i].imageLink})
+            Car.updateanimation(cars[i]._id, {animation: playerState.cars[i].animation})
             Car.updatevalue(cars[i]._id, { value: playerState.cars[i].value})
-            .then(_ => console.log(playerState.cars[i].value))
             Player.updatebank(playerState.id, { bankAccount: playerState.money - cost})
         }
     }

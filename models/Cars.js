@@ -40,10 +40,9 @@ module.exports = (Schema, model) => {
             type: String,
             default: ""
         },
-        animation: {
+        animation: [{
             type: String,
-            default: ""
-        },
+        }],
         selling: {
             type: Boolean,
             default: false
