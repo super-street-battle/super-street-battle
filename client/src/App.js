@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import Nav from './components/nav'
 import './App.css'
 import './CSS_Reset.css'
@@ -19,27 +19,27 @@ import Player from './utils/player'
 // Configure Firebase.
 var firebaseConfig = {
   apiKey: "AIzaSyAG9WRxHHx9fVwHL287lMPRY3y4t7MZkVw",
-    authDomain: "todo-334b1.firebaseapp.com",
-    databaseURL: "https://todo-334b1.firebaseio.com",
-    projectId: "todo-334b1",
-    storageBucket: "todo-334b1.appspot.com",
-    messagingSenderId: "595507004361",
-    appId: "1:595507004361:web:5ddc164fdcc824a0"
+  authDomain: "todo-334b1.firebaseapp.com",
+  databaseURL: "https://todo-334b1.firebaseio.com",
+  projectId: "todo-334b1",
+  storageBucket: "todo-334b1.appspot.com",
+  messagingSenderId: "595507004361",
+  appId: "1:595507004361:web:5ddc164fdcc824a0"
 
 };
 firebase.initializeApp(firebaseConfig);
 
 // Configure FirebaseUI.
 const uiConfig = {
-// Popup signin flow rather than redirect flow.
-signInFlow: 'popup',
-// Redirect to /signedIn after sign in is successful. Alternatively you can provide a callbacks.signInSuccess function.
-signInSuccessUrl: '/',
-// We will display Google and Facebook as auth providers.
-signInOptions: [
-  firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-  firebase.auth.FacebookAuthProvider.PROVIDER_ID
-]
+  // Popup signin flow rather than redirect flow.
+  signInFlow: 'popup',
+  // Redirect to /signedIn after sign in is successful. Alternatively you can provide a callbacks.signInSuccess function.
+  signInSuccessUrl: '/',
+  // We will display Google and Facebook as auth providers.
+  signInOptions: [
+    firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+    firebase.auth.FacebookAuthProvider.PROVIDER_ID
+  ]
 };
 
 const FBAuth = firebase.auth()
@@ -56,65 +56,65 @@ const App = _ => {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
         console.log(user.uid)
-        Player.checkuid({uid: user.uid})
-        .then(({data}) => {
-          if (data === 'no user') {
-            setUserState('new')
-          } else {
-            setUserState('old')
-            localStorage.setItem('_id', data)
-          }
-        })
-        .catch(e => console.log(e))
+        Player.checkuid({ uid: user.uid })
+          .then(({ data }) => {
+            if (data === 'no user') {
+              setUserState('new')
+            } else {
+              setUserState('old')
+              localStorage.setItem('_id', data)
+            }
+          })
+          .catch(e => console.log(e))
         setLoginState(1)
       } else {
-        setLoginState(2)     
+        setLoginState(2)
       }
     })
   }, [])
 
-    if (isLoggedIn === 1 && newUser === 'old') {
-      return (
-        <div className="App">
-        <Nav FirebaseAuth={FBAuth}/>
-          <Switch>
-            <Route exact path="/" component={Home}/>
-            <Route path="/Race" component={Race} />
-            <Route path="/Garage" component={Garage} />
-            <Route path="/Junkyard" component={Junkyard} />
-            <Route path="/SelectCar" component={CarSelect} />
-            <Redirect to="/" />
-          </Switch>
-        </div>
-        )
-    } else if (isLoggedIn === 2) {
-      return (
-        <div>
-         <Switch>
-            <Route exact path="/Login" component={ () => <Login FirebaseAuth={FBAuth} uiConfig={uiConfig}/> }/>
-            <Redirect to="/Login" />
-          </Switch>
+  if (isLoggedIn === 1 && newUser === 'old') {
+    return (
+      <div className="App">
+        <Nav FirebaseAuth={FBAuth} />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/Race" component={Race} />
+          <Route path="/Garage" component={Garage} />
+          <Route path="/Junkyard" component={Junkyard} />
+          <Route path="/SelectCar" component={CarSelect} />
+          <Redirect to="/" />
+        </Switch>
       </div>
-      )
-    } else if (isLoggedIn === 1 && newUser === 'new') {
-      return (
-        <div>
-          <Switch>
-            <Route path="/login/newUser" component={CarSelect} />
-            <Route path="/Login" component={ () => <Login FirebaseAuth={FBAuth} uiConfig={uiConfig}/> }/>
-            <Redirect to="/login/newUser" />
-          </Switch>
-        </div>
-      )
-    } else {
-      return (
-        <div className='App'>
+    )
+  } else if (isLoggedIn === 2) {
+    return (
+      <div>
+        <Switch>
+          <Route exact path="/Login" component={() => <Login FirebaseAuth={FBAuth} uiConfig={uiConfig} />} />
+          <Redirect to="/Login" />
+        </Switch>
+      </div>
+    )
+  } else if (isLoggedIn === 1 && newUser === 'new') {
+    return (
+      <div>
+        <Switch>
+          <Route path="/login/newUser" component={CarSelect} />
+          <Route path="/Login" component={() => <Login FirebaseAuth={FBAuth} uiConfig={uiConfig} />} />
+          <Redirect to="/login/newUser" />
+        </Switch>
+      </div>
+    )
+  } else {
+    return (
+      <div className='App'>
         {/* <Loader /> */}
-        </div>
-      )
-    }
+      </div>
+    )
+  }
 
-    
+
 }
 
 export default App
