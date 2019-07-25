@@ -147,123 +147,124 @@ const Garage = _ => {
             // setPlayerState({...playerState, cars, tirePrice: playerState.tirePrice + 50})
 
         }
+    }
 
 
 
 
 
-        playerState.handleBodyKit = e => {
-            // console.log(e.target.id)
-            let i = parseInt(e.target.id)
-            let cars = playerState.cars
-            let cost = parseInt(e.target.value)
-            if (playerState.cars[i].bodyKit >= 3 || playerState.money < cost) {
-                alert('Cannot Upgrade')
-            } else {
-                cars[i].bodyKit = cars[i].bodyKit + 1
-                setPlayerState({ ...playerState, cars })
-                switch (playerState.cars[i].bodyKit) {
-                    case 2:
-                        switch (playerState.cars[i].carName) {
-                            case "nsx":
-                                cars[i].imageLink = model1[0]
-                                // setPlayerState({...playerState, cars})
-                                break;
-                            case "rx7":
-                                cars[i].imageLink = model2[0]
-                                // setPlayerState({...playerState, cars})
-                                break;
-                            case "3000gt":
-                                cars[i].imageLink = model3[0]
-                                // setPlayerState({...playerState, cars})
-                                break;
-                            case "s15":
-                                cars[i].imageLink = model4[0]
-                                // setPlayerState({...playerState, cars})
-                                break;
-                            case "is300":
-                                cars[i].imageLink = model5[0]
-                                // setPlayerState({...playerState, cars})
-                                break;
-                            case "s2000":
-                                cars[i].imageLink = model6[0]
-                                // setPlayerState({...playerState, cars})
-                                break;
-                            default:
-                                break;
-                        }
-                        break;
-                    case 3:
-                        switch (playerState.cars[i].carName) {
-                            case "nsx":
-                                cars[i].imageLink = model1[1]
-                                // setPlayerState({...playerState, cars})
-                                break;
-                            case "rx7":
-                                cars[i].imageLink = model2[1]
-                                // setPlayerState({...playerState, cars})
-                                break;
-                            case "3000gt":
-                                cars[i].imageLink = model3[1]
-                                // setPlayerState({...playerState, cars})
-                                break;
-                            case "s15":
-                                cars[i].imageLink = model4[1]
-                                // setPlayerState({...playerState, cars})
-                                break;
-                            case "is300":
-                                cars[i].imageLink = model5[1]
-                                // setPlayerState({...playerState, cars})
-                                break;
-                            case "s2000":
-                                cars[i].imageLink = model6[1]
-                                // setPlayerState({...playerState, cars})
-                                break;
-                            default:
-                                break;
-                        }
-                        break;
-                    default:
-                        break;
-                }
-                setPlayerState({ ...playerState, cars, money: playerState.money - cost })
-                Car.updatebody(cars[i]._id, { bodyKit: playerState.cars[i].bodyKit })
-                Car.updateimage(cars[i]._id, { imageLink: playerState.cars[i].imageLink })
-                Player.updatebank(playerState.id, { bankAccount: playerState.money - cost })
+    playerState.handleBodyKit = e => {
+        // console.log(e.target.id)
+        let i = parseInt(e.target.id)
+        let cars = playerState.cars
+        let cost = parseInt(e.target.value)
+        if (playerState.cars[i].bodyKit >= 3 || playerState.money < cost) {
+            alert('Cannot Upgrade')
+        } else {
+            cars[i].bodyKit = cars[i].bodyKit + 1
+            setPlayerState({ ...playerState, cars })
+            switch (playerState.cars[i].bodyKit) {
+                case 2:
+                    switch (playerState.cars[i].carName) {
+                        case "nsx":
+                            cars[i].imageLink = model1[0]
+                            // setPlayerState({...playerState, cars})
+                            break;
+                        case "rx7":
+                            cars[i].imageLink = model2[0]
+                            // setPlayerState({...playerState, cars})
+                            break;
+                        case "3000gt":
+                            cars[i].imageLink = model3[0]
+                            // setPlayerState({...playerState, cars})
+                            break;
+                        case "s15":
+                            cars[i].imageLink = model4[0]
+                            // setPlayerState({...playerState, cars})
+                            break;
+                        case "is300":
+                            cars[i].imageLink = model5[0]
+                            // setPlayerState({...playerState, cars})
+                            break;
+                        case "s2000":
+                            cars[i].imageLink = model6[0]
+                            // setPlayerState({...playerState, cars})
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
+                case 3:
+                    switch (playerState.cars[i].carName) {
+                        case "nsx":
+                            cars[i].imageLink = model1[1]
+                            // setPlayerState({...playerState, cars})
+                            break;
+                        case "rx7":
+                            cars[i].imageLink = model2[1]
+                            // setPlayerState({...playerState, cars})
+                            break;
+                        case "3000gt":
+                            cars[i].imageLink = model3[1]
+                            // setPlayerState({...playerState, cars})
+                            break;
+                        case "s15":
+                            cars[i].imageLink = model4[1]
+                            // setPlayerState({...playerState, cars})
+                            break;
+                        case "is300":
+                            cars[i].imageLink = model5[1]
+                            // setPlayerState({...playerState, cars})
+                            break;
+                        case "s2000":
+                            cars[i].imageLink = model6[1]
+                            // setPlayerState({...playerState, cars})
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
+                default:
+                    break;
             }
-        }
-
-        playerState.handleBuyItem = e => {
-            let cost = parseInt(e.target.dataset.cost)
-            if (cost > playerState.money) {
-                alert("You don't have enough money for this item")
-            } else {
-                let item = e.target.id
-                let items = playerState.items
-                items[e.target.dataset.i].amount = parseInt(e.target.value) + 1
-                Player.putone(playerState.id, item, { [item]: parseInt(e.target.value) + 1 })
-                Player.updatebank(playerState.id, { bankAccount: playerState.money - cost })
-                setPlayerState({
-                    ...playerState,
-                    items,
-                    money: playerState.money - cost
-                })
-            }
+            setPlayerState({ ...playerState, cars, money: playerState.money - cost })
+            Car.updatebody(cars[i]._id, { bodyKit: playerState.cars[i].bodyKit })
+            Car.updateimage(cars[i]._id, { imageLink: playerState.cars[i].imageLink })
+            Player.updatebank(playerState.id, { bankAccount: playerState.money - cost })
         }
     }
 
-    return (
 
-        <>
-            <Nav2 />
-            <ScoreBoard items={playerState.items} info={playerState} playerId={playerState.id} money={playerState.money} />
-            {/* <Cards /> */}
-            <Slide info={playerState} handleBodyKit={playerState.handleBodyKit} handleTire={playerState.handleTire} handleEngine={playerState.handleEngine} />
-            <Inventory prices={playerState} items={playerState.items} PlayerId={playerState.id} money={playerState.money} handleBuyItem={playerState.handleBuyItem} />
-        </>
-    )
+    playerState.handleBuyItem = e => {
+        let cost = parseInt(e.target.dataset.cost)
+        if (cost > playerState.money) {
+            alert("You don't have enough money for this item")
+        } else {
+            let item = e.target.id
+            let items = playerState.items
+            items[e.target.dataset.i].amount = parseInt(e.target.value) + 1
+            Player.putone(playerState.id, item, { [item]: parseInt(e.target.value) + 1 })
+            Player.updatebank(playerState.id, { bankAccount: playerState.money - cost })
+            setPlayerState({
+                ...playerState,
+                items,
+                money: playerState.money - cost
+            })
+        }
+    }
 
-}
 
 
+return (
+
+    <>
+        <Nav2 />
+        <ScoreBoard items={playerState.items} info={playerState} playerId={playerState.id} money={playerState.money} />
+        {/* <Cards /> */}
+        <Slide info={playerState} handleBodyKit={playerState.handleBodyKit} handleTire={playerState.handleTire} handleEngine={playerState.handleEngine} />
+        <Inventory prices={playerState} items={playerState.items} PlayerId={playerState.id} money={playerState.money} handleBuyItem={playerState.handleBuyItem} />
+    </>
+)
+
+    }
 export default Garage
