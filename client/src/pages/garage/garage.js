@@ -176,6 +176,18 @@ const Garage = _ => {
         }
     }
 
+    playerState.sellcar = e => {
+        let cars = playerState.cars
+        let i = parseInt(e.target.value)
+        let price = parseInt(e.target.dataset.price)
+        Car.updateuid(e.target.id, {uid: ''})
+        Car.updateselling(e.target.id, {selling: true})
+        Player.updatebank(playerState.id, { bankAccount: playerState.money + (price*.6) })
+        Player.removecar(playerState.id, e.target.id)
+        cars.splice(i, 1)
+        setPlayerState({...playerState, cars, money: playerState.money + (price*.6)})
+    }
+
 
     return (
         <>

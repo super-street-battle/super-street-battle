@@ -115,9 +115,9 @@ module.exports = app => {
     })
 
     // Delete Routes
-    app.delete('/cars/:id', (req, res) => {
-        Cars.findByIdAndDelete(req.params.id)
-            .then(_ => res.sendStatus(200))
-            .catch(e => console.log(e))
-    })
+    // app.delete('/cars/:id', (req, res) => {
+    //     Cars.findByIdAndDelete(req.params.id)
+    //         .then(_ => res.sendStatus(200))
+    //         .catch(e => console.log(e))
+    // })
 }

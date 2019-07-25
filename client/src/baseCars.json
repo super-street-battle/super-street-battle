@@ -48,10 +48,10 @@
     },
      {
         "stock": "https://super-street-battle.s3.us-west-1.amazonaws.com/1563863598795",
-        "animation": ["https://super-street-battle.s3.us-west-1.amazonaws.com/1564031860641", "https://super-street-battle.s3.us-west-1.amazonaws.com/1564032261630", "https://super-street-battle.s3.us-west-1.amazonaws.com/1564032301441"],
-        "loss": "https://super-street-battle.s3.us-west-1.amazonaws.com/1564031860641",
-        "tie": "https://super-street-battle.s3.us-west-1.amazonaws.com/1564032261630",
-        "win": "https://super-street-battle.s3.us-west-1.amazonaws.com/1564032301441",
+        "animation": ["https://super-street-battle.s3.us-west-1.amazonaws.com/1564055241888", "https://super-street-battle.s3.us-west-1.amazonaws.com/1564055314118", "https://super-street-battle.s3.us-west-1.amazonaws.com/1564055335489"],
+        "loss": "https://super-street-battle.s3.us-west-1.amazonaws.com/1564055241888",
+        "tie": "https://super-street-battle.s3.us-west-1.amazonaws.com/1564055314118",
+        "win": "https://super-street-battle.s3.us-west-1.amazonaws.com/1564055335489",
         "tune": "https://super-street-battle.s3.us-west-1.amazonaws.com/1563863615903",
         "upgraded": "https://super-street-battle.s3.us-west-1.amazonaws.com/1563863640623"
     }

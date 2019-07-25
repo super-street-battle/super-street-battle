@@ -49,6 +49,7 @@ const App = _ => {
   const [gameState, setGameState] = useState({})
   const [isLoggedIn, setLoginState] = useState(1)
   const [newUser, setUserState] = useState("")
+  const [uid, setuid] = useState('')
 
 
 
@@ -56,6 +57,8 @@ const App = _ => {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
         console.log(user.uid)
+        let uid = user.uid
+        setuid(uid)
         Player.checkuid({uid: user.uid})
         .then(({data}) => {
           if (data === 'no user') {
@@ -81,7 +84,7 @@ const App = _ => {
             <Route exact path="/" component={Home}/>
             <Route path="/Race" component={Race} />
             <Route path="/Garage" component={Garage} />
-            <Route path="/Junkyard" component={Junkyard} />
+            <Route path="/Junkyard" component={_ => <Junkyard uid={uid}/>} />
             <Route path="/SelectCar" component={CarSelect} />
             <Redirect to="/" />
           </Switch>
