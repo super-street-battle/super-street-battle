@@ -101,7 +101,7 @@ const Garage = _ => {
             // console.log(playerState.cars[i].engine)
 
             //increment price everytime they buy i product
-            setPlayerState({...playerState, cars, enginePrice: playerState.tirePrice + 50})
+            setPlayerState({...playerState, cars, tirePrice: playerState.tirePrice + 50})
             
         }
 
