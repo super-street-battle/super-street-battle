@@ -12,7 +12,7 @@ import firebase from 'firebase';
 import Loader from './components/loading'
 import CarSelect from './pages/carSelect/carSel'
 import Player from './utils/player'
-
+import axios from 'axios'
 
 
 
@@ -42,24 +42,32 @@ signInOptions: [
 ]
 };
 
+
+
+
 const FBAuth = firebase.auth()
 
 const App = _ => {
 
-  const [gameState, setGameState] = useState({})
+ const [gameState, setGameState] = useState({})
   const [isLoggedIn, setLoginState] = useState(1)
-  const [newUser, setUserState] = useState("")
+  const [newUser, setUserState] = useState("new")
+  const [FirebaseID, setFirebaseID] = useState()
+
 
 
 
   useEffect(_ => {
     firebase.auth().onAuthStateChanged(user => {
+      //handleAddUser()
       if (user) {
         console.log(user.uid)
+         
         Player.checkuid({uid: user.uid})
         .then(({data}) => {
           if (data === 'no user') {
             setUserState('new')
+            handleAddUser()
           } else {
             setUserState('old')
             localStorage.setItem('_id', data)
@@ -73,6 +81,18 @@ const App = _ => {
     })
   }, [])
 
+ const handleAddUser = () => {
+
+  
+     axios.post('/players', {userName: 'Test', 
+          uid: 'test' ,
+      win: 2} )
+      .then(r => console.log(r))
+      .catch(e => console.log(e))
+
+  }
+  
+ 
     if (isLoggedIn === 1 && newUser === 'old') {
       return (
         <div className="App">
@@ -82,7 +102,7 @@ const App = _ => {
             <Route path="/Race" component={Race} />
             <Route path="/Garage" component={Garage} />
             <Route path="/Junkyard" component={Junkyard} />
-            <Route path="/SelectCar" component={() => <CarSelect FirebaseAuth={FBAuth} />} />
+      <Route path="/SelectCar" component={() => <CarSelect handleAddUser={handleAddUser} />} />
             <Redirect to="/" />
           </Switch>
         </div>
@@ -113,8 +133,13 @@ const App = _ => {
         </div>
       )
     }
+  
+  
 
-    
+
+
+
+   
 }
 
 export default App
