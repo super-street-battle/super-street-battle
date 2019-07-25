@@ -2,11 +2,11 @@ const { Player, Cars } = require('../models')
 
 module.exports = app => {
     // get all cars
-    app.get('/cars', (req, res) => {
-        Cars.find({})
-            .then(cars => res.json(cars))
-            .catch(e => console.log(e))
-    })
+    // app.get('/cars', (req, res) => {
+    //     Cars.find({})
+    //         .then(cars => res.json(cars))
+    //         .catch(e => console.log(e))
+    // })
     // get a car by its id
     app.get('/cars/:id', (req, res) => {
         Cars.findById(req.params.id)
@@ -38,58 +38,58 @@ module.exports = app => {
             .catch(e => console.log(e))
     })
     // carName
-    app.put('/cars/:id/carName', (req, res) => {
-        // console.log(req.body.nitro)
-        Cars.findByIdAndUpdate(req.params.id, { $set: { carName: req.body.carName } })
-            .then(_ => res.sendStatus(200))
-            .catch(e => console.log(e))
-    })
+    // app.put('/cars/:id/carName', (req, res) => {
+    //     // console.log(req.body.nitro)
+    //     Cars.findByIdAndUpdate(req.params.id, { $set: { carName: req.body.carName } })
+    //         .then(_ => res.sendStatus(200))
+    //         .catch(e => console.log(e))
+    // })
     // carNickname
-    app.put('/cars/:id/carNickname', (req, res) => {
-        // console.log(req.body.nitro)
-        Cars.findByIdAndUpdate(req.params.id, { $set: { carNickname: req.body.carNickname } })
-            .then(_ => res.sendStatus(200))
-            .catch(e => console.log(e))
-    })
+    // app.put('/cars/:id/carNickname', (req, res) => {
+    //     // console.log(req.body.nitro)
+    //     Cars.findByIdAndUpdate(req.params.id, { $set: { carNickname: req.body.carNickname } })
+    //         .then(_ => res.sendStatus(200))
+    //         .catch(e => console.log(e))
+    // })
     // owner
-    app.put('/cars/:id/owner', (req, res) => {
-        // console.log(req.body.owner)
-        Cars.findByIdAndUpdate(req.params.id, { $set: { owner: req.body.owner } })
-            .then(_ => res.sendStatus(200))
-            .catch(e => console.log(e))
-    })
+    // app.put('/cars/:id/owner', (req, res) => {
+    //     // console.log(req.body.owner)
+    //     Cars.findByIdAndUpdate(req.params.id, { $set: { owner: req.body.owner } })
+    //         .then(_ => res.sendStatus(200))
+    //         .catch(e => console.log(e))
+    // })
     // uid
     app.put('/cars/:id/uid', (req, res) => {
         // console.log(req.body.uid)
-        Cars.findByIdAndUpdate(req.params.id, { $set: { uid: req.body.uid } })
+        Cars.findByIdAndUpdate({_id: req.params.id}, { $set: { uid: req.body.uid } })
             .then(_ => res.sendStatus(200))
             .catch(e => console.log(e))
     })
     // tire
     app.put('/cars/:id/tire', (req, res) => {
         // console.log(req.body.tire)
-        Cars.findByIdAndUpdate(req.params.id, { $set: { tire: req.body.tire } })
+        Cars.findByIdAndUpdate({_id: req.params.id}, { $set: { tire: req.body.tire } })
             .then(_ => res.sendStatus(200))
             .catch(e => console.log(e))
     })
     // engine
     app.put('/cars/:id/engine', (req, res) => {
         // console.log(req.body.engine)
-        Cars.findByIdAndUpdate(req.params.id, { $set: { engine: req.body.engine } })
+        Cars.findByIdAndUpdate({_id: req.params.id}, { $set: { engine: req.body.engine } })
             .then(_ => res.sendStatus(200))
             .catch(e => console.log(e))
     })
     // bodyKit
     app.put('/cars/:id/bodyKit', (req, res) => {
         // console.log(req.body.bodyKit)
-        Cars.findByIdAndUpdate(req.params.id, { $set: { bodyKit: req.body.bodyKit } })
+        Cars.findByIdAndUpdate({_id: req.params.id}, { $set: { bodyKit: req.body.bodyKit } })
             .then(_ => res.sendStatus(200))
             .catch(e => console.log(e))
     })
     // value
     app.put('/cars/:id/value', (req, res) => {
         // console.log(req.body.value)
-        Cars.findByIdAndUpdate(req.params.id, { $set: { value: req.body.value } })
+        Cars.findByIdAndUpdate({_id: req.params.id}, { $set: { value: req.body.value } })
             .then(_ => res.sendStatus(200))
             .catch(e => console.log(e))
     })

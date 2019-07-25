@@ -11,11 +11,9 @@ const Home = _ => {
   useEffect( _ => {
     Player.get10()
     .then(({data}) => {
-      console.log(data)
       setplayersState({ ...playersState, topplayers: data })
     })
     .catch(e => console.error(e))
-    // Player.getone()
   }, [])
 
     return (
@@ -24,12 +22,11 @@ const Home = _ => {
         <div className="homepage">
           <h1 className="subtitle">Top Players</h1>
           {/* <p>Your Experience: {}</p> */}
+          <div className="topcontainer">
           {playersState.topplayers.map(({userName, experience}, index) => (
-            // <div>
               <h1 className="topplayer">{index+1}. {userName} - {experience}</h1>
-            // </div>
           ))}
-          <div className="decoration"></div>
+          </div>
         </div>
       </>
     )

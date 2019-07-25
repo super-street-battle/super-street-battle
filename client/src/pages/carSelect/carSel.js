@@ -4,10 +4,20 @@ import Logo from '../../components/logo'
 import { Carousel, Container, Form, Row, Col, Button } from 'react-bootstrap'
 import images from '../../baseCars.json'
 import './carSel.css'
-//add username input 
-//choose car
-//profile image 
+import Player from '../../utils/player'
+import axios from 'axios'
+
 const carSel = props => {
+
+
+const handleSelect = () => {
+
+   axios.post('/players', {userName: 'car', 
+        uid: 'dfhsdhfkshdkf'} )
+    .then(_ => console.log('added'))
+    .catch(e => console.log(e))
+}
+
 
 
     return (
@@ -35,7 +45,7 @@ const carSel = props => {
                     ))}
                 </Carousel>
                 
-                <Button variant="success">GO!</Button>
+                <Button variant="success" onClick={handleSelect}>GO!</Button>
 ​
 ​
             </Container>

@@ -66,7 +66,11 @@ const Race = _ => {
         carimage: '',
         itemImage: '',
         money: null,
-        tracks: []
+        tracks: [],
+        win: null,
+        loss: null,
+        tie: null,
+        experience: null
     })
         
     raceState.carSelect= e =>{
@@ -90,7 +94,7 @@ const Race = _ => {
     raceState.startrace= _ => {
         if (betinput.current.value > raceState.money){
             alert('Bet exceed amout available!')
-        } else if (raceState.isCar ) {
+        } else if (raceState.isCar && raceState.isLoc ) {
         let ptotal = raceState.ptotal
         let cputotal = raceState.cputotal
         let logarr = []
@@ -136,7 +140,6 @@ const Race = _ => {
             setraceState({
                 ...raceState,
                 bet: parseInt(betinput.current.value),
-                money: raceState.money - parseInt(betinput.current.value),
                 logarr,
                 cputotal,
                 ptotal,
@@ -152,18 +155,17 @@ const Race = _ => {
                 prerace: false
             })
         }
-        console.log(raceState)
     }
     }
     raceState.itemSelect= e => {
         let items = raceState.items
         items[e.target.id].amount = parseInt(items[e.target.id].amount) - 1
         if (e.target.value === "oil") {
-            Player.putone('5d350ddd47c5e61d6838c6f2', 'oil', {oil: items[e.target.id].amount})
+            Player.putone(localStorage.getItem('_id'), 'oil', {oil: items[e.target.id].amount})
         } else if (e.target.value === "nitro") {
-            Player.putone('5d350ddd47c5e61d6838c6f2', 'nitro', {nitro: items[e.target.id].amount})
+            Player.putone(localStorage.getItem('_id'), 'nitro', {nitro: items[e.target.id].amount})
         } else if (e.target.value === "grippyTires") {
-            Player.putone('5d350ddd47c5e61d6838c6f2', 'grippyTires', {grippyTires: items[e.target.id].amount})
+            Player.putone(localStorage.getItem('_id'), 'grippyTires', {grippyTires: items[e.target.id].amount})
         }
         setraceState({ 
             ...raceState,
@@ -174,34 +176,33 @@ const Race = _ => {
         })
     }
     raceState.trackselect = e => {
-        console.log(raceState)
         if (raceState.isCar) {
             switch (e.target.id) {
                 case 'bodykit':
                     if (raceState.pbodyKit > raceState.cpuK) {
                         let res = raceState.pbodyKit + parseFloat(e.target.value)
-                        setraceState({...raceState, pbodyKit: res})
+                        setraceState({...raceState, pbodyKit: res, isLoc: true})
                     } else if (raceState.pbodyKit < raceState.cpuK) {
                         let res = raceState.cpuK + parseFloat(e.target.value)
-                        setraceState({...raceState, cpuK: res})
+                        setraceState({...raceState, cpuK: res, isLoc: true})
                     }
                     break;
                 case 'engine':
                     if (raceState.pengine > raceState.cpuE) {
                         let res = raceState.pengine + parseFloat(e.target.value)
-                        setraceState({...raceState, pengine: res})
+                        setraceState({...raceState, pengine: res, isLoc: true})
                     } else if (raceState.pengine < raceState.cpuE) {
                         let res = raceState.cpuE + parseFloat(e.target.value)
-                        setraceState({...raceState, cpuE: res})
+                        setraceState({...raceState, cpuE: res, isLoc: true})
                     }
                     break;
                 case 'tires':
                     if (raceState.ptire > raceState.cpuT) {
                         let res = raceState.ptire + parseFloat(e.target.value)
-                        setraceState({...raceState, ptire: res})
+                        setraceState({...raceState, ptire: res, isLoc: true})
                     } else if (raceState.ptire < raceState.cpuT) {
                         let res = raceState.cpuT + parseFloat(e.target.value)
-                        setraceState({...raceState, cpuT: res})
+                        setraceState({...raceState, cpuT: res, isLoc: true})
                     }
                     break;
                 default:
@@ -213,7 +214,7 @@ const Race = _ => {
     }
     useEffect(_ =>{
         let tracks = rantracks()
-        Car.getall('5d350ddd47c5e61d6838c6f2')
+        Car.getall(localStorage.getItem('_id'))
         .then(({data}) => {
             const items = [
                 {
@@ -243,7 +244,11 @@ const Race = _ => {
                 money: data.bankAccount, 
                 items,
                 tracks,
-                username: data.userName
+                win: data.win,
+                loss: data.loss,
+                tie: data.tie,
+                username: data.userName,
+                experience: data.experience
             })
     })
         .catch(e => console.error(e))
@@ -306,12 +311,14 @@ const Race = _ => {
             :
             <div>
                 <Result 
-                log={raceState.logarr} 
-                ptotal={raceState.ptotal} 
-                cputotal={raceState.cputotal} 
-                bet={raceState.bet} 
-                money={raceState.money}
-                carimage={raceState.carimage}
+                // log={raceState.logarr} 
+                // ptotal={raceState.ptotal} 
+                // cputotal={raceState.cputotal} 
+                // bet={raceState.bet} 
+                // money={raceState.money}
+                // carimage={raceState.carimage}
+                // id={raceState.id}
+                state={raceState}
                 />
             </div>
             

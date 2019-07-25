@@ -8,10 +8,12 @@
     max-width: 100vw;
     overflow-x: auto;
 }
-.decoration {
-    /* border-bottom: 1px solid white; */
+.topcontainer {
+    /* background: rgba(54, 54, 54, 0.425); */
 }
 .homepage {
     background-image: url(../../assets/race.gif);
     height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
 }

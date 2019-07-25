@@ -6,11 +6,7 @@ module.exports = app => {
             .then(players => res.json(players))
             .catch(e => console.log(e))
     })
-    // app.get('/players/:id', (req, res) => {
-    //     Player.findById(req.params.id)
-    //         .then(player => res.json(player))
-    //         .catch(e => console.log(e))
-    // })
+
     app.get('/players/:id', (req, res) => {
         Player.findById(req.params.id)
             .populate('cars')
@@ -25,21 +21,26 @@ module.exports = app => {
             .then(res.sendStatus(200))
             .catch(e => console.error(e))
     })
-
+    // check uid to see if player exist
+    app.post('/players/login', (req, res) => {
+        Player.findOne({uid: req.body.uid})
+            .then(({_id}) => res.json(_id))
+            .catch(e => res.json('no user'))
+    })
     // Update Routes by id
     // update tires
-    app.put('/players/:id/userName', (req, res) => {
-        // console.log(req.body.userName)
-        Player.findOneAndUpdate({_id: req.params.id}, { $set: { userName: req.body.userName } })
-            .then(_ => res.sendStatus(200))
-            .catch(e => console.log(e))
-    })
-    app.put('/players/:id/uid', (req, res) => {
-        // console.log(req.body.uid)
-        Player.findOneAndUpdate({_id: req.params.id}, { $set: { uid: req.body.uid } })
-            .then(_ => res.sendStatus(200))
-            .catch(e => console.log(e))
-    })
+    // app.put('/players/:id/userName', (req, res) => {
+    //     // console.log(req.body.userName)
+    //     Player.findOneAndUpdate({_id: req.params.id}, { $set: { userName: req.body.userName } })
+    //         .then(_ => res.sendStatus(200))
+    //         .catch(e => console.log(e))
+    // })
+    // app.put('/players/:id/uid', (req, res) => {
+    //     // console.log(req.body.uid)
+    //     Player.findOneAndUpdate({_id: req.params.id}, { $set: { uid: req.body.uid } })
+    //         .then(_ => res.sendStatus(200))
+    //         .catch(e => console.log(e))
+    // })
     app.put('/players/:id/grippyTires', (req, res) => {
         // console.log(req.body.grippyTires)
         Player.findOneAndUpdate({_id: req.params.id}, { $set: { grippyTires: req.body.grippyTires } })
@@ -63,28 +64,28 @@ module.exports = app => {
     // update win
     app.put('/players/:id/win', (req, res) => {
         // console.log(req.body.win)
-        Player.findOneAndUpdate(req.params.id, { $set: { win: req.body.win } })
+        Player.findOneAndUpdate({_id: req.params.id}, { $set: { win: req.body.win } })
             .then(_ => res.sendStatus(200))
             .catch(e => console.log(e))
     })
     // update loss
     app.put('/players/:id/loss', (req, res) => {
         // console.log(req.body.loss)
-        Player.findOneAndUpdate(req.params.id, { $set: { loss: req.body.loss } })
+        Player.findOneAndUpdate({_id: req.params.id}, { $set: { loss: req.body.loss } })
             .then(_ => res.sendStatus(200))
             .catch(e => console.log(e))
     })
     // update tie
     app.put('/players/:id/tie', (req, res) => {
         // console.log(req.body.tie)
-        Player.findOneAndUpdate(req.params.id, { $set: { tie: req.body.tie } })
+        Player.findOneAndUpdate({_id: req.params.id}, { $set: { tie: req.body.tie } })
             .then(_ => res.sendStatus(200))
             .catch(e => console.log(e))
     })
     // update experience
     app.put('/players/:id/experience', (req, res) => {
         // console.log(req.body.experience)
-        Player.findOneAndUpdate(req.params.id, { $set: { experience: req.body.experience } })
+        Player.findOneAndUpdate({_id: req.params.id}, { $set: { experience: req.body.experience } })
             .then(_ => res.sendStatus(200))
             .catch(e => console.log(e))
     })
@@ -105,13 +106,13 @@ module.exports = app => {
 
     // Delete Routes
 
-    app.delete('/players/:id', (req, res) => {
-        Player.findByIdAndDelete(req.params.id)
-            .then(_ => res.sendStatus(200))
-            .catch(e => console.log(e))
-    })
+    // app.delete('/players/:id', (req, res) => {
+    //     Player.findByIdAndDelete(req.params.id)
+    //         .then(_ => res.sendStatus(200))
+    //         .catch(e => console.log(e))
+    // })
     app.delete('/players/:id/delete-car/:carID', (req, res) => {
-        Player.findByIdAndUpdate(req.params.id, { $pull: { cars: { $in: [req.params.carID] } } })
+        Player.findByIdAndUpdate({_id: req.params.id}, { $pull: { cars: { $in: [req.params.carID] } } })
             .then(_ => res.sendStatus(200))
             .catch(e => console.log(e))
     })
