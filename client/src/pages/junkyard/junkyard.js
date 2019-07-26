@@ -4,6 +4,7 @@ import Selling from '../../utils/junkyard'
 import basecars from '../../baseCars.json'
 import Car from '../../utils/car'
 import Player from '../../utils/player'
+import { Card, Button } from 'react-bootstrap';
 
 const Junkyard = props => {
     const [sellingState, setsellingState] = useState({
@@ -125,14 +126,34 @@ const Junkyard = props => {
         <Nav2 />
         {sellingState.sellingcars.map((car, index) =>(
             <div>
-                <img src={car.imageLink} />
+            <Card style={{ width: '18rem' }}>
+            <Card.Img variant="top" src={car.imageLink} />
+            <Card.Body>
+              <Card.Title>{car.carName} {car.bodyKit}</Card.Title>
+              <Card.Text>
+                ${car.value}
+              </Card.Text>
+              <Button id={car._id} value={car.value} data-i={index} onClick={sellingState.handlepurchase}>Purchase</Button>
+            </Card.Body>
+          </Card>
+                {/* <img src={car.imageLink} />
                 <h1>{car.carName} {car.bodyKit}</h1>
                 <p>${car.value}</p>
-                <button id={car._id} value={car.value} data-i={index} onClick={sellingState.handlepurchase}>Purchase</button>
+                <button id={car._id} value={car.value} data-i={index} onClick={sellingState.handlepurchase}>Purchase</button> */}
             </div>
         ))}
         {sellingState.basecars.map((car, index) =>(
             <div>
+                            <Card style={{ width: '18rem' }}>
+            <Card.Img variant="top" src={car.imageLink} />
+            <Card.Body>
+              <Card.Title>{car.carName} {car.bodyKit}</Card.Title>
+              <Card.Text>
+                ${car.value}
+              </Card.Text>
+              <Button id={car._id} value={car.value} data-i={index} onClick={sellingState.handlepurchase}>Purchase</Button>
+            </Card.Body>
+          </Card>
                 <img src={car.imageLink} />
                 <h1>{car.carName} {car.bodyKit}</h1>
                 <p>${car.value}</p>

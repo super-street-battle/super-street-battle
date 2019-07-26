@@ -55,12 +55,8 @@ export default function Upgrades(props) {
                     
                     <Col xs={4}>
                         <h2 style={{ padding: '5px' }} >Body Kit</h2>
-                        //<h4>{props.car.bodyKit}</h4>
-                        //{props.car.bodyKit === 3 ? null : <h5>$1000</h5>}
-                        //{props.car.bodyKit === 3 ? null : <button id={props.index} value='1000' onClick={props.handleBodyKit}>Upgrade</button>}
                         <h4>({props.car.bodyKit}/3)</h4>
                         {handlekitupgrade(props)}
-
                         
                     </Col>
                 </Row>
