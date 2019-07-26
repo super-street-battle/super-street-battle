@@ -43,7 +43,9 @@ const rantracks = _ => {
 }
 
 const Race = _ => {
+
     const betinput = useRef()
+    
     const [raceState, setraceState] = useState({
         id: '',
         cars: [],
@@ -64,6 +66,7 @@ const Race = _ => {
         isItem: false,
         isLoc: false,
         carimage: '',
+        caranimation: [],
         itemImage: '',
         money: null,
         tracks: [],
@@ -88,6 +91,7 @@ const Race = _ => {
             cpuK,
             cpuT,
             carimage: e.target.dataset.image,
+            caranimation: e.target.dataset.animation,
             isCar: true
     })}
 
