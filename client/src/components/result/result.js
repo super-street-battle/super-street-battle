@@ -41,7 +41,6 @@ const Result = props => {
 
 
 
-    // {resultState.animation === '' ? null : <img src={resultState.animation} />}
 
       
         return (
@@ -76,7 +75,7 @@ const Result = props => {
                         vs 
                         <br/>
                         <p>Theirs: {props.state.cputotal}</p>
-                        
+                        {resultState.animation === '' ? null : <img src={resultState.animation} />}
                     </Delayed>
                 </Delayed>
             </div>
