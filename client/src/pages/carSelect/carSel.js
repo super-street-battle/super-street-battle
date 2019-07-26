@@ -1,20 +1,32 @@
 import React, { useState, useEffect } from 'react'
 import Logo from '../../components/logo'
+// import Container from '@material-ui/core/Container'
 import { Carousel, Container, Form, Row, Col, Button } from 'react-bootstrap'
 import images from '../../baseCars.json'
 import './carSel.css'
+
+
 const carSel = props => {
+
+    const handleSelect = e => {
+        console.log(e)
+        alert(test)
+
+}
+
+
+
     return (
         <div className='main_container' >
             <Container >
-                <Form>
-                    <Row>
-                        <Col>
-                            <Form.Control placeholder="Who is Driving?" />
-                        </Col>
-                    </Row>
-                </Form>
-                <Carousel interval={false}>
+            <Form>
+            <Row>
+                <Col>
+                <Form.Control placeholder="Who is Driving?" />
+                </Col>
+            </Row>
+            </Form>
+                <Carousel interval={false} onSelect={handleSelect}>
                     {console.log(images)}
                     {images.map((car, index) => (
                         <Carousel.Item key={1} id={1}>
@@ -24,11 +36,14 @@ const carSel = props => {
                                 thumbnail="true" />
                             <Carousel.Caption>
                                 <small>Model of Car</small>
-                                <Button variant="success" id={index} onClick={props.handleAddUser}>GO!</Button>
+                                <Button variant="success" car={car} i={index} onClick={props.handleAddUser}>GO!</Button> 
                             </Carousel.Caption>
                         </Carousel.Item>
                     ))}
                 </Carousel>
+               
+                {/* <Button variant="success" data-cost={cost} id={name} value={amount} data-i={index} onClick={props.handleAddUser}>GO!</Button> */}
+ 
 
 
             </Container>
