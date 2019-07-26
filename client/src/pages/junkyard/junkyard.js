@@ -4,6 +4,7 @@ import Selling from '../../utils/junkyard'
 import basecars from '../../baseCars.json'
 import Car from '../../utils/car'
 import Player from '../../utils/player'
+import './junkyard.css'
 import { Card, Button } from 'react-bootstrap';
 
 const Junkyard = props => {
