@@ -1,6 +1,6 @@
 .garageInfo{
     color: white;
-    min-height: 65vh;
+    /* min-height:; */
 }
 
 .garageTitles{
@@ -15,28 +15,15 @@
     .garageInfo{
         display: none;
     }
+
+    .cashmoney {
+        /* text-align: center; */
+        font-size: 23px; 
+        margin-right: 9%
+        
+    }
+    .userName{
+        font-size: 50px,
+    }
 }
 
-/* button {
-    align-self: center;
-    border: 2px solid black;
-    color: black;
-    padding: 14px 28px;
-    font-size: 16px;
-    cursor: pointer;
-    opacity: 0.9;
-    border-color: #ff9800;
-    color: orange;
-  }
-  
-button:hover {
-    align-self: center;
-    border: 2px solid black;
-    color: black;
-    padding: 14px 28px;
-    font-size: 16px;
-    opacity: 0.9;
-    background: #ff9800;
-    color: white;
-    cursor: grab
-  } */

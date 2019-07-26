@@ -1,0 +1,9 @@
+.upgItems{
+    padding: 5px;
+}
+
+@media only screen and (max-width: 590px){
+    .sellcar{
+        margin-left: 34%
+    }
+}
