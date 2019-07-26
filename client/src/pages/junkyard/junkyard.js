@@ -4,6 +4,7 @@ import Selling from '../../utils/junkyard'
 import basecars from '../../baseCars.json'
 import Car from '../../utils/car'
 import Player from '../../utils/player'
+import './junkyard.css'
 
 const Junkyard = props => {
     const [sellingState, setsellingState] = useState({

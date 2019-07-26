@@ -16,3 +16,31 @@
         display: none;
     }
 }
+
+button {
+    bottom: 0;
+    align-self: center;
+    position: absolute;
+    border: 2px solid black;
+    color: black;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+    opacity: 0.9;
+    border-color: #ff9800;
+    color: orange;
+  }
+  
+button:hover {
+    bottom: 0;
+    align-self: center;
+    position: absolute;
+    border: 2px solid black;
+    color: black;
+    padding: 14px 28px;
+    font-size: 16px;
+    opacity: 0.9;
+    background: #ff9800;
+    color: white;
+    cursor: grab
+  }

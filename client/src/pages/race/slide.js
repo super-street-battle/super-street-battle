@@ -2,6 +2,8 @@ import React, {useState, useEffect} from 'react'
 import { Carousel, Container } from 'react-bootstrap'
 import Cards from '../garage/cards.js'
 import images from '../../baseCars.json'
+import './race.css'
+
  
 export default function Slide(props) {
 

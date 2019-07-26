@@ -1,10 +1,11 @@
 body {
-    align-content: flex-end;
+    justify-content: center;
+    text-align: center
 }
 
 #inp {
     bottom: 0;
-    align-self: center;
+    align-items: center;
     position: absolute;
     border: 2px solid black;
     color: black;
@@ -28,4 +29,10 @@ body {
     background: #ff9800;
     color: white;
     cursor: grab
+}
+
+#animationGif {
+    padding-top: 15%;
+    margin-top: 20%;
+    align-content: center;
 }

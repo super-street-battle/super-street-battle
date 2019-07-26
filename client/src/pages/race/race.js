@@ -7,6 +7,7 @@ import Nav2 from '../../components/nav2'
 import Result from '../../components/result'
 import Player from '../../utils/player'
 import tracks from '../../raceTrack.json'
+import './race.css'
 
 const grippyTire = 'https://super-street-battle.s3.us-west-1.amazonaws.com/1563852066775'
 const oil = 'https://super-street-battle.s3.us-west-1.amazonaws.com/1563852214573'

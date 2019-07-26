@@ -6,12 +6,33 @@ import race from '../../pages/race/race'
 import Player from '../../utils/player'
 import './result.css'
 import Garage from '../../pages/garage'
+import { makeStyles } from '@material-ui/core/styles'
+
+const useStyles = makeStyles(theme => ({
+    container: {
+      display: 'grid',
+      gridTemplateColumns: 'repeat(12, 1fr)',
+      gridGap: theme.spacing(3)
+      
+    },
+    paper: {
+      padding: theme.spacing(1),
+      textAlign: 'center',
+      color: theme.palette.text.secondary,
+      whiteSpace: 'nowrap',
+      marginBottom: theme.spacing(1)
+    },
+    divider: {
+      margin: theme.spacing(2, 0),
+    },
+  }))
 
 const Result = props => {
     const [resultState, setresultState] = useState({
         result: '',
         animation: '',
     })
+    const classes = useStyles();
 
     useEffect(_ => {
         let animationarr = props.state.caranimation.split(',')
@@ -36,6 +57,8 @@ const Result = props => {
         // setresultState({...resultState, result})
         console.log(resultState.animation)
     }, [])
+
+
 
     // {resultState.animation === '' ? null : <img src={resultState.animation} />}
 
@@ -65,8 +88,8 @@ const Result = props => {
                     <p>{props.state.logarr[4]}</p>
                 </Delayed>
 
-                <Delayed waitBeforeShow={8000} style={resultState.animation}>
-                    <Delayed waitBeforeShow={10000}>
+                <Delayed waitBeforeShow={8000} id="animationGif">
+                    <Delayed waitBeforeShow={9500}>
                         <p>{resultState.result}</p>
                         <p>Your Total: {props.state.ptotal}</p> 
                         <br/>
