@@ -8,11 +8,16 @@ import './carSel.css'
 
 const carSel = props => {
 
+    const handleSelect = e => {
+        console.log(e)
+        alert(test)
+
+}
 
 
 
     return (
-        <div className='main_container'>
+        <div className='main_container' >
             <Container >
             <Form>
             <Row>
@@ -21,7 +26,7 @@ const carSel = props => {
                 </Col>
             </Row>
             </Form>
-                <Carousel interval={false}>
+                <Carousel interval={false} onSelect={handleSelect}>
                     {console.log(images)}
                     {images.map((car, index) => (
                         <Carousel.Item key={1} id={1}>
