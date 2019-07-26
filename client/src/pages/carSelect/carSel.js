@@ -1,6 +1,8 @@
 import React, {useEffect, useState, useRef} from 'react'
+import Nav2 from '../../components/nav2'
+import Nav from '../../components/nav'
 import Logo from '../../components/logo'
-import { Carousel, Container, Form, Row, Col, Button } from 'react-bootstrap'
+import { Carousel, Container, Form, Row, Col, Button, Card } from 'react-bootstrap'
 import images from '../../baseCars.json'
 import cars from '../../baseCars.json'
 import './carSel.css'
@@ -32,13 +34,12 @@ const CarSel = props => {
             .catch(e => console.log(e))
           })
           .catch(e => console.log(e))
-    
+
+          window.location = "/"
       }
     
     return (
-        <div className='main_container' >
 
-        <Nav />
                 <Container >
 
                 <Form>
@@ -48,6 +49,27 @@ const CarSel = props => {
                         </Col>
                     </Row>
                 </Form>
+
+            
+
+                <Row>
+                        <Col className="text-center">
+                        <Carousel interval={false}>
+                        {images.map((car, index) => (
+                        <Carousel.Item key={1} id={1}>
+                            <img src={car.stock}
+                                alt={1}
+                                thumbnail="true" />
+                            <Carousel.Caption>
+                      <div>   <small>Car Model: {car.name}</small> </div>
+                                <Button className="selectitembtn" variant="success" id={index} onClick={loginState.handleAddUser}>Go</Button>
+                            </Carousel.Caption>
+                        </Carousel.Item>
+                    ))}
+                </Carousel>
+
+                        </Col>
+=======
 
 
                 <Row>
@@ -69,6 +91,7 @@ const CarSel = props => {
                     ))}
                 </Carousel>
                 </Col>
+
                     </Row>
 
             </Container>
