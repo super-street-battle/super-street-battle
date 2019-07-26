@@ -13,7 +13,7 @@ const carSel = props => {
 const handleSelect = () => {
 
    axios.post('/players', {userName: 'car', 
-        uid: 'dfhsdhfkshdkf'} )
+uid: 'dflsdjfldjsfldsjf'} )
     .then(_ => console.log('added'))
     .catch(e => console.log(e))
 }

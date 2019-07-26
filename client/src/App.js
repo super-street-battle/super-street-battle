@@ -85,7 +85,7 @@ const App = _ => {
             <Route path="/Race" component={Race} />
             <Route path="/Garage" component={Garage} />
             <Route path="/Junkyard" component={_ => <Junkyard uid={uid}/>} />
-            <Route path="/SelectCar" component={CarSelect} />
+            <Route path="/SelectCar" component={() => <CarSelect FirebaseAuth={FBAuth} />} />
             <Redirect to="/" />
           </Switch>
         </div>
