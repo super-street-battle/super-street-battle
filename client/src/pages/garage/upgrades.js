@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { Container, Button, Form, FormGroup, Label, Input, FormText, Row, Col } from 'react-bootstrap'
 // import Cards from './cards'
+import './upgrades.css'
 
 const handlekitupgrade = props=> {
     if (props.car.bodyKit === 1) {
@@ -37,30 +38,34 @@ export default function Upgrades(props) {
                
                 <Row className="text-center">
                     <Col xs={4}>
-                        
-                        <h2 style={{ padding: '5px' }}>Tires</h2>
+                        {/* tire */}
+                        <h2 className="upgItems" >Tires</h2>
                         {/* <div style={{borderRadius: '35px', borderStyle: 'solid', borderWidth:'3px', borderColor: 'white'}}> */}
-                        <h4>{props.car.tire}</h4>
-                        <h5>${props.info.tireprice[props.index]}</h5>
+                        <h4 className="upgItems" >{props.car.tire}</h4>
+                        <h5 className="upgItems" >${props.info.tireprice[props.index]}</h5>
                         
-                        <button id={props.index}  value={props.info.tireprice[props.index]} onClick={props.handleTire}>Upgrade</button>
+                        <button className="upgItems" id={props.index}  value={props.info.tireprice[props.index]} onClick={props.handleTire}>Upgrade</button>
                         {/* </div> */}
                     </Col>
+
+                {/* engine */}
                     <Col xs={4}>
-                        <h2 style={{ padding: '5px' }}>Engine</h2>
-                        <h4>{props.car.engine}</h4>
-                        <h5>${props.info.engineprice[props.index]}</h5>
-                     <button id={props.index}  value={props.info.engineprice[props.index]} onClick={props.handleEngine}>Upgrade</button>
+                        <h2 className="upgItems" >Engine</h2>
+                        <h4 className="upgItems" >{props.car.engine}</h4>
+                        <h5 className="upgItems" >${props.info.engineprice[props.index]}</h5>
+                     <button className="upgItems"  id={props.index}  value={props.info.engineprice[props.index]} onClick={props.handleEngine}>Upgrade</button>
                     </Col>
                     
+                    {/* body kit */}
                     <Col xs={4}>
-                        <h2 style={{ padding: '5px' }} >Body Kit</h2>
-                        <h4>({props.car.bodyKit}/3)</h4>
-                        {handlekitupgrade(props)}
+                        <h2 className="upgItems"  >Body Kit</h2>
+                        <h4 className="upgItems" >({props.car.bodyKit}/3)</h4>
+                       <h5 className="upgItems"> {handlekitupgrade(props)}</h5>
                     </Col>
                 </Row>
-                <Row className="text-center">
-                    <button id={props.car._id} value={props.index} data-price={props.car.value} onClick={handleselling}>Sell Car</button>
+                {/* button to sell car */}
+                <Row style={{float:'right', marginTop:'7%'}}>
+                    <button  className="sellCar"  id={props.car._id} value={props.index} data-price={props.car.value} onClick={handleselling}>Sell Car</button>
                 </Row>
             </Container>
         </div>

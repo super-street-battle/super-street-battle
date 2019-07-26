@@ -7,24 +7,24 @@ export default function (props) {
     return (
         <div>
 
-            <Container className='garageInfo text-center pt-5'>
+            <Container className=' text-center pt-5'>
                 <Row>
                     <Col xs={12} className='pt-2 pb-5'>
-                        <h1 className='jumboInfo' id='garageUserName'>{props.info.userName}'s Garage</h1>
+                        <h1 className='userName' id='garageUserName'>{props.info.userName}'s Garage</h1>
                     </Col>
                 </Row>
                 <Row>
                     <Col xs={4}>
-                        <h4 className='jumboInfo pt-5 mt-5 pb-2'>Wins:{props.info.win}</h4>
+                        <h4 className='garageInfo pt-5 mt-5 pb-2'>Wins:{props.info.win}</h4>
                     </Col>
                     <Col xs={4}>
-                        <h4 className='jumboInfo pt-5 mt-5 pb-2'>Losses:{props.info.loss}</h4>
+                        <h4 className='garageInfo pt-5 mt-5 pb-2'>Losses:{props.info.loss}</h4>
                     </Col>
                     <Col xs={4}>
-                        <h4 className='jumboInfo pt-5 mt-5 pb-2'>Ties:{props.info.tie}</h4><br />
+                        <h4 className='garageInfo pt-5 mt-5 pb-2'>Ties:{props.info.tie}</h4><br />
                     </Col>
                     <Col xs={12}>
-                        <h4 className='jumboInfo text-right pt-5 mt-5 pr-5'>Cash: {props.info.money}</h4>
+                        <h4 className='cashmoney text-right pt-5 mt-5 pr-5'>Cash: {props.info.money}</h4>
                     </Col>
                 </Row>
             </Container>
