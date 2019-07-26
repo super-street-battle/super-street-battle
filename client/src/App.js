@@ -96,6 +96,9 @@ const App = _ => {
          .catch(e => console.log(e))
       })
       .catch(e => console.log(e))
+
+
+      setLoginState({...loginState, newUser: 'old'})
      
  }
   
