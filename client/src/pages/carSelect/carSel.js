@@ -1,6 +1,8 @@
 import React, {useEffect, useState, useRef} from 'react'
+import Nav2 from '../../components/nav2'
+import Nav from '../../components/nav'
 import Logo from '../../components/logo'
-import { Carousel, Container, Form, Row, Col, Button } from 'react-bootstrap'
+import { Carousel, Container, Form, Row, Col, Button, Card } from 'react-bootstrap'
 import images from '../../baseCars.json'
 import cars from '../../baseCars.json'
 import './carSel.css'
@@ -36,31 +38,37 @@ const CarSel = props => {
       }
     
     return (
-        <div className='main_container' >
-            <Container >
+        <div>
+              <Nav />
+                <Container >
+
                 <Form>
                     <Row>
-                        <Col>
-                            <Form.Control ref={username} placeholder="Who is Driving?" />
+                        <Col className='pt-3'>
+                            <Form.Control ref={username} placeholder="Who is Driving?"/>
                         </Col>
                     </Row>
                 </Form>
-                <Carousel interval={false}>
-                    {console.log(images)}
-                    {images.map((car, index) => (
+            
+
+                <Row>
+                        <Col className="text-center">
+                        <Carousel interval={false}>
+                        {images.map((car, index) => (
                         <Carousel.Item key={1} id={1}>
-                            <img className="d-block w-100"
-                                src={car.stock}
+                            <img src={car.stock}
                                 alt={1}
                                 thumbnail="true" />
                             <Carousel.Caption>
-                                <small>Model of Car</small>
-                                <Button variant="success" id={index} onClick={loginState.handleAddUser}>GO!</Button>
+                      <div>   <small>Car Model: {car.name}</small> </div>
+                                <Button className="selectitembtn" variant="success" id={index} onClick={loginState.handleAddUser}>+</Button>
                             </Carousel.Caption>
                         </Carousel.Item>
                     ))}
                 </Carousel>
 
+                        </Col>
+                    </Row>
 
             </Container>
         </div>
