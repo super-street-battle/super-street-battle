@@ -14,12 +14,27 @@ import model5 from '../../model5.json'
 import model6 from '../../model6.json'
 import Car from '../../utils/car'
 
+
+
 const grippyTire = 'https://super-street-battle.s3.us-west-1.amazonaws.com/1563852066775'
 const oil = 'https://super-street-battle.s3.us-west-1.amazonaws.com/1563852214573'
 const nitro = 'https://super-street-battle.s3.us-west-1.amazonaws.com/1563852192955'
+let costs = []
+let ecosts = []
 
+const tireprice = data => {
+    data.cars.forEach(car => {
+        costs.push(car.tire * 25)
+    })
+}
+const engineprice = data => {
+    data.cars.forEach(car => {
+        ecosts.push(car.engine * 25)
+    })
+}
 
 const Garage = _ => {
+
     const [playerState, setPlayerState] = useState({
         userName: '',
         money: null,
@@ -31,13 +46,15 @@ const Garage = _ => {
         win: null,
         tie: null,
         id: ''
+        //         enginePrice: null,
+        //         tirePrice: null 
     })
-
-    // 5d350ddd47c5e61d6838c6f2
 
     useEffect(_ => {
         Player.getone(localStorage.getItem('_id'))
             .then(({ data }) => {
+                tireprice(data)
+                engineprice(data)
                 setPlayerState({
                     ...playerState,
                     userName: data.userName,
@@ -68,11 +85,72 @@ const Garage = _ => {
                     loss: data.loss,
                     win: data.win,
                     tie: data.tie,
-                    id: data._id
+                    id: data._id,
+                    tireprice: costs,
+                    engineprice: ecosts
                 })
             })
             .catch(e => console.log(e))
     }, [])
+
+
+    playerState.handleTire = e => {
+        console.log(playerState.tireprice)
+        // grabs car array
+        let i = parseInt(e.target.id)
+        //grabs the clicked car
+        let cars = playerState.cars
+        let cost = parseInt(e.target.value)
+        let tireprice = playerState.tireprice
+        if (playerState.money < cost) {
+            alert('Cannot Upgrade')
+        } else {
+            cars[i].tire = cars[i].tire + 1
+            tireprice.splice(i, 1, cars[i].tire * 25)
+            console.log(tireprice.splice(i, 1, cars[i].tire * 25))
+            // setPlayerState({...playerState, cars})
+
+            setPlayerState({ ...playerState, cars, money: playerState.money - cost, tireprice })
+            Player.updatebank(playerState.id, { bankAccount: playerState.money - cost })
+            Car.updatetires(cars[i]._id, { tire: cars[i].tire })
+            // console.log(playerState.cars[i].engine)
+
+            //increment price everytime they buy i product
+            // setPlayerState({...playerState, cars, tirePrice: playerState.tirePrice + 50})
+
+        }
+
+    }
+
+    playerState.handleEngine = e => {
+        console.log(playerState.engineprice)
+        // grabs car array
+        let i = parseInt(e.target.id)
+        //grabs the clicked car
+        let cars = playerState.cars
+        let cost = parseInt(e.target.value)
+        let engineprice = playerState.engineprice
+        if (playerState.money < cost) {
+            alert('Cannot Upgrade')
+        } else {
+            cars[i].engine = cars[i].engine + 1
+            engineprice.splice(i, 1, cars[i].engine * 25)
+            // console.log(engineprice.splice(i, 1, cars[i].engine * 25))
+            // setPlayerState({...playerState, cars})
+
+            setPlayerState({ ...playerState, cars, money: playerState.money - cost, engineprice })
+            Player.updatebank(playerState.id, { bankAccount: playerState.money - cost })
+            Car.updateengine(cars[i]._id, { engine: cars[i].engine })
+            // console.log(playerState.cars[i].engine)
+
+            //increment price everytime they buy i product
+            // setPlayerState({...playerState, cars, tirePrice: playerState.tirePrice + 50})
+
+        }
+    }
+
+
+
 
 
     playerState.handleBodyKit = e => {
@@ -80,7 +158,7 @@ const Garage = _ => {
         let cars = playerState.cars
         let cost = parseInt(e.target.value)
         if (playerState.cars[i].bodyKit >= 3 || playerState.money < cost) {
-            alert('Cannot upgrade')
+            alert('Cannot Upgrade')
         } else {
             cars[i].bodyKit = cars[i].bodyKit + 1
             cars[i].value = cars[i].value + (cost * .7)
@@ -116,7 +194,7 @@ const Garage = _ => {
                             break;
                     }
                     break;
-                case 3: 
+                case 3:
                     switch (playerState.cars[i].carName) {
                         case "nsx":
                                 cars[i].imageLink = model1[1].image
@@ -158,6 +236,7 @@ const Garage = _ => {
         }
     }
 
+
     playerState.handleBuyItem = e => {
         let cost = parseInt(e.target.dataset.cost)
         if (cost > playerState.money) {
@@ -189,14 +268,17 @@ const Garage = _ => {
     }
 
 
-    return (
-        <>
-            <Nav2 />
-            <ScoreBoard items={playerState.items} info={playerState} playerId={playerState.id} money={playerState.money} />
-            {/* <Cards /> */}
-            <Slide info={playerState} handleBodyKit={playerState.handleBodyKit} />
-            <Inventory items={playerState.items} PlayerId={playerState.id} money={playerState.money} handleBuyItem={playerState.handleBuyItem} />
-        </>
-    )
-}
-export default Garage 
+
+return (
+
+    <>
+        <Nav2 />
+        <ScoreBoard items={playerState.items} info={playerState} playerId={playerState.id} money={playerState.money} />
+        {/* <Cards /> */}
+        <Slide info={playerState} handleBodyKit={playerState.handleBodyKit} handleTire={playerState.handleTire} handleEngine={playerState.handleEngine} />
+        <Inventory prices={playerState} items={playerState.items} PlayerId={playerState.id} money={playerState.money} handleBuyItem={playerState.handleBuyItem} />
+    </>
+)
+
+    }
+export default Garage

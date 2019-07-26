@@ -144,6 +144,16 @@ const Junkyard = props => {
         ))}
         {sellingState.basecars.map((car, index) =>(
             <div>
+                            <Card style={{ width: '18rem' }}>
+            <Card.Img variant="top" src={car.imageLink} />
+            <Card.Body>
+              <Card.Title>{car.carName} {car.bodyKit}</Card.Title>
+              <Card.Text>
+                ${car.value}
+              </Card.Text>
+              <Button id={car._id} value={car.value} data-i={index} onClick={sellingState.handlepurchase}>Purchase</Button>
+            </Card.Body>
+          </Card>
                 <img src={car.imageLink} />
                 <h1>{car.carName} {car.bodyKit}</h1>
                 <p>${car.value}</p>
