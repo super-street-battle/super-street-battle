@@ -4,37 +4,25 @@ module.exports = (Schema, model) => {
             type: String,
             default: ""
         },
-        // carNickname:{
-        //     type: String,
-        //     default: ""
-        // },
-        // type: {
-        //     type: String,
-        //     default: ""
-        // },
         uid: {
             type: String,
             default: ""
         },
-        // owner: {
-        //     type: String,
-        //     default: ""
-        // },
         tire: {
             type: Number,
-            default: "0"
+            default: "1"
         },
         engine: {
             type: Number,
-            default: "0"
+            default: "1"
         },
         bodyKit: {
             type: Number,
-            default: "0"
+            default: "1"
         },
         value: {
             type: Number,
-            default: "0"
+            default: "800"
         },
         imageLink: {
             type: String,
