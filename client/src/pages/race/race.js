@@ -283,17 +283,17 @@ const Race = _ => {
         {raceState.prerace ? 
             <div>
                 <Nav2 />
-                {raceState.isCar ? <img src={raceState.carimage} /> : 
+                {raceState.isCar ? null : 
                     <div>
-                        <h1 style={{textAlign:'center', color: '#e97718', fontSize:'25px'}}>Select your car:</h1>
+                        <h1 style={{textAlign:'center', color: '#e97718', fontSize:'19px', marginTop:'7%'}}>Select your car:</h1>
                         <Slide cars={raceState.cars} carSelect={raceState.carSelect}/>
                         <br />
                     </div>
                 }
                 <br />
-                {raceState.isItem ? <img src={raceState.itemImage} /> :
+                {raceState.isItem ? null :
                     <div>
-                        <h1 style={{textAlign:'center', color: '#e97718', fontSize:'25px'}}>Select your item:</h1>
+                        <h1 style={{textAlign:'center', color: '#e97718', fontSize:'19px', marginTop:'2%'}}>Select your item:</h1>
                         <SlideItem items={raceState.items} itemSelect={raceState.itemSelect} handlepurchase={raceState.handlepurchase} />
                         <br />
                     </div>
@@ -301,17 +301,20 @@ const Race = _ => {
                 <br />
                 {raceState.isLoc ? null :
                     <div>
-                        <h1 style={{textAlign:'center', color: '#e97718', fontSize:'25px'}}>Select the track:</h1>
+                        <h1 style={{textAlign:'center', color: '#e97718', fontSize:'19px', marginTop:'2%'}}>Select the track:</h1>
                         <SlideLoc tracks={raceState.tracks} trackselect={raceState.trackselect}/>
                         <br />
                     </div>
                 }
                 <br />
                 {/* <RaceBet /> */}
-                <label htmlFor='bet'>Bet $</label>
-                <input id='bet' type='number' ref={betinput} placeholder="0"/>
-                <p>Available ${raceState.money}</p>
-                <button onClick={raceState.startrace} >Race</button>
+                <h1 style={{textAlign:'center', color: '#e97718', fontSize:'19px', marginBottom:'4%'}}>Place your bet!</h1>
+                <div className="bets">
+                    <label htmlFor='bet'>$</label>
+                    <input id='bet' type='number' ref={betinput} placeholder="0"/>
+                </div>
+                <p>Max bet ${raceState.money}</p>
+                <button className="racebtn" onClick={raceState.startrace} >Race</button>
             </div>
             :
             <div>

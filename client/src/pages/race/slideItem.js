@@ -21,15 +21,15 @@ export default function SlideItem(props) {
             <Container >
                 <Carousel interval={false}>
                     {props.items.map(({itemImage, amount, name, cost}, index) => (
-                        <Carousel.Item>
-                            <img className="d-block w-100"
+                        <Carousel.Item className="items3">
+                            <img className="d-block w-100 item"
                                 src={itemImage}
                                 alt={itemImage}
                                 thumbnail />
 
-                            <Carousel.Caption>
-                                <h1>Available: {amount}</h1>
-                                {amount > 0 ? <button id={index} value={name} data-image={itemImage} onClick={props.itemSelect}>Use</button> : <button id={name} data-amount={amount} data-i={index} value={cost} onClick={props.handlepurchase} >Purchase</button>}
+                            <Carousel.Caption className='items'>
+                                <h1>Inventory: {amount}</h1>
+                                {amount > 0 ? <button className="selectitembtn" id={index} value={name} data-image={itemImage} onClick={props.itemSelect}>Use</button> : <button className="selectitembtn" id={name} data-amount={amount} data-i={index} value={cost} onClick={props.handlepurchase} >Purchase</button>}
                             </Carousel.Caption>
                         </Carousel.Item>
                     ))}
