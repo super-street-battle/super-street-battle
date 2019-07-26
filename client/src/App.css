@@ -13,9 +13,7 @@ a {
 }
 
 button {
-  bottom: 0;
   align-self: center;
-  position: absolute;
   border: 2px solid black;
   color: black;
   padding: 14px 28px;
@@ -27,9 +25,7 @@ button {
 }
 
 button:hover {
-  bottom: 0;
   align-self: center;
-  position: absolute;
   border: 2px solid black;
   color: black;
   padding: 14px 28px;
