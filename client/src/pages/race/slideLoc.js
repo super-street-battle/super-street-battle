@@ -24,9 +24,9 @@ export default function SlideLoc(props) {
                         // console.log(track.tracks)
                         <Carousel.Item key={id} id={id}>
                             <div className="loc">
-                                <button onClick={props.trackselect} id={weather.part} value={weather.point}>Select</button>
-                                <h1>{track}</h1>
+                                <h1 className="location">{track}</h1>
                                 <small>{terrain}</small>
+                                <button className="locbtn" onClick={props.trackselect} id={weather.part} value={weather.point}>+</button>
                                 </div>
                         </Carousel.Item>
                     ))}
