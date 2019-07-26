@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, {useState, useEffect} from 'react'
 import Nav from './components/nav'
 import './App.css'
 import './CSS_Reset.css'
@@ -15,25 +15,25 @@ import Player from './utils/player'
 // Configure Firebase.
 var firebaseConfig = {
   apiKey: "AIzaSyAG9WRxHHx9fVwHL287lMPRY3y4t7MZkVw",
-  authDomain: "todo-334b1.firebaseapp.com",
-  databaseURL: "https://todo-334b1.firebaseio.com",
-  projectId: "todo-334b1",
-  storageBucket: "todo-334b1.appspot.com",
-  messagingSenderId: "595507004361",
-  appId: "1:595507004361:web:5ddc164fdcc824a0"
+    authDomain: "todo-334b1.firebaseapp.com",
+    databaseURL: "https://todo-334b1.firebaseio.com",
+    projectId: "todo-334b1",
+    storageBucket: "todo-334b1.appspot.com",
+    messagingSenderId: "595507004361",
+    appId: "1:595507004361:web:5ddc164fdcc824a0"
 };
 firebase.initializeApp(firebaseConfig);
 // Configure FirebaseUI.
 const uiConfig = {
-  // Popup signin flow rather than redirect flow.
-  signInFlow: 'popup',
-  // Redirect to /signedIn after sign in is successful. Alternatively you can provide a callbacks.signInSuccess function.
-  signInSuccessUrl: '/',
-  // We will display Google and Facebook as auth providers.
-  signInOptions: [
-    firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-    firebase.auth.FacebookAuthProvider.PROVIDER_ID
-  ]
+// Popup signin flow rather than redirect flow.
+signInFlow: 'popup',
+// Redirect to /signedIn after sign in is successful. Alternatively you can provide a callbacks.signInSuccess function.
+signInSuccessUrl: '/',
+// We will display Google and Facebook as auth providers.
+signInOptions: [
+  firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+  firebase.auth.FacebookAuthProvider.PROVIDER_ID
+]
 };
 const FBAuth = firebase.auth()
 const App = _ => {
@@ -58,10 +58,12 @@ const App = _ => {
           .catch(e => console.log(e))
         setLoginState({ ...loginState, isLoggedIn: 1 })
       } else {
-        setLoginState({ ...loginState, isLoggedIn: 2 })
+        setLoginState({...loginState, isLoggedIn: 2})
       }
     })
   }, [])
+ 
+
 
   if (loginState.isLoggedIn === 1 && loginState.newUser === 'old') {
     return (
@@ -101,8 +103,6 @@ const App = _ => {
       </div>
     )
   }
-
-
 
 }
 export default App
