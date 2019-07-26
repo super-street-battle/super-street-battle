@@ -1,14 +1,14 @@
 [
     {
-       "image": "https://super-street-battle.s3.us-west-1.amazonaws.com/1563863529965",
-       "animation": ["https://super-street-battle.s3.us-west-1.amazonaws.com/1564055428996", "https://super-street-battle.s3.us-west-1.amazonaws.com/1564055521125", "https://super-street-battle.s3.us-west-1.amazonaws.com/1564055483601"],
-       "loss": "https://super-street-battle.s3.us-west-1.amazonaws.com/1564055428996",
-       "tie": "https://super-street-battle.s3.us-west-1.amazonaws.com/1564055483601",
-       "win": "https://super-street-battle.s3.us-west-1.amazonaws.com/1564055521125"
+        "image": "https://super-street-battle.s3.us-west-1.amazonaws.com/1564168388589",
+        "animation": ["https://super-street-battle.s3.us-west-1.amazonaws.com/1564055586609", "https://super-street-battle.s3.us-west-1.amazonaws.com/1564055609021", "https://super-street-battle.s3.us-west-1.amazonaws.com/1564055631858"],
+        "loss": "https://super-street-battle.s3.us-west-1.amazonaws.com/1564055428996",
+        "tie": "https://super-street-battle.s3.us-west-1.amazonaws.com/1564055483601",
+        "win": "https://super-street-battle.s3.us-west-1.amazonaws.com/1564055521125"
     },
     {
-        "image": "https://super-street-battle.s3.us-west-1.amazonaws.com/1563863549205",
-        "animation": ["https://super-street-battle.s3.us-west-1.amazonaws.com/1564055586609", "https://super-street-battle.s3.us-west-1.amazonaws.com/1564055631858", "https://super-street-battle.s3.us-west-1.amazonaws.com/1564055609021"],
+        "image": "https://super-street-battle.s3.us-west-1.amazonaws.com/1564168415834",
+        "animation": ["https://super-street-battle.s3.us-west-1.amazonaws.com/1564055428996", "https://super-street-battle.s3.us-west-1.amazonaws.com/1564055483601", "https://super-street-battle.s3.us-west-1.amazonaws.com/1564055521125"],
         "loss": "https://super-street-battle.s3.us-west-1.amazonaws.com/1564055586609",
         "tie": "https://super-street-battle.s3.us-west-1.amazonaws.com/1564055609021",
         "win": "https://super-street-battle.s3.us-west-1.amazonaws.com/1564055631858"

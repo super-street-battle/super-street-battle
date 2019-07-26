@@ -4,6 +4,7 @@ import Cards from './cards.js'
 import Upgrades from './upgrades'
 import images from '../../baseCars.json'
 import Axios from 'axios'
+import './scoreBoard.css'
 
 export default function Slide(props) {
 
@@ -27,7 +28,7 @@ export default function Slide(props) {
     return (
         <div>
 
-            <Container className='text-center'>
+            <Container className='text-center slidecontainer'>
                 {/* <Row>
                     <Col xs={12} className='text-center pt-5' style={{ fontSize: '37px' }}>
                         <h1>
