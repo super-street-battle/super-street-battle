@@ -1,15 +1,17 @@
 import React, {useEffect, useState} from 'react'
-import {Card} from 'react-bootstrap'
+import { Redirect } from 'react-router-dom'
 import Delayed from './delayed'
 import race from '../../pages/race/race'
 import Player from '../../utils/player'
 import './result.css'
+import Garage from '../../pages/garage'
 
 const Result = props => {
     const [resultState, setresultState] = useState({
         result: '',
-        animation: ''
+        animation: '',
     })
+
     useEffect(_ => {
         console.log(props)
         let animationarr = props.state.caranimation.split(',')
@@ -34,20 +36,8 @@ const Result = props => {
         setresultState({...resultState, result})
     }, [])
 
+        var background = resultState.animation
 
-    // showComments = {
-    //     props.state.logarr.map()
-    //   }
-    // var comments = [props.state.state.logarr]
-
-    // function getComments() {
-    //     for (var i = 0; i < comments.length; i++) {
-    //       var divElement = document.createElement("div");
-    //       divElement.className = "boxin";
-    //       divElement.innerHTML = (props.state.logarr[i]);
-    //     }
-      
-    //   }
       
         return (
             <>
@@ -73,15 +63,16 @@ const Result = props => {
                     <p>{props.state.logarr[4]}</p>
                 </Delayed>
 
-                <Delayed waitBeforeShow={6000} style={{ "backgroundImage": { animation }, "width": "300px"}}>
+                <Delayed waitBeforeShow={6000} style={{ "backgroundImage": {background}, "max-width": "300px"}}>
                     <Delayed waitBeforeShow={10000}>
                         <p>{resultState.result}</p>
-                        <p>You: {props.state.ptotal} vs Them: {props.state.cputotal}</p>
+                        <p>Your Total: {props.state.ptotal} vs Theirs: {props.state.cputotal}</p>
                     </Delayed>
                 </Delayed>
             </div>
             <div>
-                <input id="inp" type="button" value="return to garage" onclick="location.href='/Garage';" />
+                <input id="inp" type="button" value="return to garage" Route path="/Garage" component={Garage} />
+ />
             </div>
             </div>
             </>
