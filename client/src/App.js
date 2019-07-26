@@ -9,10 +9,10 @@ import Garage from './pages/garage'
 import Login from './pages/login'
 import Junkyard from './pages/junkyard'
 import firebase from 'firebase';
-import Loader from './components/loading'
 import CarSelect from './pages/carSelect/carSel'
 import Player from './utils/player'
-
+import axios from 'axios' 
+import cars from './baseCars.json'
 
 
 
@@ -25,10 +25,8 @@ var firebaseConfig = {
     storageBucket: "todo-334b1.appspot.com",
     messagingSenderId: "595507004361",
     appId: "1:595507004361:web:5ddc164fdcc824a0"
-
 };
 firebase.initializeApp(firebaseConfig);
-
 // Configure FirebaseUI.
 const uiConfig = {
 // Popup signin flow rather than redirect flow.
@@ -41,42 +39,68 @@ signInOptions: [
   firebase.auth.FacebookAuthProvider.PROVIDER_ID
 ]
 };
-
 const FBAuth = firebase.auth()
-
 const App = _ => {
-
-  const [gameState, setGameState] = useState({})
-  const [isLoggedIn, setLoginState] = useState(1)
-  const [newUser, setUserState] = useState("")
-  const [uid, setuid] = useState('')
-
-
-
+  // const [isLoggedIn, setLoginState] = useState(1)
+  // const [newUser, setUserState] = useState("new")
+  const [loginState, setLoginState] = useState({
+    isLoggedIn: 1,
+    newUser: 'new'
+  })
   useEffect(_ => {
     firebase.auth().onAuthStateChanged(user => {
-      if (user) {
-        console.log(user.uid)
-        let uid = user.uid
-        setuid(uid)
+      //handleAddUser()
+      if (user) {  
         Player.checkuid({uid: user.uid})
         .then(({data}) => {
           if (data === 'no user') {
-            setUserState('new')
-          } else {
-            setUserState('old')
+            setLoginState({...loginState, newUser: 'new'})
+           } else {
+            setLoginState({...loginState, newUser: 'old'})
             localStorage.setItem('_id', data)
           }
         })
         .catch(e => console.log(e))
-        setLoginState(1)
+
+        setLoginState({...loginState, isLoggedIn: 1})
       } else {
-        setLoginState(2)     
+        setLoginState({...loginState, isLoggedIn: 2})
       }
     })
   }, [])
+ 
 
-    if (isLoggedIn === 1 && newUser === 'old') {
+  loginState.handleAddUser = event => {
+  
+    //Get Car from BaseCar.json
+    const carIndex = event.target.id
+
+
+     axios.post('/players', {  uid: FBAuth.currentUser.uid} )
+     .then(r => {
+      Player.checkuid({uid: FBAuth.currentUser.uid})
+        .then(({data}) => {
+            setLoginState({...loginState, newUser: 'old'})
+            localStorage.setItem('_id', data)
+          })
+         .catch(e => console.log(e))
+         //Add Base Car after Adding User
+         axios.post('/cars', {
+             carName: cars[carIndex].name,
+                uid: FBAuth.currentUser.uid,
+                imageLink: cars[carIndex].stock,
+                animation: cars[carIndex].animation,
+                selling: false
+           })
+         .then(r => console.log('Car Added'))
+         .catch(e => console.log(e))
+      })
+      .catch(e => console.log(e))
+     
+ }
+  
+ 
+    if (loginState.isLoggedIn === 1 && loginState.newUser === 'old') {
       return (
         <div className="App">
         <Nav FirebaseAuth={FBAuth}/>
@@ -84,13 +108,13 @@ const App = _ => {
             <Route exact path="/" component={Home}/>
             <Route path="/Race" component={Race} />
             <Route path="/Garage" component={Garage} />
-            <Route path="/Junkyard" component={_ => <Junkyard uid={uid}/>} />
-            <Route path="/SelectCar" component={() => <CarSelect FirebaseAuth={FBAuth} />} />
+            <Route path="/Junkyard" component={Junkyard} />
+      {/* <Route path="/SelectCar" component={() => <CarSelect handleAddUser={loginState.handleAddUser} />} /> */}
             <Redirect to="/" />
           </Switch>
         </div>
         )
-    } else if (isLoggedIn === 2) {
+    } else if (loginState.isLoggedIn === 2) {
       return (
         <div>
          <Switch>
@@ -99,11 +123,12 @@ const App = _ => {
           </Switch>
       </div>
       )
-    } else if (isLoggedIn === 1 && newUser === 'new') {
+    } else if (loginState.isLoggedIn === 1 && loginState.newUser === 'new') {
       return (
         <div>
           <Switch>
-            <Route path="/login/newUser" component={CarSelect} />
+      <Route path="/login/newUser" component={_ => <CarSelect handleAddUser={loginState.handleAddUser} />} />
+      {/* <Route path="/login/newUser" component={_ => <CarSelect />} /> */}
             <Route path="/Login" component={ () => <Login FirebaseAuth={FBAuth} uiConfig={uiConfig}/> }/>
             <Redirect to="/login/newUser" />
           </Switch>
@@ -116,8 +141,8 @@ const App = _ => {
         </div>
       )
     }
-
-    
+  
+  
+   
 }
-
 export default App
