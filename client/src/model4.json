@@ -8,7 +8,7 @@
     },
     {
         "image": "https://super-street-battle.s3.us-west-1.amazonaws.com/1563863424741",
-        "animation": ["https://super-street-battle.s3.us-west-1.amazonaws.com/1564040072756", "https://super-street-battle.s3.us-west-1.amazonaws.com/1564040096527", "https://super-street-battle.s3.us-west-1.amazonaws.com/1564040112241"],
+        "animation": ["https://super-street-battle.s3.us-west-1.amazonaws.com/1564040072756", "https://super-street-battle.s3.us-west-1.amazonaws.com/1564169811503", "https://super-street-battle.s3.us-west-1.amazonaws.com/1564040112241"],
         "loss": "https://super-street-battle.s3.us-west-1.amazonaws.com/1564034711103",
         "tie": "https://super-street-battle.s3.us-west-1.amazonaws.com/1564034733214",
         "win": "https://super-street-battle.s3.us-west-1.amazonaws.com/1564034750244" 

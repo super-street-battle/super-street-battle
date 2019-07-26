@@ -133,8 +133,8 @@ const Junkyard = props => {
             <div className='selling'>
                 <img src={car.imageLink} className='sellingimg'/>
                 <h1 className='sellingcap'>{car.carName} {car.bodyKit}</h1>
-                <p className='sellingcap'>${car.value}</p>
-                <button className="sellingbtn" id={car._id} value={car.value} data-i={index} onClick={sellingState.handlepurchase}>Purchase</button>
+                <p className='sellingcap'>${car.value*.8}</p>
+                <button className="sellingbtn" id={car._id} value={car.value*.8} data-i={index} onClick={sellingState.handlepurchase}>Purchase</button>
             </div>
         ))}
         <h1 className="sellingsub">Base Models</h1>
