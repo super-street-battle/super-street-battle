@@ -57,10 +57,6 @@ export default function Slide(props) {
 
             </Container>
 
-            {/* create onclick function which will pass id of car to upgrades which will then open up the workshop */}
-
-//             {showWorkshop ? <Upgrades tireprice={props.tireprice} engineprice={props.engineprice} info={props.info} car={currentCar} index={currentIndex} handleBodyKit={props.handleBodyKit} handleEngine={props.handleEngine} handleTire={props.handleTire} /> : null}
-
             {showWorkshop ? <Upgrades info={props.info} car={currentCar} index={currentIndex} handleSelect={handleSelect} handleBodyKit={props.handleBodyKit}/> : null}
 
         </div>
