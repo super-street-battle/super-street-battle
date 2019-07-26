@@ -4,13 +4,17 @@ import Selling from '../../utils/junkyard'
 import basecars from '../../baseCars.json'
 import Car from '../../utils/car'
 import Player from '../../utils/player'
+import './junkyard.css'
+import { FaShoppingCart } from "react-icons/fa";
+
+import { Card, Button } from 'react-bootstrap';
 
 const Junkyard = props => {
     const [sellingState, setsellingState] = useState({
         basecars: [
             {
                 carName: 'nsx',
-                uid: '',
+                uid: localStorage.getItem('uid'),
                 tire: 1,
                 engine: 1,
                 bodyKit: 1,
@@ -21,7 +25,7 @@ const Junkyard = props => {
             },
             {
                 carName: 'rx7',
-                uid: '',
+                uid: localStorage.getItem('uid'),
                 tire: 1,
                 engine: 1,
                 bodyKit: 1,
@@ -32,7 +36,7 @@ const Junkyard = props => {
             },
             {
                 carName: '3000gt',
-                uid: '',
+                uid: localStorage.getItem('uid'),
                 tire: 1,
                 engine: 1,
                 bodyKit: 1,
@@ -43,7 +47,7 @@ const Junkyard = props => {
             },
             {
                 carName: 's15',
-                uid: '',
+                uid: localStorage.getItem('uid'),
                 tire: 1,
                 engine: 1,
                 bodyKit: 1,
@@ -54,7 +58,7 @@ const Junkyard = props => {
             },
             {
                 carName: 'is300',
-                uid: '',
+                uid: localStorage.getItem('uid'),
                 tire: 1,
                 engine: 1,
                 bodyKit: 1,
@@ -65,7 +69,7 @@ const Junkyard = props => {
             },
             {
                 carName: 's2000',
-                uid: '',
+                uid: localStorage.getItem('uid'),
                 tire: 1,
                 engine: 1,
                 bodyKit: 1,
@@ -80,6 +84,7 @@ const Junkyard = props => {
     })
 
     useEffect(_ =>{
+        console.log(props.uid)
         Selling.getall()
         .then(({data}) => {
             let cars = data
@@ -113,7 +118,7 @@ const Junkyard = props => {
             let money = sellingState.money - value
             let i = e.target.dataset.i
             let car = sellingState.basecars[i]
-            car.uid = props.uid
+            // car.uid = props.uid
             Car.postone(car, {uid: props.uid})
             Player.updatebank(localStorage.getItem('_id'), {bankAccount: money})
             setsellingState({...sellingState, money})
@@ -123,20 +128,22 @@ const Junkyard = props => {
     return (
         <>
         <Nav2 />
+        <h1 className="sellingsub">Hot Car!</h1>
         {sellingState.sellingcars.map((car, index) =>(
-            <div>
-                <img src={car.imageLink} />
-                <h1>{car.carName} {car.bodyKit}</h1>
-                <p>${car.value}</p>
-                <button id={car._id} value={car.value} data-i={index} onClick={sellingState.handlepurchase}>Purchase</button>
+            <div className='selling'>
+                <img src={car.imageLink} className='sellingimg'/>
+                <h1 className='sellingcap'>{car.carName} {car.bodyKit}</h1>
+                <p className='sellingcap'>${car.value}</p>
+                <button className="sellingbtn" id={car._id} value={car.value} data-i={index} onClick={sellingState.handlepurchase}>Purchase</button>
             </div>
         ))}
+        <h1 className="sellingsub">Base Models</h1>
         {sellingState.basecars.map((car, index) =>(
-            <div>
-                <img src={car.imageLink} />
-                <h1>{car.carName} {car.bodyKit}</h1>
-                <p>${car.value}</p>
-                <button value={car.value} data-i={index} onClick={sellingState.handlebasepurchase}>Purchase</button>
+            <div className='selling'>
+                <img src={car.imageLink} className='sellingimg'/>
+                <h1 className='sellingcap'>{car.carName} {car.bodyKit}</h1>
+                <p className='sellingcap'>${car.value}</p>
+                <button className="sellingbtn" value={car.value} data-i={index} onClick={sellingState.handlebasepurchase}>Purchase</button>
             </div>
         ))}
         </>

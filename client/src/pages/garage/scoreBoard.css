@@ -15,6 +15,7 @@
     .garageInfo{
         display: none;
     }
+
     .cashmoney {
         /* text-align: center; */
         font-size: 23px; 
@@ -25,3 +26,4 @@
         font-size: 50px,
     }
 }
+

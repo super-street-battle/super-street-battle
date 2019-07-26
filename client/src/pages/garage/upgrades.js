@@ -44,23 +44,30 @@ export default function Upgrades(props) {
                         <h4 className="upgItems" >{props.car.tire}</h4>
                         <h5 className="upgItems" >${props.info.tireprice[props.index]}</h5>
                         
-                        <button className="upgItems" id={props.index}  value={props.info.tireprice[props.index]} onClick={props.handleTire}>Upgrade</button>
+
+                        <button className="upgItems" id={props.index}  value={props.info.tireprice[props.index]} onClick={props.info.handleTire}>Upgrade</button>
+
                         {/* </div> */}
                     </Col>
 
                 {/* engine */}
                     <Col xs={4}>
+
                         <h2 className="upgItems" >Engine</h2>
                         <h4 className="upgItems" >{props.car.engine}</h4>
                         <h5 className="upgItems" >${props.info.engineprice[props.index]}</h5>
-                     <button className="upgItems"  id={props.index}  value={props.info.engineprice[props.index]} onClick={props.handleEngine}>Upgrade</button>
+                     <button className="upgItems"  id={props.index}  value={props.info.engineprice[props.index]} onClick={props.info.handleEngine}>Upgrade</button>
+
                     </Col>
                     
                     {/* body kit */}
                     <Col xs={4}>
+      
                         <h2 className="upgItems"  >Body Kit</h2>
                         <h4 className="upgItems" >({props.car.bodyKit}/3)</h4>
-                       <h5 className="upgItems"> {handlekitupgrade(props)}</h5>
+//                        <h5 className="upgItems"> {handlekitupgrade(props)}</h5>
+                        {handlekitupgrade(props)}
+
                     </Col>
                 </Row>
                 {/* button to sell car */}

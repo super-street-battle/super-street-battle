@@ -1,12 +1,17 @@
 .logo {
-    width: 53%;
-    margin-left: 22vw;
+    width: 53% !important;
+    margin-left: 22vw !important;
 }
 .navbar {
     background-color: #f3ff44;
 }
 .signoutbtn {
-    border: 0;
-    background-color: transparent;
-    font-size: 28px;
+    border: 0 !important;
+    background-color: transparent !important;
+    font-size: 28px !important;
+    color: black !important;
+    padding: 0 !important;
+}
+.signoutbtn2 {
+    color: black !important;
 }
