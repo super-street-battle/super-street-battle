@@ -8,8 +8,6 @@ import './carSel.css'
 //choose car
 //profile image 
 const carSel = props => {
-
-
     return (
         <div className='main_container'>
             <Container >
@@ -22,7 +20,7 @@ const carSel = props => {
             </Form>
                 <Carousel interval={false}>
                     {console.log(images)}
-                    {images.map(car => (
+                    {images.map((car, index) => (
                         <Carousel.Item key={1} id={1}>
                             <img className="d-block w-100"
                                 src={car.stock}
@@ -30,6 +28,7 @@ const carSel = props => {
                                 thumbnail="true" />
                             <Carousel.Caption>
                                 <small>Model of Car</small>
+                                <button id={car.stock} value={index}>Select</button>
                             </Carousel.Caption>
                         </Carousel.Item>
                     ))}
