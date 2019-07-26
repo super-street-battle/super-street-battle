@@ -26,10 +26,14 @@ const useStyles = makeStyles(theme => ({
 
 
 const Login = props => {
+  const [buttonstate, setbuttonstate] = useState({
+    button: false
+  })
   const classes = useStyles();
   useEffect(_ => {
     setTimeout(() => {
-      document.getElementById('loginbtn').style.visibility = 'visible'
+      // document.getElementById('loginbtn').style.visibility = 'visible'
+      setbuttonstate({...buttonstate, button: true})
     }, 2700)
   },[])
 
@@ -38,9 +42,10 @@ const Login = props => {
     <div className='main_container'>
       {/* <Container> */}
        <Logo />
-       <div id="loginbtn">
-        <FireBaseLogin FirebaseAuth={props.FirebaseAuth} uiConfig={props.uiConfig}/>
-       </div>
+       {/* <div id="loginbtn"> */}
+         {buttonstate.button === true ? <FireBaseLogin FirebaseAuth={props.FirebaseAuth} uiConfig={props.uiConfig}/> : null}
+        {/* <FireBaseLogin FirebaseAuth={props.FirebaseAuth} uiConfig={props.uiConfig}/> */}
+       {/* </div> */}
       {/* </Contain er> */}
     </div>
   )

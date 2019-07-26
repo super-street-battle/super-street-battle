@@ -46,12 +46,13 @@ const App = _ => {
   useEffect(_ => {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
+        localStorage.setItem('uid', user.uid)
         Player.checkuid({ uid: user.uid })
           .then(({ data }) => {
             if (data === 'no user') {
               setLoginState({ ...loginState, newUser: 'new', uid: user.uid })
             } else {
-              setLoginState({ ...loginState, newUser: 'old' })
+              setLoginState({ ...loginState, newUser: 'old', uid: user.uid })
               localStorage.setItem('_id', data)
             }
           })
@@ -63,7 +64,9 @@ const App = _ => {
     })
   }, [])
  
-
+loginState.olduser = (old, useruid) => {
+  setLoginState({...loginState, newUser: old, uid: useruid})
+}
 
   if (loginState.isLoggedIn === 1 && loginState.newUser === 'old') {
     return (
@@ -73,7 +76,7 @@ const App = _ => {
           <Route exact path="/" component={Home} />
           <Route path="/Race" component={Race} />
           <Route path="/Garage" component={Garage} />
-          <Route path="/Junkyard" component={Junkyard} />
+          <Route path="/Junkyard" component={_ => <Junkyard uid={loginState.uid}/>} />
           <Redirect to="/" />
         </Switch>
       </div>
@@ -91,9 +94,9 @@ const App = _ => {
     return (
       <div>
         <Switch>
-          <Route path="/login/newUser" component={_ => <CarSelect handleAddUser={loginState.handleAddUser} uid={loginState.uid}/>} />
+          <Route path="/login/newUser" component={_ => <CarSelect handleAddUser={loginState.handleAddUser} uid={loginState.uid} olduser={loginState.olduser}/>} />
           <Route path="/Login" component={() => <Login FirebaseAuth={FBAuth} uiConfig={uiConfig} />} />
-          <Redirect to="/login" />
+          <Redirect to="/login/newUser" />
         </Switch>
       </div>
     )
