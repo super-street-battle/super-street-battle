@@ -8,9 +8,6 @@ module.exports = (Schema, model) => {
             type: String,
             default: ""
         },
-        imageLink: {
-            type: String
-        }, 
         win: {
             type: Number,
             default: "0"
@@ -29,7 +26,7 @@ module.exports = (Schema, model) => {
         },
         bankAccount: {
             type: Number,
-            default: "0"
+            default: "200"
         },
         grippyTires: {
             type: Number,
