@@ -4,16 +4,55 @@
 }
 
 .garageTitles{
-    font-size: 33px
+    font-size: 33px;
+}
+.garageInfo {
+    line-height: 2;
+    text-align: center;
 }
 
 #garageUserName{
-    font-size: 37px;
+    font-size: 27px;
+    line-height: 1.5;
+    margin-top: 5%;
+    margin-bottom: 6%;
+    /* float: left; */
+    color: #e97718
 }
-
+.cashmoney {
+    margin-bottom: 4%;
+}
+.slidecontainer {
+    margin-top: -16%
+}
+.invcon {
+    margin-top: -4%;
+    margin-bottom: 8%
+}
+.inv {
+    font-size: 22px;
+    margin-bottom: 4%;
+}
+.itemimg {
+    width: 60% !important;
+}
+.garitems {
+    position: relative;
+    left: auto;
+    right: auto;
+    padding-top: 30px !important;
+    padding-bottom: 20px !important; 
+    width: 92%;
+}
+.garbuy {
+    background-color: #ff9800;
+    border: none;
+    height: 27px;
+    width: 140px; 
+}
 @media only screen and (max-width: 590px){
     .garageInfo{
-        display: none;
+        /* line-height:  */
     }
 
     .cashmoney {
