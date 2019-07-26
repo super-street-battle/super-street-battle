@@ -34,7 +34,8 @@ const CarSel = props => {
             .catch(e => console.log(e))
           })
           .catch(e => console.log(e))
-    
+
+          window.location = "/"
       }
     
     return (
@@ -61,7 +62,7 @@ const CarSel = props => {
                                 thumbnail="true" />
                             <Carousel.Caption>
                       <div>   <small>Car Model: {car.name}</small> </div>
-                                <Button className="selectitembtn" variant="success" id={index} onClick={loginState.handleAddUser}>+</Button>
+                                <Button className="selectitembtn" variant="success" id={index} onClick={loginState.handleAddUser}>Go</Button>
                             </Carousel.Caption>
                         </Carousel.Item>
                     ))}
