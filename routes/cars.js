@@ -103,7 +103,7 @@ module.exports = app => {
     // animation
     app.put('/cars/:id/animation', (req, res) => {
         // console.log(req.body.animation)
-        Cars.findByIdAndUpdate(req.params.id, { $set: { animation: req.body.animation } })
+        Cars.findByIdAndUpdate({_id: req.params.id}, { $set: { animation: req.body.animation } })
             .then(_ => res.sendStatus(200))
             .catch(e => console.log(e))
     })
@@ -115,9 +115,9 @@ module.exports = app => {
     })
 
     // Delete Routes
-    app.delete('/cars/:id', (req, res) => {
-        Cars.findByIdAndDelete(req.params.id)
-            .then(_ => res.sendStatus(200))
-            .catch(e => console.log(e))
-    })
+    // app.delete('/cars/:id', (req, res) => {
+    //     Cars.findByIdAndDelete(req.params.id)
+    //         .then(_ => res.sendStatus(200))
+    //         .catch(e => console.log(e))
+    // })
 }

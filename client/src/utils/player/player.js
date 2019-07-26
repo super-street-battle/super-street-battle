@@ -9,7 +9,8 @@ const Player =  {
     updateexperience: (id, body) => axios.put(`/players/${id}/experience`, body),
     updatewin: (id, body) => axios.put(`/players/${id}/win`, body),
     updateloss: (id, body) => axios.put(`/players/${id}/loss`, body),
-    updatetie: (id, body) => axios.put(`/players/${id}/tie`, body)
+    updatetie: (id, body) => axios.put(`/players/${id}/tie`, body),
+    removecar: (id, carid) => axios.delete(`/players/${id}/delete-car/${carid}`)
 }
 
 export default Player

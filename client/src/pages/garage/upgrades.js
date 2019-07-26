@@ -22,6 +22,10 @@ const handlekitupgrade = props=> {
 
 export default function Upgrades(props) {
     useEffect(_ => {console.log(props.car)}, [])
+        const handleselling = e => {
+            props.info.sellcar(e)
+            props.handleSelect()
+        }
     return (
         <div>
             <Container style={{paddingBottom:'15%'}}>
@@ -78,6 +82,9 @@ export default function Upgrades(props) {
                         {handlekitupgrade(props)}
                         
                     </Col>
+                </Row>
+                <Row className="text-center">
+                    <button id={props.car._id} value={props.index} data-price={props.car.value} onClick={handleselling}>Sell Car</button>
                 </Row>
             </Container>
         </div>
