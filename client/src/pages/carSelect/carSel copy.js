@@ -34,12 +34,12 @@ const CarSel = props => {
             .catch(e => console.log(e))
           })
           .catch(e => console.log(e))
-
-          window.location = "/"
+    
       }
     
     return (
-
+        <div>
+              <Nav />
                 <Container >
 
                 <Form>
@@ -49,7 +49,6 @@ const CarSel = props => {
                         </Col>
                     </Row>
                 </Form>
-
             
 
                 <Row>
@@ -62,36 +61,13 @@ const CarSel = props => {
                                 thumbnail="true" />
                             <Carousel.Caption>
                       <div>   <small>Car Model: {car.name}</small> </div>
-                                <Button className="selectitembtn" variant="success" id={index} onClick={loginState.handleAddUser}>Go</Button>
+                                <Button className="selectitembtn" variant="success" id={index} onClick={loginState.handleAddUser}>+</Button>
                             </Carousel.Caption>
                         </Carousel.Item>
                     ))}
                 </Carousel>
 
                         </Col>
-=======
-
-
-                <Row>
-                        <Col className="text-center">
-
-
-                <Carousel interval={false}>
-                    {console.log(images)}
-                    {images.map((car, index) => (
-                        <Carousel.Item key={1} id={1}>
-                            <img className="d-block w-100"
-                                src={car.stock}
-                                alt={1}/>
-                                <Carousel.Caption>
-                                <div>   <small>Car Model: {car.name}</small> </div>
-                                          <Button className="selectitembtn" variant="success" id={index} onClick={loginState.handleAddUser}>+</Button>
-                                      </Carousel.Caption>
-                        </Carousel.Item>
-                    ))}
-                </Carousel>
-                </Col>
-
                     </Row>
 
             </Container>

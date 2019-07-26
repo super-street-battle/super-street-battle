@@ -112,7 +112,7 @@ const Race = _ => {
         if (raceState.pbodyKit > raceState.cpuK) {
             logarr.push(`looking GREAT ${raceState.username}!`)
         } else {
-            logarr.push('sorry npc got the better style!')
+            logarr.push('npc got the better kit, points for style!')
         }
         
         if (raceState.ptire > raceState.cpuT) {
@@ -124,7 +124,7 @@ const Race = _ => {
         if (raceState.useItem !== "") {
             switch(raceState.useItem) {
                 case 'oil':
-                    logarr.push(`${raceState.username} used ${raceState.useItem}, npc got slowed!`, "We're coming up on the finish line!", "Who will be our winner..?!")
+                    logarr.push(`${raceState.username} used ${raceState.useItem}, npc is slowed!`, "We're coming up on the finish line!", "Who will be our winner..?!")
                     cputotal -= .5
                     break;
                 case 'nitro':
