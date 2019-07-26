@@ -20,24 +20,6 @@ const handlekitupgrade = props=> {
     }
 }
 
-const handlekitupgrade = props=> {
-    if (props.car.bodyKit === 1) {
-        return (
-            <>
-            <h5>$1000</h5>
-            <button id={props.index} value='1000' onClick={props.handleBodyKit}>Upgrade</button>
-            </>
-        )
-    } else if (props.car.bodyKit === 2) {
-        return (
-            <>
-            <h5>$2500</h5>
-            <button id={props.index} value='2500' onClick={props.handleBodyKit}>Upgrade</button>
-            </>
-        )
-    }
-}
-
 export default function Upgrades(props) {
     useEffect(_ => {console.log(props.car)}, [])
         const handleselling = e => {
