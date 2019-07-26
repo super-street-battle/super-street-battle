@@ -1,7 +1,7 @@
-body {
+/* body {
     justify-content: center;
     text-align: center
-}
+} */
 
 #inp {
     bottom: 0;
@@ -38,4 +38,27 @@ body {
     padding-top: 15%;
     margin-top: 20%;
     align-content: center;
+}
+.resultcontainer {
+    margin-top: 15%;
+    text-align: center;
+}
+.finishbtn {
+    margin-top: 5%;
+    background-color: #ff9800;
+    border: none;
+    height: 27px;
+    width: 127px;
+}
+.result {
+    line-height: 2;
+    font-size: 22px;
+    color: #ff9800;
+}
+.text {
+    line-height: 2;
+}
+svg {
+    color: #f3ff44;
+    font-size: 20px;
 }

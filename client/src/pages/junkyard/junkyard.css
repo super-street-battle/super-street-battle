@@ -1,23 +1,35 @@
-button {
-    align-self: center;
-    border: 2px solid black;
-    color: black;
-    padding: 14px 28px;
-    font-size: 16px;
-    cursor: pointer;
-    opacity: 0.9;
-    border-color: #ff9800;
-    color: orange;
-  }
-  
-  button:hover {
-    align-self: center;
-    border: 2px solid black;
-    color: black;
-    padding: 14px 28px;
-    font-size: 16px;
-    opacity: 0.9;
-    background: #ff9800;
-    color: white;
-    cursor: grab
-  }
+.selling {
+  text-align: center;
+  margin-top: 4%;
+}
+
+.sellingcap {
+  line-height: 2;
+}
+
+.sellingimg {
+  width: 70%;
+  background-color: rgb(253, 253, 253);
+}
+
+.sellingbtn {
+  background-color: #f3ff44;
+  border: none;
+  padding: 2%;
+  outline: none;
+}
+
+.sellingbtn:focus {
+  border: none;
+  outline: 0;
+}
+.sellingsub {
+  text-align: center;
+  padding-top: 8%;
+  color: rgb(255, 145, 0);
+  font-size: 20px;
+  width: 63%;
+  margin: auto;
+  padding-bottom: 2%;
+  border-bottom: 1px solid;
+}
