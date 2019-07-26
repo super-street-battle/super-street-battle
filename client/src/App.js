@@ -11,10 +11,6 @@ import Junkyard from './pages/junkyard'
 import firebase from 'firebase';
 import CarSelect from './pages/carSelect/carSel'
 import Player from './utils/player'
-import axios from 'axios' 
-import cars from './baseCars.json'
-
-
 
 // Configure Firebase.
 var firebaseConfig = {
@@ -41,108 +37,75 @@ signInOptions: [
 };
 const FBAuth = firebase.auth()
 const App = _ => {
-  // const [isLoggedIn, setLoginState] = useState(1)
-  // const [newUser, setUserState] = useState("new")
   const [loginState, setLoginState] = useState({
     isLoggedIn: 1,
-    newUser: 'new'
+    newUser: 'new',
+    uid: ''
   })
+  
   useEffect(_ => {
     firebase.auth().onAuthStateChanged(user => {
-      //handleAddUser()
-      if (user) {  
-        Player.checkuid({uid: user.uid})
-        .then(({data}) => {
-          if (data === 'no user') {
-            setLoginState({...loginState, newUser: 'new'})
-           } else {
-            setLoginState({...loginState, newUser: 'old'})
-            localStorage.setItem('_id', data)
-          }
-        })
-        .catch(e => console.log(e))
-
-        setLoginState({...loginState, isLoggedIn: 1})
+      if (user) {
+        localStorage.setItem('uid', user.uid)
+        Player.checkuid({ uid: user.uid })
+          .then(({ data }) => {
+            if (data === 'no user') {
+              setLoginState({ ...loginState, newUser: 'new', uid: user.uid })
+            } else {
+              setLoginState({ ...loginState, newUser: 'old', uid: user.uid })
+              localStorage.setItem('_id', data)
+            }
+          })
+          .catch(e => console.log(e))
+        setLoginState({ ...loginState, isLoggedIn: 1 })
       } else {
         setLoginState({...loginState, isLoggedIn: 2})
       }
     })
   }, [])
  
+loginState.olduser = (old, useruid) => {
+  setLoginState({...loginState, newUser: old, uid: useruid})
+}
 
-  loginState.handleAddUser = event => {
-  
-    //Get Car from BaseCar.json
-    const carIndex = event.target.id
-
-
-     axios.post('/players', {  uid: FBAuth.currentUser.uid} )
-     .then(r => {
-      Player.checkuid({uid: FBAuth.currentUser.uid})
-        .then(({data}) => {
-            setLoginState({...loginState, newUser: 'old'})
-            localStorage.setItem('_id', data)
-          })
-         .catch(e => console.log(e))
-         //Add Base Car after Adding User
-         axios.post('/cars', {
-             carName: cars[carIndex].name,
-                uid: FBAuth.currentUser.uid,
-                imageLink: cars[carIndex].stock,
-                animation: cars[carIndex].animation,
-                selling: false
-           })
-         .then(r => console.log('Car Added'))
-         .catch(e => console.log(e))
-      })
-      .catch(e => console.log(e))
-     
- }
-  
- 
-    if (loginState.isLoggedIn === 1 && loginState.newUser === 'old') {
-      return (
-        <div className="App">
-        <Nav FirebaseAuth={FBAuth}/>
-          <Switch>
-            <Route exact path="/" component={Home}/>
-            <Route path="/Race" component={Race} />
-            <Route path="/Garage" component={Garage} />
-            <Route path="/Junkyard" component={Junkyard} />
-      {/* <Route path="/SelectCar" component={() => <CarSelect handleAddUser={loginState.handleAddUser} />} /> */}
-            <Redirect to="/" />
-          </Switch>
-        </div>
-        )
-    } else if (loginState.isLoggedIn === 2) {
-      return (
-        <div>
-         <Switch>
-            <Route exact path="/Login" component={ () => <Login FirebaseAuth={FBAuth} uiConfig={uiConfig}/> }/>
-            <Redirect to="/Login" />
-          </Switch>
+  if (loginState.isLoggedIn === 1 && loginState.newUser === 'old') {
+    return (
+      <div className="App">
+        <Nav FirebaseAuth={FBAuth} />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/Race" component={Race} />
+          <Route path="/Garage" component={Garage} />
+          <Route path="/Junkyard" component={_ => <Junkyard uid={loginState.uid}/>} />
+          <Redirect to="/" />
+        </Switch>
       </div>
-      )
-    } else if (loginState.isLoggedIn === 1 && loginState.newUser === 'new') {
-      return (
-        <div>
-          <Switch>
-      <Route path="/login/newUser" component={_ => <CarSelect handleAddUser={loginState.handleAddUser} />} />
-      {/* <Route path="/login/newUser" component={_ => <CarSelect />} /> */}
-            <Route path="/Login" component={ () => <Login FirebaseAuth={FBAuth} uiConfig={uiConfig}/> }/>
-            <Redirect to="/login/newUser" />
-          </Switch>
-        </div>
-      )
-    } else {
-      return (
-        <div className='App'>
-        {/* <Loader /> */}
-        </div>
-      )
-    }
-  
-  
-   
+    )
+  } else if (loginState.isLoggedIn === 2) {
+    return (
+      <div>
+        <Switch>
+          <Route exact path="/Login" component={() => <Login FirebaseAuth={FBAuth} uiConfig={uiConfig} />} />
+          <Redirect to="/Login" />
+        </Switch>
+      </div>
+    )
+  } else if (loginState.isLoggedIn === 1 && loginState.newUser === 'new') {
+    return (
+      <div>
+        <Switch>
+          <Route path="/login/newUser" component={_ => <CarSelect handleAddUser={loginState.handleAddUser} uid={loginState.uid} olduser={loginState.olduser}/>} />
+          <Route path="/Login" component={() => <Login FirebaseAuth={FBAuth} uiConfig={uiConfig} />} />
+          <Redirect to="/login/newUser" />
+        </Switch>
+      </div>
+    )
+  } else {
+    return (
+      <div className='App'>
+      </div>
+    )
+  }
+
 }
 export default App

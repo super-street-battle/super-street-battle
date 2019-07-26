@@ -43,24 +43,20 @@ export default function Upgrades(props) {
                         <h4>{props.car.tire}</h4>
                         <h5>${props.info.tireprice[props.index]}</h5>
                         
-                        <button id={props.index}  value={props.info.tireprice[props.index]} onClick={props.handleTire}>Upgrade</button>
+                        <button id={props.index}  value={props.info.tireprice[props.index]} onClick={props.info.handleTire}>Upgrade</button>
                         {/* </div> */}
                     </Col>
                     <Col xs={4}>
                         <h2 style={{ padding: '5px' }}>Engine</h2>
                         <h4>{props.car.engine}</h4>
                         <h5>${props.info.engineprice[props.index]}</h5>
-                     <button id={props.index}  value={props.info.engineprice[props.index]} onClick={props.handleEngine}>Upgrade</button>
+                     <button id={props.index}  value={props.info.engineprice[props.index]} onClick={props.info.handleEngine}>Upgrade</button>
                     </Col>
                     
                     <Col xs={4}>
                         <h2 style={{ padding: '5px' }} >Body Kit</h2>
-                        //<h4>{props.car.bodyKit}</h4>
-                        //{props.car.bodyKit === 3 ? null : <h5>$1000</h5>}
-                        //{props.car.bodyKit === 3 ? null : <button id={props.index} value='1000' onClick={props.handleBodyKit}>Upgrade</button>}
                         <h4>({props.car.bodyKit}/3)</h4>
                         {handlekitupgrade(props)}
-
                         
                     </Col>
                 </Row>
