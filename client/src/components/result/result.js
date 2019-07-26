@@ -6,7 +6,6 @@ import race from '../../pages/race/race'
 import Player from '../../utils/player'
 import './result.css'
 import Garage from '../../pages/garage'
-import { makeStyles } from '@material-ui/core/styles'
 
 
 const Result = props => {
@@ -38,10 +37,6 @@ const Result = props => {
         // setresultState({...resultState, result})
         console.log(resultState.animation)
     }, [])
-
-
-
-
       
         return (
             <>
@@ -70,11 +65,13 @@ const Result = props => {
                 <Delayed waitBeforeShow={8000} id="animationGif">
                     <Delayed waitBeforeShow={9500}>
                         <p>{resultState.result}</p>
+                        <br/>
                         <p>Your Total: {props.state.ptotal}</p> 
                         <br/>
                         vs 
                         <br/>
                         <p>Theirs: {props.state.cputotal}</p>
+                        <br/>
                         {resultState.animation === '' ? null : <img src={resultState.animation} />}
                     </Delayed>
                 </Delayed>
