@@ -15,6 +15,9 @@ body {
     opacity: 0.9;
     border-color: #ff9800;
     color: orange;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin: 0 auto;
 }
 
 #inp:hover {

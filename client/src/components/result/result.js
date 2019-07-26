@@ -8,31 +8,12 @@ import './result.css'
 import Garage from '../../pages/garage'
 import { makeStyles } from '@material-ui/core/styles'
 
-const useStyles = makeStyles(theme => ({
-    container: {
-      display: 'grid',
-      gridTemplateColumns: 'repeat(12, 1fr)',
-      gridGap: theme.spacing(3)
-      
-    },
-    paper: {
-      padding: theme.spacing(1),
-      textAlign: 'center',
-      color: theme.palette.text.secondary,
-      whiteSpace: 'nowrap',
-      marginBottom: theme.spacing(1)
-    },
-    divider: {
-      margin: theme.spacing(2, 0),
-    },
-  }))
 
 const Result = props => {
     const [resultState, setresultState] = useState({
         result: '',
         animation: '',
     })
-    const classes = useStyles();
 
     useEffect(_ => {
         let animationarr = props.state.caranimation.split(',')
@@ -64,7 +45,6 @@ const Result = props => {
 
       
         return (
-            
             <>
             <div className="container">
             <div>
@@ -96,10 +76,11 @@ const Result = props => {
                         vs 
                         <br/>
                         <p>Theirs: {props.state.cputotal}</p>
+                        
                     </Delayed>
                 </Delayed>
             </div>
-            <div>
+            <div style="text-align: center">
                 <input id="inp" type="button" value="return to garage" Route path="/Garage" component={Garage} />
             </div>
             </div>
