@@ -1,12 +1,6 @@
 const { Player, Cars } = require('../models')
 
 module.exports = app => {
-    // get all cars
-    // app.get('/cars', (req, res) => {
-    //     Cars.find({})
-    //         .then(cars => res.json(cars))
-    //         .catch(e => console.log(e))
-    // })
     // get a car by its id
     app.get('/cars/:id', (req, res) => {
         Cars.findById(req.params.id)
@@ -38,27 +32,6 @@ module.exports = app => {
             })
             .catch(e => console.log(e))
     })
-    // carName
-    // app.put('/cars/:id/carName', (req, res) => {
-    //     // console.log(req.body.nitro)
-    //     Cars.findByIdAndUpdate(req.params.id, { $set: { carName: req.body.carName } })
-    //         .then(_ => res.sendStatus(200))
-    //         .catch(e => console.log(e))
-    // })
-    // carNickname
-    // app.put('/cars/:id/carNickname', (req, res) => {
-    //     // console.log(req.body.nitro)
-    //     Cars.findByIdAndUpdate(req.params.id, { $set: { carNickname: req.body.carNickname } })
-    //         .then(_ => res.sendStatus(200))
-    //         .catch(e => console.log(e))
-    // })
-    // owner
-    // app.put('/cars/:id/owner', (req, res) => {
-    //     // console.log(req.body.owner)
-    //     Cars.findByIdAndUpdate(req.params.id, { $set: { owner: req.body.owner } })
-    //         .then(_ => res.sendStatus(200))
-    //         .catch(e => console.log(e))
-    // })
     // uid
     app.put('/cars/:id/uid', (req, res) => {
         // console.log(req.body.uid)
@@ -114,11 +87,4 @@ module.exports = app => {
             .then(_ => res.sendStatus(200))
             .catch(e => console.log(e))
     })
-
-    // Delete Routes
-    // app.delete('/cars/:id', (req, res) => {
-    //     Cars.findByIdAndDelete(req.params.id)
-    //         .then(_ => res.sendStatus(200))
-    //         .catch(e => console.log(e))
-    // })
 }

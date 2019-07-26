@@ -2,7 +2,6 @@ require('dotenv').config()
 const { join } = require('path')
 const express = require('express')
 const app = express()
-// const mongoDB = process.env.MONGODB_URI || 'mongodb://localhost/googlebooks'
 
 app.use(express.static(join(__dirname, 'client', 'build')))
 app.use(express.urlencoded({ extended: true }))

@@ -104,13 +104,7 @@ module.exports = app => {
             .catch(e => console.log(e))
     })
 
-    // Delete Routes
-
-    // app.delete('/players/:id', (req, res) => {
-    //     Player.findByIdAndDelete(req.params.id)
-    //         .then(_ => res.sendStatus(200))
-    //         .catch(e => console.log(e))
-    // })
+    // Delete Route
     app.delete('/players/:id/delete-car/:carID', (req, res) => {
         Player.findByIdAndUpdate({_id: req.params.id}, { $pull: { cars: { $in: [req.params.carID] } } })
             .then(_ => res.sendStatus(200))
