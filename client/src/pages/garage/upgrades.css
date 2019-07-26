@@ -1,6 +1,24 @@
 .upgItems{
     padding: 5px;
 }
+.upgrages {
+    margin-top: -7%;
+    margin-bottom: 8%
+}
+.upgItemsbtn {
+    margin-top: 5%;
+    background-color: #ff9800;
+    border: none;
+    height: 27px;
+    width: 50px;   
+}
+.sellCar {
+    margin: auto;
+    background-color: #f3ff44;
+    border: none;
+    height: 27px;
+    width: 150px;   
+}
 
 @media only screen and (max-width: 590px){
     .sellcar{
