@@ -17,7 +17,7 @@ export default function Slide(props) {
         <div>
             <Container >
                 <Carousel interval={false} onSelect={handleSelect}>
-                    {props.cars.map(({imageLink, engine, tire, bodyKit, carName, carNickname, _id}) => (
+                    {props.cars.map(({imageLink, engine, animation, tire, bodyKit, carName, carNickname, _id}) => (
                         
                         <Carousel.Item key={_id} id={_id} onClick={() => setShowWorkshop(true)}>
                             <img className="d-block w-100"
@@ -28,7 +28,7 @@ export default function Slide(props) {
                             <Carousel.Caption>
                                 <h1>{carNickname}</h1>
                                 <small>{carName}</small>
-                                <button id={_id} data-image={imageLink} data-engine={engine} data-tire={tire} data-bodykit={bodyKit} onClick={props.carSelect}>Select</button>
+                                <button id={_id} data-animation={animation} data-image={imageLink} data-engine={engine} data-tire={tire} data-bodykit={bodyKit} onClick={props.carSelect}>Select</button>
                             </Carousel.Caption>
 
                         </Carousel.Item>

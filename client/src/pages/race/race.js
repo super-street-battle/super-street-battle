@@ -43,7 +43,9 @@ const rantracks = _ => {
 }
 
 const Race = _ => {
+
     const betinput = useRef()
+    
     const [raceState, setraceState] = useState({
         id: '',
         cars: [],
@@ -64,9 +66,14 @@ const Race = _ => {
         isItem: false,
         isLoc: false,
         carimage: '',
+        caranimation: [],
         itemImage: '',
         money: null,
-        tracks: []
+        tracks: [],
+        win: null,
+        loss: null,
+        tie: null,
+        experience: null
     })
         
     raceState.carSelect= e =>{
@@ -84,6 +91,7 @@ const Race = _ => {
             cpuK,
             cpuT,
             carimage: e.target.dataset.image,
+            caranimation: e.target.dataset.animation,
             isCar: true
     })}
 
@@ -136,7 +144,6 @@ const Race = _ => {
             setraceState({
                 ...raceState,
                 bet: parseInt(betinput.current.value),
-                money: raceState.money - parseInt(betinput.current.value),
                 logarr,
                 cputotal,
                 ptotal,
@@ -241,7 +248,11 @@ const Race = _ => {
                 money: data.bankAccount, 
                 items,
                 tracks,
-                username: data.userName
+                win: data.win,
+                loss: data.loss,
+                tie: data.tie,
+                username: data.userName,
+                experience: data.experience
             })
     })
         .catch(e => console.error(e))
@@ -304,12 +315,14 @@ const Race = _ => {
             :
             <div>
                 <Result 
-                log={raceState.logarr} 
-                ptotal={raceState.ptotal} 
-                cputotal={raceState.cputotal} 
-                bet={raceState.bet} 
-                money={raceState.money}
-                carimage={raceState.carimage}
+                // log={raceState.logarr} 
+                // ptotal={raceState.ptotal} 
+                // cputotal={raceState.cputotal} 
+                // bet={raceState.bet} 
+                // money={raceState.money}
+                // carimage={raceState.carimage}
+                // id={raceState.id}
+                state={raceState}
                 />
             </div>
             

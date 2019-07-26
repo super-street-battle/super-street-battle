@@ -1,0 +1,16 @@
+[
+{
+   "image": "https://super-street-battle.s3.us-west-1.amazonaws.com/1563863154979",
+   "animation": ["https://super-street-battle.s3.us-west-1.amazonaws.com/1564032952368", "https://super-street-battle.s3.us-west-1.amazonaws.com/1564032978837", "https://super-street-battle.s3.us-west-1.amazonaws.com/1564033009376"],
+   "loss": "https://super-street-battle.s3.us-west-1.amazonaws.com/1564032952368",
+   "tie": "https://super-street-battle.s3.us-west-1.amazonaws.com/1564032978837",
+   "win": "https://super-street-battle.s3.us-west-1.amazonaws.com/1564033009376"
+},
+{
+    "image": "https://super-street-battle.s3.us-west-1.amazonaws.com/1563863176279",
+    "animation": ["https://super-street-battle.s3.us-west-1.amazonaws.com/1564033073490", "https://super-street-battle.s3.us-west-1.amazonaws.com/1564033096277", "https://super-street-battle.s3.us-west-1.amazonaws.com/1564033192948"],
+    "loss": "https://super-street-battle.s3.us-west-1.amazonaws.com/1564033073490",
+    "tie": "https://super-street-battle.s3.us-west-1.amazonaws.com/1564033096277",
+    "win": "https://super-street-battle.s3.us-west-1.amazonaws.com/1564033192948" 
+}
+]
