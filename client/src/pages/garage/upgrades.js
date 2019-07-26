@@ -65,7 +65,6 @@ export default function Upgrades(props) {
       
                         <h2 className="upgItems"  >Body Kit</h2>
                         <h4 className="upgItems" >({props.car.bodyKit}/3)</h4>
-//                        <h5 className="upgItems"> {handlekitupgrade(props)}</h5>
                         {handlekitupgrade(props)}
 
                     </Col>
