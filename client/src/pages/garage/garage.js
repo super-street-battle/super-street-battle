@@ -95,7 +95,6 @@ const Garage = _ => {
 
 
     playerState.handleTire = e => {
-        console.log(playerState.tireprice)
         // grabs car array
         let i = parseInt(e.target.id)
         //grabs the clicked car
@@ -275,7 +274,7 @@ return (
         <Nav2 />
         <ScoreBoard items={playerState.items} info={playerState} playerId={playerState.id} money={playerState.money} />
         {/* <Cards /> */}
-        <Slide info={playerState} handleBodyKit={playerState.handleBodyKit} handleTire={playerState.handleTire} handleEngine={playerState.handleEngine} />
+        <Slide info={playerState} handleBodyKit={playerState.handleBodyKit}  />
         <Inventory prices={playerState} items={playerState.items} PlayerId={playerState.id} money={playerState.money} handleBuyItem={playerState.handleBuyItem} />
     </>
 )

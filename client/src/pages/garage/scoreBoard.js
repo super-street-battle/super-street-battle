@@ -24,7 +24,7 @@ export default function (props) {
                         <h4 className='jumboInfo pt-5 mt-5 pb-2'>Ties:{props.info.tie}</h4><br />
                     </Col>
                     <Col xs={12}>
-                        <h4 className='jumboInfo text-right pt-5 mt-5 pr-5'>Cash: {props.info.money}</h4>
+                        <h4 className='jumboInfo text-right pt-5 mt-5 pr-5'>Cash: ${props.info.money}</h4>
                     </Col>
                 </Row>
             </Container>

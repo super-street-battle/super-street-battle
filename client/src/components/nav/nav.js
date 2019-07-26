@@ -10,6 +10,7 @@ const Nav = props => {
             <button onClick={_ => {
                     props.FirebaseAuth.signOut()
                     localStorage.removeItem('_id')
+                    localStorage.removeItem('uid')
                 }} 
                 className="signoutbtn"><GiExitDoor />
             </button>

@@ -17,7 +17,8 @@ const CarSel = props => {
           .then(_ => {
             Player.checkuid({ uid: props.uid })
               .then(({ data }) => {
-                setLoginState({ ...loginState, newUser: 'old' })
+                // setLoginState({ ...loginState, newUser: 'old' })
+                props.olduser('old')
                 localStorage.setItem('_id', data)
               })
               .catch(e => console.log(e))
