@@ -13,6 +13,9 @@ const CarSel = props => {
 
     loginState.handleAddUser = event => {
         const carID = event.target.id
+        if (username.current.value === '' || username.current.value === ' ') {
+            alert('Please choose a User Name')
+        } else {
         axios.post('/players', { uid: props.uid, userName: username.current.value })
           .then(_ => {
             Player.checkuid({ uid: props.uid })
@@ -32,7 +35,7 @@ const CarSel = props => {
             .catch(e => console.log(e))
           })
           .catch(e => console.log(e))
-    
+        }
       }
     
     return (
