@@ -4,22 +4,22 @@ module.exports = (Schema, model) => {
             type: String,
             default: ""
         },
-        carNickname:{
-            type: String,
-            default: ""
-        },
-        type: {
-            type: String,
-            default: ""
-        },
+        // carNickname:{
+        //     type: String,
+        //     default: ""
+        // },
+        // type: {
+        //     type: String,
+        //     default: ""
+        // },
         uid: {
             type: String,
             default: ""
         },
-        owner: {
-            type: String,
-            default: ""
-        },
+        // owner: {
+        //     type: String,
+        //     default: ""
+        // },
         tire: {
             type: Number,
             default: "0"
@@ -40,10 +40,9 @@ module.exports = (Schema, model) => {
             type: String,
             default: ""
         },
-        animation: {
+        animation: [{
             type: String,
-            default: ""
-        },
+        }],
         selling: {
             type: Boolean,
             default: false

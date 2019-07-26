@@ -1,4 +1,16 @@
 [
-    "https://super-street-battle.s3.us-west-1.amazonaws.com/1563863529965",
-    "https://super-street-battle.s3.us-west-1.amazonaws.com/1563863549205"
-]
+    {
+       "image": "https://super-street-battle.s3.us-west-1.amazonaws.com/1563863529965",
+       "animation": ["https://super-street-battle.s3.us-west-1.amazonaws.com/1564039113478", "https://super-street-battle.s3.us-west-1.amazonaws.com/1564039130238", "https://super-street-battle.s3.us-west-1.amazonaws.com/1564039148737"],
+       "loss": "https://super-street-battle.s3.us-west-1.amazonaws.com/1564039113478",
+       "tie": "https://super-street-battle.s3.us-west-1.amazonaws.com/1564039130238",
+       "win": "https://super-street-battle.s3.us-west-1.amazonaws.com/1564039148737"
+    },
+    {
+        "image": "https://super-street-battle.s3.us-west-1.amazonaws.com/1563863549205",
+        "animation": ["https://super-street-battle.s3.us-west-1.amazonaws.com/1564039257745", "https://super-street-battle.s3.us-west-1.amazonaws.com/1564039274438", "https://super-street-battle.s3.us-west-1.amazonaws.com/1564039292414"],
+        "loss": "https://super-street-battle.s3.us-west-1.amazonaws.com/1564039257745",
+        "tie": "https://super-street-battle.s3.us-west-1.amazonaws.com/1564039274438",
+        "win": "https://super-street-battle.s3.us-west-1.amazonaws.com/1564039292414"
+    }
+    ]
