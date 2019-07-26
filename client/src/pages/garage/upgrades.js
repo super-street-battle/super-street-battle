@@ -20,8 +20,30 @@ const handlekitupgrade = props=> {
     }
 }
 
+const handlekitupgrade = props=> {
+    if (props.car.bodyKit === 1) {
+        return (
+            <>
+            <h5>$1000</h5>
+            <button id={props.index} value='1000' onClick={props.handleBodyKit}>Upgrade</button>
+            </>
+        )
+    } else if (props.car.bodyKit === 2) {
+        return (
+            <>
+            <h5>$2500</h5>
+            <button id={props.index} value='2500' onClick={props.handleBodyKit}>Upgrade</button>
+            </>
+        )
+    }
+}
+
 export default function Upgrades(props) {
-    useEffect(_ => {console.log(props.info.engineprice[props.index])}, [])
+    useEffect(_ => {console.log(props.car)}, [])
+        const handleselling = e => {
+            props.info.sellcar(e)
+            props.handleSelect()
+        }
     return (
         <div>
             <Container style={{paddingBottom:'15%'}}>
@@ -51,11 +73,17 @@ export default function Upgrades(props) {
                     
                     <Col xs={4}>
                         <h2 style={{ padding: '5px' }} >Body Kit</h2>
-                        <h4>{props.car.bodyKit}</h4>
-                        {props.car.bodyKit === 3 ? null : <h5>$1000</h5>}
-                        {props.car.bodyKit === 3 ? null : <button id={props.index} value='1000' onClick={props.handleBodyKit}>Upgrade</button>}
+                        //<h4>{props.car.bodyKit}</h4>
+                        //{props.car.bodyKit === 3 ? null : <h5>$1000</h5>}
+                        //{props.car.bodyKit === 3 ? null : <button id={props.index} value='1000' onClick={props.handleBodyKit}>Upgrade</button>}
+                        <h4>({props.car.bodyKit}/3)</h4>
+                        {handlekitupgrade(props)}
+
                         
                     </Col>
+                </Row>
+                <Row className="text-center">
+                    <button id={props.car._id} value={props.index} data-price={props.car.value} onClick={handleselling}>Sell Car</button>
                 </Row>
             </Container>
         </div>
