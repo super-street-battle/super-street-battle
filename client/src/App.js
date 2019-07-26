@@ -16,6 +16,7 @@ import axios from 'axios'
 
 
 
+
 // Configure Firebase.
 var firebaseConfig = {
   apiKey: "AIzaSyAG9WRxHHx9fVwHL287lMPRY3y4t7MZkVw",
@@ -25,8 +26,10 @@ var firebaseConfig = {
   storageBucket: "todo-334b1.appspot.com",
   messagingSenderId: "595507004361",
   appId: "1:595507004361:web:5ddc164fdcc824a0"
+
 };
 firebase.initializeApp(firebaseConfig);
+
 // Configure FirebaseUI.
 const uiConfig = {
   // Popup signin flow rather than redirect flow.
@@ -39,7 +42,9 @@ const uiConfig = {
     firebase.auth.FacebookAuthProvider.PROVIDER_ID
   ]
 };
+
 const FBAuth = firebase.auth()
+
 const App = _ => {
   // const [isLoggedIn, setLoginState] = useState(1)
   // const [newUser, setUserState] = useState("new")
@@ -47,6 +52,7 @@ const App = _ => {
     isLoggedIn: 1,
     newUser: 'new'
   })
+
   useEffect(_ => {
     firebase.auth().onAuthStateChanged(user => {
       //handleAddUser()
@@ -57,18 +63,17 @@ const App = _ => {
               setLoginState({ ...loginState, newUser: 'new' })
             } else {
               setLoginState({ ...loginState, newUser: 'old' })
+
               localStorage.setItem('_id', data)
             }
           })
           .catch(e => console.log(e))
-
         setLoginState({ ...loginState, isLoggedIn: 1 })
       } else {
         setLoginState({ ...loginState, isLoggedIn: 2 })
       }
     })
   }, [])
-
 
   loginState.handleAddUser = event => {
 
@@ -118,6 +123,7 @@ const App = _ => {
           {/* <Route path="/SelectCar" component={() => <CarSelect handleAddUser={loginState.handleAddUser} />} /> */}
           <Redirect to="/" />
         </Switch>
+
       </div>
     )
   } else if (loginState.isLoggedIn === 2) {
@@ -148,5 +154,7 @@ const App = _ => {
     )
   }
 
+
 }
+
 export default App
