@@ -1,6 +1,6 @@
 # Super Street Battle
 
-A game that combines the fast-paced action of street racing with the slow and arduous grind of an rpg. Can you beat Takumi?
+A full-stack MERN game that combines the fast-paced action of street racing with the slow and arduous grind of an rpg. Can you beat Takumi?
 
 ### Deployment:
 
@@ -18,8 +18,14 @@ https://superstreetbattle.herokuapp.com/
 <li>Amazon Web Services (AWS)
 <li>Firebase Authentication
 <li>Custom game algorithm
+</ul>
 
- </ul>
+### Animation and Images Created In:
+
+<ul>
+<li>Adobe Premier
+<li>Adobe Photoshop
+</ul>
 
 ### Contributors:
 <ul>
