@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react'
 import Logo from '../../components/logo'
 import './login.css'
 import FireBaseLogin from '../../components/firebaselogin'
-import Container from '@material-ui/core/Container'
 import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles(theme => ({
@@ -24,7 +23,6 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-
 const Login = props => {
   const [buttonstate, setbuttonstate] = useState({
     button: false
@@ -32,21 +30,14 @@ const Login = props => {
   const classes = useStyles();
   useEffect(_ => {
     setTimeout(() => {
-      // document.getElementById('loginbtn').style.visibility = 'visible'
       setbuttonstate({...buttonstate, button: true})
     }, 2700)
   },[])
 
   return (
-    
     <div className='main_container'>
-      {/* <Container> */}
        <Logo />
-       {/* <div id="loginbtn"> */}
          {buttonstate.button === true ? <FireBaseLogin FirebaseAuth={props.FirebaseAuth} uiConfig={props.uiConfig}/> : null}
-        {/* <FireBaseLogin FirebaseAuth={props.FirebaseAuth} uiConfig={props.uiConfig}/> */}
-       {/* </div> */}
-      {/* </Contain er> */}
     </div>
   )
 }

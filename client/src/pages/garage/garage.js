@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react'
-// import Cards from './cards'
 import Slide from './slide'
 import ScoreBoard from './scoreBoard'
-import Upgrades from './upgrades'
 import Inventory from './inventory'
 import Nav2 from '../../components/nav2'
 import Player from '../../utils/player'

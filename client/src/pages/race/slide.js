@@ -13,7 +13,6 @@ export default function Slide(props) {
      setShowWorkshop(false)
     }
 
-    // console.log(images)
 // state of current car, pass id to onclick then pass to component the current id or info,
     return (
         <div>

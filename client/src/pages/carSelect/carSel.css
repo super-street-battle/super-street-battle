@@ -1,15 +1,18 @@
-
-
-
-.username
-{
-  padding-top:5px;
+.username {
+  padding-top: 5px;
 }
 
-.selectitembtn {
- 
-  background-color:Green;
+/* .selectitembtn {
+  background-color: Green;
   border: none;
   height: 27px;
- padding:2px;
+  padding-top: 2px;
+} */
+
+.choose {
+  padding-top: 2em
+}
+
+.carousel-item {
+  padding-bottom: 20px;
 }

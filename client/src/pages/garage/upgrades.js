@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
-import { Container, Button, Form, FormGroup, Label, Input, FormText, Row, Col } from 'react-bootstrap'
-// import Cards from './cards'
+import { Container, Row, Col } from 'react-bootstrap'
 import './upgrades.css'
 
 const handlekitupgrade = props=> {

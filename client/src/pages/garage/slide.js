@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Carousel, Container, Row, Col, Button } from 'react-bootstrap'
-import Cards from './cards.js'
 import Upgrades from './upgrades'
-import images from '../../baseCars.json'
-import Axios from 'axios'
 import './scoreBoard.css'
 
 export default function Slide(props) {
