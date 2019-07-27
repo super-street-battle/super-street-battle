@@ -1,8 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react'
-import Nav2 from '../../components/nav2'
 import Nav from '../../components/nav'
-import Logo from '../../components/logo'
-import { Carousel, Container, Form, Row, Col, Button, Card } from 'react-bootstrap'
+import { Carousel, Container, Form, Row, Col, Button } from 'react-bootstrap'
 import images from '../../baseCars.json'
 import cars from '../../baseCars.json'
 import './carSel.css'
@@ -16,7 +14,8 @@ const CarSel = props => {
     loginState.handleAddUser = event => {
         const carID = event.target.id
         if (username.current.value === '' || username.current.value === ' ') {
-            alert('Please choose a User Name')
+            alert('Please enter an user name')
+            return false
         } else {
             axios.post('/players', { uid: props.uid, userName: username.current.value })
                 .then(_ => {
@@ -37,7 +36,6 @@ const CarSel = props => {
                         .catch(e => console.log(e))
                 })
                 .catch(e => console.log(e))
-
         }
         window.location = "/"
     }
@@ -55,16 +53,17 @@ const CarSel = props => {
                 </Form>
                 <Row>
                     <Col className="text-center">
+                        <div className='choose'>Choose your car</div>
                         <Carousel interval={false}>
-                            {console.log(images)}
                             {images.map((car, index) => (
                                 <Carousel.Item key={car.id} id={1}>
                                     <img className="d-block w-100"
                                         src={car.stock}
                                         alt={1} />
                                     <Carousel.Caption>
-                                        <div>   <small>Car Model: {car.name}</small> </div>
-                                        <Button className="selectitembtn" variant="success" id={index} onClick={loginState.handleAddUser}>+</Button>
+                                        <div>{car.name}</div>
+                                        <br />
+                                        <Button variant="success" id={index} onClick={loginState.handleAddUser}>+</Button>
                                     </Carousel.Caption>
                                 </Carousel.Item>
                             ))}
@@ -77,4 +76,4 @@ const CarSel = props => {
         </div>
     )
 }
-export default CarSel 
+export default CarSel

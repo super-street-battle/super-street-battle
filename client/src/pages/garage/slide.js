@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Carousel, Container, Row, Col, Button } from 'react-bootstrap'
-import Cards from './cards.js'
 import Upgrades from './upgrades'
-import images from '../../baseCars.json'
-import Axios from 'axios'
 import './scoreBoard.css'
 
 export default function Slide(props) {
@@ -11,7 +8,6 @@ export default function Slide(props) {
     //set state for Upg/Workshop to be hidden,
     const [showWorkshop, setShowWorkshop] = useState(false)
     const [currentCar, setCurrentCar] = useState(props.info.cars[0])
-    console.log(props.info) 
 
     const [currentIndex, setCurrentIndex] = useState(null)
     const handleSelect = () => {

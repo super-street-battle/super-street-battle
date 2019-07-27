@@ -1,5 +1,5 @@
 import React from 'react'
-import { Jumbotron, Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 import './scoreBoard.css'
 
 
@@ -10,7 +10,7 @@ export default function (props) {
             <Container>
                 <Row>
                     <Col xs={12} >
-                        <h1 className='userName' id='garageUserName'>{props.info.userName}'s Garage</h1>
+                        <div className='userName' id='garageUserName'>{props.info.userName}'s Garage</div>
                     </Col>
                 </Row>
                 <Row>

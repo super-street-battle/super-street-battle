@@ -113,7 +113,7 @@ const Result = props => {
             <br/>
             <p>vs</p> 
             <br/>
-            <p className="text">Theirs: {props.state.cputotal}</p>
+            <p className="text">Takumi: {props.state.cputotal}</p>
             <br/>
             <img src={resultState.animation} /> 
             <Delayed waitBeforeShow={5000}>

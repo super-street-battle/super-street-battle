@@ -12,15 +12,18 @@
 }
 
 #garageUserName{
-    font-size: 27px;
+    font-size: 25px;
     line-height: 1.5;
     margin-top: 5%;
     margin-bottom: 6%;
     /* float: left; */
-    color: #e97718
+    color: #e97718;
+    text-align: center
 }
 .cashmoney {
     margin-bottom: 4%;
+    text-align: center;
+    margin-left: 8%
 }
 .slidecontainer {
     margin-top: -16%
