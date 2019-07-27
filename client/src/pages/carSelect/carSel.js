@@ -15,6 +15,7 @@ const CarSel = props => {
         const carID = event.target.id
         if (username.current.value === '' || username.current.value === ' ') {
             alert('Please choose a User Name')
+            return false
         } else {
             axios.post('/players', { uid: props.uid, userName: username.current.value })
                 .then(_ => {
