@@ -8,7 +8,6 @@ export default function Slide(props) {
     //set state for Upg/Workshop to be hidden,
     const [showWorkshop, setShowWorkshop] = useState(false)
     const [currentCar, setCurrentCar] = useState(props.info.cars[0])
-    console.log(props.info) 
 
     const [currentIndex, setCurrentIndex] = useState(null)
     const handleSelect = () => {

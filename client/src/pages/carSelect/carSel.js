@@ -14,7 +14,7 @@ const CarSel = props => {
     loginState.handleAddUser = event => {
         const carID = event.target.id
         if (username.current.value === '' || username.current.value === ' ') {
-            alert('Please choose a User Name')
+            alert('Please enter an user name')
             return false
         } else {
             axios.post('/players', { uid: props.uid, userName: username.current.value })
@@ -36,7 +36,6 @@ const CarSel = props => {
                         .catch(e => console.log(e))
                 })
                 .catch(e => console.log(e))
-
         }
         window.location = "/"
     }
@@ -77,4 +76,4 @@ const CarSel = props => {
         </div>
     )
 }
-export default CarSel 
+export default CarSel

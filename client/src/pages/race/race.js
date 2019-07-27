@@ -96,7 +96,7 @@ const Race = _ => {
             isCar: true
     })}
 
-    raceState.startrace= _ => {
+    raceState.startrace = _ => {
         if (betinput.current.value > raceState.money){
             alert('Bet exceed amout available!')
         } else if (raceState.isCar && raceState.isLoc ) {
@@ -104,35 +104,35 @@ const Race = _ => {
         let cputotal = raceState.cputotal
         let logarr = []
         if (raceState.pengine > raceState.cpuE) {
-            logarr.push(`${raceState.username} has better engine, ${raceState.username} pull ahead`)
+            logarr.push(`You have a better engine, so you pull ahead!`)
         } else {
-            logarr.push('npc start off strong, npc pull ahead')
+            logarr.push('Takumi starts off strong, Takumi pulls ahead!')
         }
 
         if (raceState.pbodyKit > raceState.cpuK) {
-            logarr.push(`looking GREAT ${raceState.username}!`)
+            logarr.push(`You're looking GREAT!`)
         } else {
-            logarr.push('npc got the better kit, points for style!')
+            logarr.push('Takumi has a better kit, points for style!')
         }
         
         if (raceState.ptire > raceState.cpuT) {
-            logarr.push(`${raceState.username} speed up thanks to superior tires`)
+            logarr.push(`Your speed went up thanks to superior tires`)
         } else {
-            logarr.push('npc speed increased, watch out!')
+            logarr.push(`Takumi's speed increased, watch out!`)
         }
 
         if (raceState.useItem !== "") {
             switch(raceState.useItem) {
                 case 'oil':
-                    logarr.push(`${raceState.username} used ${raceState.useItem}, npc is slowed!`, "We're coming up on the finish line!", "Who will be our winner..?!")
+                    logarr.push(`You used ${raceState.useItem}, Takumi slowed down!`, "We're coming up on the finish line!", "Who will be our winner..?!")
                     cputotal -= .5
                     break;
                 case 'nitro':
-                    logarr.push(`${raceState.username} used ${raceState.useItem} and increase speed by 5%`, "We're coming up on the finish line!", "Who will be our winner..?!")
+                    logarr.push(`You used ${raceState.useItem} and increased the speed by 5%`, "We're coming up on the finish line!", "Who will be our winner..?!")
                     ptotal += .8
                     break;
                 case 'grippyTires':
-                    logarr.push(`${raceState.username} used ${raceState.useItem}, and increase speed by 2%`, "We're coming up on the finish line!", "Who will be our winner..?!")
+                    logarr.push(`You used ${raceState.useItem}, and increased the speed by 2%`, "We're coming up on the finish line!", "Who will be our winner..?!")
                     ptotal += .4
                     break;
                 default:
