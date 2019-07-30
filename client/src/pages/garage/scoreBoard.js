@@ -9,7 +9,7 @@ export default function (props) {
 
             <Container>
                 <Row>
-                    <Col xs={12} >
+                    <Col xs={12}>
                         <div className='userName' id='garageUserName'>{props.info.userName}'s Garage</div>
                     </Col>
                 </Row>
@@ -22,13 +22,13 @@ export default function (props) {
 
                 </Row>
                 <Row>
-                    <Col xs={12}>
+                    <Col xs={12} md={4}>
                         <h4 className='garageInfo'>Wins:{props.info.win}</h4>
                     </Col>
-                    <Col xs={12}>
+                    <Col xs={12} md={4}>
                         <h4 className='garageInfo'>Losses:{props.info.loss}</h4>
                     </Col>
-                    <Col xs={12}>
+                    <Col xs={12} md={4}>
                         <h4 className='garageInfo'>Ties:{props.info.tie}</h4><br />
                     </Col>
                 </Row>

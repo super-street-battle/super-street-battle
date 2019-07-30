@@ -8,7 +8,7 @@
 }
 
 .sellingimg {
-  width: 70%;
+  width: 90%;
   background-color: rgb(253, 253, 253);
 }
 
@@ -32,4 +32,10 @@
   margin: auto;
   padding-bottom: 2%;
   border-bottom: 1px solid;
+}
+.sellingcon {
+  margin: auto;
+}
+.sellingcontainer {
+  position: relative;
 }

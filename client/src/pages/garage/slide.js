@@ -5,7 +5,6 @@ import './scoreBoard.css'
 
 export default function Slide(props) {
 
-    //set state for Upg/Workshop to be hidden,
     const [showWorkshop, setShowWorkshop] = useState(false)
     const [currentCar, setCurrentCar] = useState(props.info.cars[0])
 
@@ -20,20 +19,11 @@ export default function Slide(props) {
         setCurrentIndex(index)
     }
 
-    // state of current car, pass id to onclick then pass to component the current id or info,
     return (
         <div>
 
             <Container className='text-center slidecontainer'>
-                {/* <Row>
-                    <Col xs={12} className='text-center pt-5' style={{ fontSize: '37px' }}>
-                        <h1>
-                        {props.info.cars.carName}
-                        </h1>
-                    </Col>
-                </Row> */}
-
-                <Carousel interval={false} onSelect={handleSelect} style={{ marginBottom: '20%' }}>
+                <Carousel interval={false} onSelect={handleSelect} style={{ marginBottom: '9%' }}>
                     {props.info.cars.map(({ carName, imageLink }, index) => (
 
                         <Carousel.Item onClick={() => handleShowWorkShop(props.info.cars[index], index)}>

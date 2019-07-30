@@ -7,6 +7,7 @@ import logo5 from '../../assets/SSB_logo5.png'
 import { interpolate, interpolateTransformSvg } from 'd3-interpolate'
 import { easeBackOut } from 'd3-ease'
 import { NodeGroup } from 'react-move'
+import './logo.css'
 
  class Logo extends Component {
   state = {
@@ -38,7 +39,7 @@ import { NodeGroup } from 'react-move'
     const { item1, item2, item3, item4, item5, width, height } = this.state
 
      return (
-      <div>
+      <div className="logocontainer">
       <div style={{ width: '100%' }} ref={(d) => { this.container = d }}>
         {width === null ? null : (
           <NodeGroup
@@ -83,7 +84,7 @@ import { NodeGroup } from 'react-move'
                       color,
                     }}
                   >
-                    <img src={data.img} alt="logo" className="logoimg"/>
+                    <img src={data.img} alt="logo" className="logoimg1" id="animatelogo1"/>
                   </div>
                 ))}
               </div>

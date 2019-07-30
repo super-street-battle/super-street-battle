@@ -30,7 +30,7 @@ export default function Upgrades(props) {
         <div>
             <Container style={{paddingBottom:'15%'}}>
                 <Row>
-                    <Col xs={12} md={6} className='text-left'>
+                    <Col xs={12} className='text-left'>
                         <h1 className='upgrages' style={{ textAlign: 'center', color: '#e97718', fontSize: '25px' }}>Upgrades</h1>
                     </Col>
                 </Row>
