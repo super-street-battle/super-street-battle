@@ -37,7 +37,7 @@
     margin-bottom: 4%;
 }
 .itemimg {
-    width: 60% !important;
+    width: 22% !important;
 }
 .garitems {
     position: relative;
@@ -45,13 +45,16 @@
     right: auto;
     padding-top: 30px !important;
     padding-bottom: 20px !important; 
-    width: 92%;
+    width: 80%;
 }
 .garbuy {
     background-color: #ff9800;
     border: none;
     height: 27px;
     width: 140px; 
+}
+.scoreboardcol{
+    margin-bottom: 5%
 }
 @media only screen and (max-width: 590px){
     .garageInfo{

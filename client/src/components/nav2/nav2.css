@@ -5,9 +5,9 @@ a {
 }
 .nav2 {
     text-align: center;
-    padding: 3% 0;
+    padding: 2% 0;
     background-color: #f3ff44;
-    padding-bottom: 4%
+    /* padding-bottom: 4% */
 }
 .link:hover{
     background-color: orange;

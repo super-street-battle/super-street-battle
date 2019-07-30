@@ -1,5 +1,5 @@
 .w-100 {
-  width: 76%!important;
+  width: 32%!important;
   margin: auto;
 }
 .selectbtn {
@@ -20,7 +20,7 @@
   padding-bottom: 20px !important; 
 }
 .item {
-  width: 60% !important;
+  width: 20% !important;
 }
 .selectitembtn {
   margin-top: 5%;
@@ -37,11 +37,11 @@
   height: 136px;
 }
 .location {
-  padding-top: 8%;
-  padding-bottom: 3%;
+  padding-top: 4%;
+  padding-bottom: 2%;
 }
 .locbtn {
-  margin-top: 4% !important;
+  margin-top: 2% !important;
   background-color: transparent;
   border: none;
   color: #f3ff44;

@@ -40,11 +40,13 @@
     align-content: center;
 }
 .resultcontainer {
-    margin-top: 15%;
+    margin-top: 6%;
     text-align: center;
 }
 .finishbtn {
-    margin-top: 5%;
+    display: block;
+    margin: auto;
+    margin-top: 3%;
     background-color: #ff9800;
     border: none;
     height: 27px;

@@ -11,7 +11,7 @@ import model4 from '../../model4.json'
 import model5 from '../../model5.json'
 import model6 from '../../model6.json'
 import Car from '../../utils/car'
-
+import { Container, Row, Col } from 'react-bootstrap';
 
 
 const grippyTire = 'https://super-street-battle.s3.us-west-1.amazonaws.com/1563852066775'
@@ -44,8 +44,6 @@ const Garage = _ => {
         win: null,
         tie: null,
         id: ''
-        //         enginePrice: null,
-        //         tirePrice: null 
     })
 
     useEffect(_ => {
@@ -93,9 +91,7 @@ const Garage = _ => {
 
 
     playerState.handleTire = e => {
-        // grabs car array
         let i = parseInt(e.target.id)
-        //grabs the clicked car
         let cars = playerState.cars
         let cost = parseInt(e.target.value)
         let tireprice = playerState.tireprice
@@ -105,25 +101,17 @@ const Garage = _ => {
             cars[i].tire = cars[i].tire + 1
             tireprice.splice(i, 1, cars[i].tire * 25)
             console.log(tireprice.splice(i, 1, cars[i].tire * 25))
-            // setPlayerState({...playerState, cars})
 
             setPlayerState({ ...playerState, cars, money: playerState.money - cost, tireprice })
             Player.updatebank(playerState.id, { bankAccount: playerState.money - cost })
             Car.updatetires(cars[i]._id, { tire: cars[i].tire })
-            // console.log(playerState.cars[i].engine)
-
-            //increment price everytime they buy i product
-            // setPlayerState({...playerState, cars, tirePrice: playerState.tirePrice + 50})
-
         }
 
     }
 
     playerState.handleEngine = e => {
         console.log(playerState.engineprice)
-        // grabs car array
         let i = parseInt(e.target.id)
-        //grabs the clicked car
         let cars = playerState.cars
         let cost = parseInt(e.target.value)
         let engineprice = playerState.engineprice
@@ -132,17 +120,10 @@ const Garage = _ => {
         } else {
             cars[i].engine = cars[i].engine + 1
             engineprice.splice(i, 1, cars[i].engine * 25)
-            // console.log(engineprice.splice(i, 1, cars[i].engine * 25))
-            // setPlayerState({...playerState, cars})
 
             setPlayerState({ ...playerState, cars, money: playerState.money - cost, engineprice })
             Player.updatebank(playerState.id, { bankAccount: playerState.money - cost })
             Car.updateengine(cars[i]._id, { engine: cars[i].engine })
-            // console.log(playerState.cars[i].engine)
-
-            //increment price everytime they buy i product
-            // setPlayerState({...playerState, cars, tirePrice: playerState.tirePrice + 50})
-
         }
     }
 
@@ -270,10 +251,23 @@ return (
 
     <>
         <Nav2 />
-        <ScoreBoard items={playerState.items} info={playerState} playerId={playerState.id} money={playerState.money} />
-        {/* <Cards /> */}
-        <Slide info={playerState} handleBodyKit={playerState.handleBodyKit}  />
-        <Inventory prices={playerState} items={playerState.items} PlayerId={playerState.id} money={playerState.money} handleBuyItem={playerState.handleBuyItem} />
+        <Container>
+            <Row>
+                <Col className="scoreboardcol">
+                    <ScoreBoard items={playerState.items} info={playerState} playerId={playerState.id} money={playerState.money} />
+                </Col>
+            </Row>
+            <Row>
+                <Col>
+                    <Slide info={playerState} handleBodyKit={playerState.handleBodyKit}  />
+                </Col>
+            </Row>
+            <Row>
+                <Col>
+                    <Inventory prices={playerState} items={playerState.items} PlayerId={playerState.id} money={playerState.money} handleBuyItem={playerState.handleBuyItem} />
+                </Col>
+            </Row>
+        </Container>
     </>
 )
 

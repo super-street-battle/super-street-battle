@@ -5,9 +5,7 @@ import basecars from '../../baseCars.json'
 import Car from '../../utils/car'
 import Player from '../../utils/player'
 import './junkyard.css'
-import { FaShoppingCart } from "react-icons/fa";
-
-import { Card, Button } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 
 const Junkyard = props => {
     const [sellingState, setsellingState] = useState({
@@ -128,24 +126,36 @@ const Junkyard = props => {
     return (
         <>
         <Nav2 />
-        <h1 className="sellingsub">Hot Car!</h1>
-        {sellingState.sellingcars.map((car, index) =>(
-            <div className='selling'>
-                <img src={car.imageLink} className='sellingimg'/>
-                <h1 className='sellingcap'>{car.carName} {car.bodyKit}</h1>
-                <p className='sellingcap'>${car.value*.8}</p>
-                <button className="sellingbtn" id={car._id} value={car.value*.8} data-i={index} onClick={sellingState.handlepurchase}>Purchase</button>
-            </div>
-        ))}
-        <h1 className="sellingsub">Base Models</h1>
-        {sellingState.basecars.map((car, index) =>(
-            <div className='selling'>
-                <img src={car.imageLink} className='sellingimg'/>
-                <h1 className='sellingcap'>{car.carName} {car.bodyKit}</h1>
-                <p className='sellingcap'>${car.value}</p>
-                <button className="sellingbtn" value={car.value} data-i={index} onClick={sellingState.handlebasepurchase}>Purchase</button>
-            </div>
-        ))}
+        <Container className="sellingcontainer">
+            <h1 className="sellingsub">Hot Car!</h1>
+            <Row>
+                {sellingState.sellingcars.map((car, index) =>(
+                    <div className='selling'>
+                        <Col xs={12} md={6} lg={6} className="sellingcon">
+                            <img src={car.imageLink} className='sellingimg'/>
+                            <h1 className='sellingcap'>{car.carName} {car.bodyKit}</h1>
+                            <p className='sellingcap'>${car.value*.8}</p>
+                            <button className="sellingbtn" id={car._id} value={car.value*.8} data-i={index} onClick={sellingState.handlepurchase}>Purchase</button>
+                        </Col>
+                    </div>
+                ))}
+            </Row>
+        </Container>
+        <Container>
+            <h1 className="sellingsub">Base Models</h1>
+            <Row>
+                {sellingState.basecars.map((car, index) =>(
+                    <div className='selling'>
+                        <Col xs={12} md={6} lg={6} className="sellingcon">
+                            <img src={car.imageLink} className='sellingimg'/>
+                            <h1 className='sellingcap'>{car.carName} {car.bodyKit}</h1>
+                            <p className='sellingcap'>${car.value}</p>
+                            <button className="sellingbtn" value={car.value} data-i={index} onClick={sellingState.handlebasepurchase}>Purchase</button>
+                        </Col>
+                    </div>
+                ))}
+            </Row>
+        </Container>
         </>
     )
 }
