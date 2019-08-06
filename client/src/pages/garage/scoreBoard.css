@@ -57,10 +57,6 @@
     margin-bottom: 5%
 }
 @media only screen and (max-width: 590px){
-    .garageInfo{
-        /* line-height:  */
-    }
-
     .cashmoney {
         /* text-align: center; */
         font-size: 23px; 
@@ -71,4 +67,26 @@
         font-size: 50px,
     }
 }
+@media only screen and (max-width: 415px) {
+    #garageUserName {
+      font-size: 22px !important;
+    }
+    .cashmoney {
+      font-size: 18px !important;
+    }
+    .itemimg {
+        width: 32% !important;
+    }
+  }
+@media only screen and (max-width: 376px) {
+    #garageUserName {
+      font-size: 19px !important;
+    }
+    .cashmoney {
+      font-size: 15px !important;
+    }
+    .garageInfo {
+        font-size: 15px !important;
+    }
+  }
 

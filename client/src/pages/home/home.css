@@ -9,7 +9,7 @@
     overflow-x: auto;
 }
 .topcontainer {
-    /* background: rgba(54, 54, 54, 0.425); */
+    background: rgba(54, 54, 54, 0.425);
 }
 .homepage {
     background-image: url(../../assets/race.gif);
