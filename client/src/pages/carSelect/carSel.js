@@ -37,13 +37,13 @@ const CarSel = props => {
                 })
                 .catch(e => console.log(e))
         }
-        window.location = "/"
+        // window.location = "/"
     }
 
     return (
         <div>
+            <Nav />
             <Container >
-                <Nav />
                 <Form>
                     <Row>
                         <Col className='pt-3'>
@@ -57,7 +57,7 @@ const CarSel = props => {
                         <Carousel interval={false}>
                             {images.map((car, index) => (
                                 <Carousel.Item key={car.id} id={1}>
-                                    <img className="d-block w-100"
+                                    <img className="d-block w-100" id="carselimg"
                                         src={car.stock}
                                         alt={1} />
                                     <Carousel.Caption>

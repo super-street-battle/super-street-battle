@@ -67,3 +67,16 @@
   height: 27px;
   width: 26%;
 }
+@media only screen and (max-width: 768px) {
+  .items {
+    padding-top: 0 !important;
+  }
+}
+@media only screen and (max-width: 415px) {
+  .item {
+    width: 36% !important;
+}
+  .w-100 {
+    width: 50%!important;
+  }
+}

@@ -4,7 +4,7 @@
 .logoimg2 {
     width: 60%;
     margin-top: 3% !important;
-    margin-left: 13% !important;
+    margin-left: 17% !important;
 }
 .logoimg1 {
     width: 50%;
@@ -12,7 +12,7 @@
 .logoimg5 {
     width: 50%;
     margin-top: 4%;
-    margin-left: -20% !important;
+    margin-left: -27% !important;
 }
 #loginbtn {
     visibility: hidden;
@@ -22,17 +22,123 @@
     background-color: #f3ff44 !important;
 }
 #firebaseui_container {
-    padding-top: 50vh !important;
+    padding-top: 41vh !important;
 }
 .firebaseui-idp-text.firebaseui-idp-text-long {
     font-family: Roboto,Helvetica,Arial,sans-serif !important;
 }
-.firebaseui-idp-list>.firebaseui-list-item {
-    margin-top: 17% !important;
-}
 .logocontainer {
-    margin-left: 23% !important;
+    margin-left: 28% !important;
 }
-@media only screen and (max-width: 1366px) {
-  
+@media only screen and (max-width: 1680px) {
+    .logoimg2 {
+        margin-left: 12% !important;
+    }
+    .logoimg5 {
+        margin-left: -19% !important;
+    }
+    .logocontainer {
+        margin-left: 27% !important;
+    }
+}
+@media only screen and (max-width: 1600px) {
+    .logocontainer {
+        margin-left: 26% !important;
+    }
+    #firebaseui_container {
+        padding-top: 47vh !important;
+    }
+}
+@media only screen and (max-width: 1536px) {
+    .logoimg2 {
+        margin-left: 10% !important;
+    }
+    .logoimg5 {
+        margin-left: -21% !important;
+    }
+    #firebaseui_container {
+        padding-top: 51vh !important;
+    }
+    .logocontainer {
+        margin-left: 26% !important;
+    }
+}
+@media only screen and (max-width: 1472px) {
+    .logoimg5 {
+        margin-left: -18% !important;
+    }
+    #firebaseui_container {
+        padding-top: 55vh !important;
+    }
+    .logocontainer {
+        margin-left: 24% !important;
+    }
+}
+@media only screen and (max-width: 1280px) {
+    #firebaseui_container {
+        padding-top: 56vh !important;
+    }
+}
+@media only screen and (max-width: 1024px) {
+    .logoimg2 {
+        margin-left: 3% !important;
+    }
+    .logoimg5 {
+        margin-left: -9% !important;
+    }
+    .logocontainer {
+        margin-left: 21% !important;
+    }
+}
+@media only screen and (max-width: 768px) {
+    .logoimg2 {
+        margin-left: 6% !important;
+    }
+    .logoimg5 {
+        margin-left: -5% !important;
+    }
+    .logocontainer {
+        margin-left: 15% !important;
+    }
+    #firebaseui_container {
+        padding-top: 41vh !important;
+    }
+}
+@media only screen and (max-width: 415px) {
+    .logoimg2 {
+        margin-left: 4% !important;
+        width: 82% !important;
+    }
+    .logoimg1 {
+        width: 60% !important;
+    }
+    .logoimg5 {
+        width: 41% !important;
+        margin-top: 2% !important;
+        margin-left: 0 !important;
+    }
+    .logocontainer {
+        margin-left: 3% !important;
+    }
+    #firebaseui_container {
+        padding-top: 53vh !important;
+    }
+}
+@media only screen and (max-width: 376px) {
+    .logocontainer {
+        margin-left: 0 !important;
+    }
+    #firebaseui_container {
+        padding-top: 56vh !important;
+    }
+}
+@media only screen and (max-width: 360px) {
+    #firebaseui_container {
+        padding-top: 59vh !important;
+    }
+}
+@media only screen and (max-width: 320px) {
+    #firebaseui_container {
+        padding-top: 65vh !important;
+    }
 }
