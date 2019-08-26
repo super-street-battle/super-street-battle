@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import { Carousel, Container } from 'react-bootstrap'
-import './race.css'
+import './challenge.css'
 
 export default function SlideLoc(props) {
 
@@ -14,7 +14,7 @@ export default function SlideLoc(props) {
                             <div className="loc">
                                 <h1 className="location">{track}</h1>
                                 <small>{terrain}</small>
-                                <button className="locbtn" onClick={props.trackselect} id={weather.part} value={weather.point}>+</button>
+                                <button className="locbtn" onClick={props.trackselect} id={weather.part} value={weather.point} data-track={track} data-terrain={terrain} data-weather={weather.weather}>+</button>
                                 </div>
                         </Carousel.Item>
                     ))}

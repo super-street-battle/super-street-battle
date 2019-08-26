@@ -1,31 +1,26 @@
 module.exports = (Schema, model) => {
     const Result = new Schema({
-        winner: {
+        sender: {
             type: String,
             default: ""
         },
-        wscore: {
+        ptotal: {
             type: Number,
         },
-        lscore: {
+        ototal: {
             type: Number
         },
-        winnweId: { 
+        receiver: { 
             type: String,
             default: ""
         },
         log: {
-            type: String,
-            default: ""
+            type: Array,
+            default: []
         },
-        animation: {
+        animation: [{
             type: String,
-            default: ""
-        },
-        bet: {
-            type: Number,
-            default: ""
-        }
+        }]
     })
     return model('Result', Result)
 }

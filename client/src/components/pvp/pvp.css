@@ -1,0 +1,8 @@
+.opponentsel {
+    margin: auto;
+    text-align: center;
+    margin-top: 4%;
+}
+select {
+    width: 80vw
+}

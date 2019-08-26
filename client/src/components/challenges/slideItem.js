@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import { Carousel, Container } from 'react-bootstrap'
-import './race.css'
+import './challenge.css'
 
 export default function SlideItem(props) {
 // state of current car, pass id to onclick then pass to component the current id or info,

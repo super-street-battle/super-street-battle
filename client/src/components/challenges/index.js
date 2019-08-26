@@ -1,1 +1,1 @@
-export { default } from './challenges'
+export {default} from './challenge.js'

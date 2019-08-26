@@ -10,7 +10,8 @@ const Player =  {
     updatewin: (id, body) => axios.put(`/players/${id}/win`, body),
     updateloss: (id, body) => axios.put(`/players/${id}/loss`, body),
     updatetie: (id, body) => axios.put(`/players/${id}/tie`, body),
-    removecar: (id, carid) => axios.delete(`/players/${id}/delete-car/${carid}`)
+    removecar: (id, carid) => axios.delete(`/players/${id}/delete-car/${carid}`),
+    getrange: (id, max, min) => axios.get(`/players/challenge/${id}/${max}/${min}`)
 }
 
 export default Player
