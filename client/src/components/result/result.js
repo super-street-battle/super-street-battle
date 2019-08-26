@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import { Link } from 'react-router-dom'
 import Delayed from './delayed'
-import Player from '../../utils/player'
 import './result.css'
 import { FaRoad } from "react-icons/fa";
 
@@ -19,169 +18,50 @@ const Result = props => {
         let time 
         if (props.state.logarr.length === 5) {
             time = 10500
-        } else {
+        } else if (props.state.logarr.length === 6) {
             time = 12000
+        } else if (props.state.logarr.length === 7) {
+            time = 13500
         }
-        if(props.state.ptotal > props.state.cputotal){
+        if(props.state.ptotal > props.state.ototal){
             result ='Congratulations, You Won!'
             setTimeout(_ => { setresultState({...resultState, isanimation: true, animation: animationarr[2], result})}, time)
-            // setresultState({...resultState, animation: animationarr[2], result})
-            Player.updatewin(props.state.id, {win: props.state.win + 1})
-            Player.updateexperience(props.state.id, {experience: props.state.experience + 5})
-            Player.updatebank(props.state.id, {bankAccount: props.state.money + (props.state.bet*2)})
-        } else if (props.state.ptotal < props.state.cputotal) {
+        } else if (props.state.ptotal < props.state.ototal) {
             result ='You Lost!'
-            // setresultState({...resultState, animation: animationarr[0], result})
             setTimeout(_ => { setresultState({...resultState, isanimation: true, animation: animationarr[0], result})}, time)
-            Player.updateloss(props.state.id, {loss: props.state.loss + 1})
-            Player.updatebank(props.state.id, {bankAccount: props.state.money - props.state.bet})
-        } else if (props.state.ptotal === props.state.cputotal) {
+        } else if (props.state.ptotal === props.state.ototal) {
             result = "It's a tie!"
-            // setresultState({...resultState, animation: animationarr[1], result})
             setTimeout(_ => { setresultState({...resultState, isanimation: true, animation: animationarr[1], result})}, time)
-            Player.updateexperience(props.state.id, {experience: props.state.experience + 2})
-            Player.updatetie(props.state.id, {tie: props.state.tie + 1})
         }
-        // setresultState({...resultState, result})
-        console.log(resultState.animation)
     }, [])
-    // resultState.timer= _ => {
-    //     setTimeout(_ => { setresultState({...resultState, isanimation: true})}, 9500)
-    // }
-      resultState.timer = _ => {
-        if (props.state.logarr.length === 5) {
-            return (
-                <>
-                <h1 className="result">Start!</h1>
-                <Delayed waitBeforeShow={1000}>
-                <p className="text"><FaRoad /> {props.state.logarr[0]}</p>
-            </Delayed>
 
-            <Delayed waitBeforeShow={3000}>
-                <p className="text"><FaRoad /> {props.state.logarr[1]}</p>
-            </Delayed>
-
-            <Delayed waitBeforeShow={4500}>
-                <p className="text"><FaRoad /> {props.state.logarr[2]}</p>
-            </Delayed>
-
-            <Delayed waitBeforeShow={6000}>
-                <p className="text"><FaRoad /> {props.state.logarr[3]}</p>
-            </Delayed>
-
-            <Delayed waitBeforeShow={7500}>
-                <p className="text"><FaRoad /> {props.state.logarr[4]}</p>
-            </Delayed>
-            </>
-            )
-        } else {
-            return (
-                <>
-                <h1 className="result">Start!</h1>
-                <Delayed waitBeforeShow={1000}>
-                <p className="text"><FaRoad /> {props.state.logarr[0]}</p>
-            </Delayed>
-
-            <Delayed waitBeforeShow={3000}>
-                <p className="text"><FaRoad /> {props.state.logarr[1]}</p>
-            </Delayed>
-
-            <Delayed waitBeforeShow={4500}>
-                <p className="text"><FaRoad /> {props.state.logarr[2]}</p>
-            </Delayed>
-
-            <Delayed waitBeforeShow={6000}>
-                <p className="text"><FaRoad /> {props.state.logarr[3]}</p>
-            </Delayed>
-
-            <Delayed waitBeforeShow={7500}>
-                <p className="text"><FaRoad /> {props.state.logarr[4]}</p>
-            </Delayed>
-            <Delayed waitBeforeShow={9000}>
-                <p className="text"><FaRoad /> {props.state.logarr[5]}</p>
-            </Delayed>
-            </>
-            )
-        }}
         return (
             <div className="resultcontainer">
-            {resultState.isanimation ?
-            <>
-            <p className="result">{resultState.result}</p>
-            <br/>
-            <p className="text">Your Total: {props.state.ptotal}</p> 
-            <br/>
-            <p>vs</p> 
-            <br/>
-            <p className="text">Takumi: {props.state.cputotal}</p>
-            <br/>
-            <img src={resultState.animation} /> 
-            <Delayed waitBeforeShow={5000}>
-            <button className="finishbtn"><Link to='/Garage'>Finish!</Link></button>
-            </Delayed>
-            </>
-            :
-            <>
-            {resultState.timer()}
-            {/* <Delayed waitBeforeShow={1000}>
-                    <p>{props.state.logarr[0]}</p>
-                </Delayed>
-
-                <Delayed waitBeforeShow={3000}>
-                    <p>{props.state.logarr[1]}</p>
-                </Delayed>
-
-                <Delayed waitBeforeShow={4500}>
-                    <p>{props.state.logarr[2]}</p>
-                </Delayed>
-
-                <Delayed waitBeforeShow={6000}>
-                    <p>{props.state.logarr[3]}</p>
-                </Delayed>
-
-                <Delayed waitBeforeShow={7500}>
-                    <p>{props.state.logarr[4]}</p>
-                </Delayed> */}
-            </>
-        }
-            {/* <div className="container">
-            <div>
-                <Delayed waitBeforeShow={1000}>
-                    <p>{props.state.logarr[0]}</p>
-                </Delayed>
-
-                <Delayed waitBeforeShow={2500}>
-                    <p>{props.state.logarr[1]}</p>
-                </Delayed>
-
-                <Delayed waitBeforeShow={4000}>
-                    <p>{props.state.logarr[2]}</p>
-                </Delayed>
-
-                <Delayed waitBeforeShow={5500}>
-                    <p>{props.state.logarr[3]}</p>
-                </Delayed>
-
-                <Delayed waitBeforeShow={7000}>
-                    <p>{props.state.logarr[4]}</p>
-                </Delayed>
-
-                <Delayed waitBeforeShow={9500} id="animationGif">
-                        <p>{resultState.result}</p>
+                {resultState.isanimation ?
+                    <>
+                        <p className="result">{resultState.result}</p>
                         <br/>
-                        <p>Your Total: {props.state.ptotal}</p> 
+                        <p className="text">Your Total: {props.state.ptotal}</p> 
                         <br/>
-                        vs 
+                        <p>vs</p> 
                         <br/>
-                        <p>Theirs: {props.state.cputotal}</p>
+                        <p className="text">{props.state.oname}: {props.state.ototal}</p>
                         <br/>
-                        {resultState.animation === '' ? null : <img src={resultState.animation} />}
-                </Delayed>
-                <Delayed waitBeforeShow={11000}>
-                    <button><Link to='/Garage'>Finish!</Link></button>
-                </Delayed> */}
-            {/* </div>
-            </div> */}
+                        <img src={resultState.animation} /> 
+                        <Delayed waitBeforeShow={5000}>
+                        <button className="finishbtn"><Link to='/Garage'>Finish!</Link></button>
+                        </Delayed>
+                    </>
+                    :
+                    <>
+                        <h1 className="result">Start!</h1>
+                        {props.state.logarr.map((log, i) => (
+                            <Delayed waitBeforeShow={1500*(i+=1)}>
+                                <p className="text"><FaRoad /> {log}</p>
+                            </Delayed>
+                        ))}
+                    </>
+                }
             </div>
         )
     }

@@ -4,9 +4,25 @@ module.exports = (Schema, model) => {
             type: String,
             default: ""
         },
-        carId: {
+        sendername: {
             type: String,
             default: ""
+        },
+        pengine: {
+            type: Number,
+            default: null
+        },
+        pbodyKit: {
+            type: Number,
+            default: null
+        },
+        ptotal: {
+            type: Number,
+            default: null
+        },
+        ptire: {
+            type: Number,
+            default: null
         },
         item: {
             type: String,
@@ -16,8 +32,15 @@ module.exports = (Schema, model) => {
             type: Number,
             default: ""
         },
-        message: {
+        animation: [{
             type: String,
+        }],
+        message: {
+            type: Object,
+            default: ""
+        },
+        location: {
+            type: Object,
             default: ""
         },
         receiver: {

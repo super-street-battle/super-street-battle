@@ -10,10 +10,34 @@
 }
 .topcontainer {
     background: rgba(54, 54, 54, 0.425);
+    text-align: center;
+    padding: 1% 0 4% 0; 
 }
 .homepage {
     background-image: url(../../assets/race.gif);
     height: 100vh;
     background-repeat: no-repeat;
     background-size: cover;
+}
+.nav-item.nav-link {
+    color: #ff9800 !important;
+    padding: .5rem;
+}
+.nav.nav-tabs {
+    margin-bottom: 5%;
+}
+
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    color: black !important;
+    background: #f3ff44;
+    border-color: #f3ff44;
+}
+.nav-tabs {
+    border-bottom: 1px solid #f3ff44;
+}
+
+.challengebtn {
+    height: 22px;
+    background-color: #ff9800;
+    border: none;
 }
