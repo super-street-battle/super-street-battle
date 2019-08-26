@@ -1,0 +1,40 @@
+.na {
+    padding: 4%;
+    text-align: center;
+}
+.backbtn {
+    background-color: transparent;
+    border: none;
+    margin-bottom: 3%;
+}
+
+.message {
+    line-height: 185%;
+}
+
+.accept {
+    margin-top: 5%;
+    background-color: #ff9800;
+    border: none;
+    height: 27px;
+    width: 150px;
+}
+
+.messagecontainer {
+    text-align: center
+}
+
+.received {
+    text-align: center;
+    margin: 5% 1%;
+}
+
+.sender {
+    margin-bottom: 2%;
+}
+
+.receivedbtn {
+    margin: 3% 2%;
+    background-color: #ff9800;
+    border: none;
+}

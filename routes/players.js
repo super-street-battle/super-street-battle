@@ -7,6 +7,23 @@ module.exports = app => {
             .catch(e => console.log(e))
     })
 
+    app.get('/players/challenge/:id/:max/:min', (req, res) => {
+        Player.find({ experience: {$gt: req.params.min, $lt: req.params.max}, _id: {$ne: req.params.id}})
+            .then(players => {
+                let playerarr = []
+                players.forEach(player => {
+                    playerobj = {
+                        _id: player._id,
+                        userName: player.userName,
+                        experience: player.experience
+                    }
+                    playerarr.push(playerobj)
+                })
+                res.json(playerarr)
+            })
+            .catch(e => console.log(e))
+    })
+
     app.get('/players/:id', (req, res) => {
         Player.findById(req.params.id)
             .populate('cars')
