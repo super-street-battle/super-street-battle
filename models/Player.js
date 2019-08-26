@@ -26,7 +26,7 @@ module.exports = (Schema, model) => {
         },
         bankAccount: {
             type: Number,
-            default: "5000"
+            default: "200"
         },
         grippyTires: {
             type: Number,

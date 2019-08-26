@@ -25,7 +25,14 @@ const Challengeres = _ => {
     }, [])
 
     resultState.delete = e => {
+        let val = e.target.value
         Results.deleteone(e.target.id)
+        .then(_ => {
+            let results = resultState.results
+            results.splice(val, 1)
+            setresultState({...resultState, results})
+        })
+        .catch(e => console.error(e))
     }
 
     resultState.view = e => {
