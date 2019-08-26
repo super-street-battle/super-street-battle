@@ -9,6 +9,7 @@ import Challenges from '../../utils/challenges'
 import { Link } from 'react-router-dom'
 import './pvp.css'
 
+let bet
 const grippyTire = 'https://super-street-battle.s3.us-west-1.amazonaws.com/1563852066775'
 const oil = 'https://super-street-battle.s3.us-west-1.amazonaws.com/1563852214573'
 const nitro = 'https://super-street-battle.s3.us-west-1.amazonaws.com/1563852192955'
@@ -160,7 +161,6 @@ const PvP = props => {
         isSend: false
     })
     useEffect(_ => {
-        setbetState(null)
         let max
         let min
         let id = localStorage.getItem('_id')
@@ -213,21 +213,23 @@ const PvP = props => {
             if (betinput.current.value !== '') {
                 Player.updatebank(pvpState.id, {bankAccount: pvpState.money - betinput.current.value})
             .then(_ => {
-                setbetState(parseInt(betinput.current.value))
+                bet = parseInt(betinput.current.value)
+                setbetState(bet)
                 setpvpState({
                     ...pvpState,
                     bet: parseInt(betinput.current.value),
                     money: pvpState.money - betinput.current.value,
-                    isSend: true
+                    // isSend: true
                 })
             })
             .catch(e => console.error(e))
             } else {
+                bet = 0
                 setbetState(0)
                 setpvpState({
                     ...pvpState,
                     bet: 0,
-                    isSend: true
+                    // isSend: true
                 })
             }
         }
@@ -235,6 +237,8 @@ const PvP = props => {
 
     useEffect(() => {
         if (betState !== null) {
+            // bet = parseInt(betinput.current.value)
+            console.log(bet)
             let challenge = {
                 sender: pvpState.id,
                 sendername: pvpState.userName,
@@ -243,14 +247,14 @@ const PvP = props => {
                 ptire: pvpState.ptire,
                 ptotal: pvpState.ptotal,
                 item: pvpState.useItem,
-                bet: pvpState.bet,
+                bet: bet,
                 animation: pvpState.caranimation,
                 message: {
                     one: `You have been challenged by ${pvpState.userName} - ${pvpState.experience}!`,
                     two: `Track - ${pvpState.location.track}`,
                     three: `Terrain - ${pvpState.location.terrain}`,
                     four: `Weather - ${pvpState.location.weather}`,
-                    five: `${pvpState.userName} has bet $${pvpState.bet}. Do you accept the challenge?`
+                    five: `${pvpState.userName} has bet $${bet}. Do you accept the challenge?`
                 },
                 location: {
                     part: pvpState.location.part,
@@ -262,10 +266,15 @@ const PvP = props => {
             .then(({data}) => {
                 console.log(data.message)
                 console.log(data.animation)
+                setpvpState({
+                    ...pvpState,
+                    // bet: 0,
+                    isSend: true
+                })
             })
             .catch(e => console.error(e))
         }
-    })
+    }, [betState])
 
     pvpState.itemSelect= e => {
         let items = pvpState.items
